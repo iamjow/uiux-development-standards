@@ -30,6 +30,8 @@ Check whether appropriate semantic elements are used when applicable:
 - `table`
 - `ul`
 - `ol`
+- `select`
+- `details` / `summary`
 
 Flag generic elements when a more appropriate semantic element should be used.
 
@@ -235,7 +237,7 @@ Check that buttons inside forms have an explicit and appropriate `type`.
 </button>
 ```
 
-Flag buttons where an omitted `type` could cause unintended form submission.
+A button without a `type` defaults to `submit`. Flag buttons inside a form, or associated with one through the `form` attribute, that omit `type`.
 
 ---
 
@@ -278,13 +280,15 @@ An icon-only button should have an accessible name:
 
 ```html
 <button type="button" aria-label="Close">
-    <svg>
+    <svg aria-hidden="true" focusable="false">
         ...
     </svg>
 </button>
 ```
 
 Flag icon-only controls that have no accessible name.
+
+Decorative and icon SVGs inside a labelled control should carry `aria-hidden="true" focusable="false"`. A standalone informative SVG needs `role="img"` and an accessible name.
 
 If visible text already provides the accessible name, avoid unnecessary duplicate ARIA labels.
 
@@ -315,7 +319,6 @@ Also check:
 - Correct label associations
 - Appropriate input types
 - Required fields
-- Button types
 - Accessible error messages where applicable
 
 ---
@@ -329,13 +332,16 @@ Verify that the appropriate native input type is used.
 ```html
 <input type="email">
 <input type="password">
-<input type="number">
-<input type="date">
 <input type="search">
 <input type="tel">
+<input type="url">
 ```
 
 Flag use of `type="text"` when a more appropriate native input type is clearly applicable.
+
+Use `type="number"` only for true quantities. For identifiers, codes, phone numbers, and postcodes, prefer `type="text"` with `inputmode="numeric"` and a `pattern`, since `type="number"` strips leading zeros and changes value on scroll.
+
+Do not require `type="date"`. Native date inputs render inconsistently across browsers and often conflict with the project's date picker.
 
 Do not recommend changing the input type when project-specific functionality requires the existing type.
 
@@ -384,6 +390,7 @@ Verify appropriate use of:
 
 ```html
 <table>
+    <caption>Team members</caption>
     <thead>
         <tr>
             <th scope="col">Name</th>
@@ -393,12 +400,16 @@ Verify appropriate use of:
 
     <tbody>
         <tr>
-            <td>John Doe</td>
+            <th scope="row">John Doe</th>
             <td>Active</td>
         </tr>
     </tbody>
 </table>
 ```
+
+Data tables should have a `caption` or `aria-labelledby`. Row headers use `th scope="row"`.
+
+Flag `td` used as a header cell and `th` without `scope` in tables with both row and column headers.
 
 Flag tables used purely for page layout.
 
@@ -458,7 +469,9 @@ Flag unnecessary patterns such as:
 </button>
 ```
 
-A native `<button>` already provides button semantics.
+A native `<button>` already provides button semantics. The `aria-label` here also replaces the visible name "Save" with "Button", which breaks voice control and fails WCAG 2.5.3 Label in Name.
+
+Flag any `aria-label` that does not contain the element's visible text. When visible text exists, prefer no `aria-label` at all.
 
 Review ARIA attributes such as:
 
@@ -513,16 +526,7 @@ Do not flag code simply because it differs from a generic convention if the exis
 
 Focus the review on the requested UI change.
 
-**Prioritize:**
-
-- Incorrect or invalid HTML
-- Accessibility issues
-- Semantic HTML issues
-- Unnecessary DOM elements
-- Incorrect interactive elements
-- Unnecessary or incorrect classes
-- Maintainability issues
-- Consistency with existing project patterns
+Rank findings using the priority order in the Important section at the end of this document.
 
 Do not turn a code review into a full refactoring exercise.
 
@@ -651,7 +655,6 @@ Only report issues that have a clear reason for improvement.
 - [ ] Buttons use appropriate types.
 - [ ] Links are used for navigation.
 - [ ] Buttons are used for actions.
-- [ ] Heading hierarchy is logical.
 - [ ] ARIA is used only when necessary.
 - [ ] Interactive elements are keyboard accessible.
 
