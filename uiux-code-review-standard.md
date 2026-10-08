@@ -10,6 +10,8 @@ The goal is to identify unnecessary, incorrect, inconsistent, or poor-quality ma
 
 The existing project's framework, component structure, CSS/SCSS architecture, naming conventions, and established patterns should be respected.
 
+SCSS architecture, design tokens, folder structure, and framework choice are governed by the UIUX Development Standard and are deliberately out of scope here. This document reviews markup, accessibility, and inline styling and scripting only.
+
 ---
 
 ## 1. Semantic HTML
@@ -566,7 +568,38 @@ Do not flag `tabindex="-1"` used to make a container programmatically focusable,
 
 ---
 
-## 20. Existing Project Consistency
+## 20. Inline Styles and Scripts
+
+Check that styling and behavior live in the project's stylesheets and scripts, not in the markup.
+
+**Flag:**
+
+- HTML `style` attributes with static values
+- `<style>` blocks embedded in templates
+- Inline event handlers (`onclick`, `onchange`) and `<script>` blocks embedded in templates
+- `href="javascript:"`
+
+**Flag:**
+
+```html
+<div style="margin-top: 20px; color: #333;">
+```
+
+**Recommend:**
+
+```html
+<div class="section-intro">
+```
+
+Do not flag:
+
+- Dynamic style bindings for runtime-computed values (a progress width, a drag position, a CSS custom property set from data)
+- Framework-native scoped styles the project already uses
+- Framework event bindings (`@click`, `onClick={}`), which are not inline handlers
+
+---
+
+## 21. Existing Project Consistency
 
 Code review must consider the existing project's conventions.
 
@@ -583,7 +616,7 @@ Do not flag code simply because it differs from a generic convention if the exis
 
 ---
 
-## 21. Scope of Review
+## 22. Scope of Review
 
 Focus the review on the requested UI change.
 
@@ -595,7 +628,7 @@ Avoid recommending unrelated changes.
 
 ---
 
-## 22. Review Severity
+## 23. Review Severity
 
 Severity is determined by user impact, not by which section the finding comes from.
 
@@ -652,7 +685,7 @@ Minor cleanup.
 
 ---
 
-## 23. Code Review Comment Format
+## 24. Code Review Comment Format
 
 When identifying an issue, provide:
 
@@ -678,7 +711,7 @@ Keep review comments specific and actionable.
 
 ---
 
-## 24. Avoid False Positives
+## 25. Avoid False Positives
 
 Do not flag code simply because:
 
@@ -697,7 +730,7 @@ Only report issues that have a clear reason for improvement.
 
 ---
 
-## 25. Final Code Review Checklist
+## 26. Final Code Review Checklist
 
 ### HTML Structure
 
@@ -737,6 +770,7 @@ Only report issues that have a clear reason for improvement.
 
 ### Code Quality
 
+- [ ] No static inline styles, embedded `<style>` blocks, or inline event handlers.
 - [ ] No unnecessary `<br>` elements.
 - [ ] No empty elements used for spacing.
 - [ ] No duplicated markup without justification.

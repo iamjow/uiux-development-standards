@@ -16,9 +16,11 @@ Use the following technologies for UI implementation:
 - SCSS
 - JavaScript
 
-These standards apply regardless of the frontend framework being used.
+These standards apply to new projects and to new UI built in a project that has no established styling stack. They apply regardless of the frontend framework (Vue, React, Blade, plain HTML).
 
-Do NOT use:
+In a project with an established styling stack, follow that stack and the project's conventions instead of introducing a second one.
+
+Do NOT introduce:
 
 - Tailwind CSS
 - Bootstrap
@@ -27,6 +29,12 @@ Do NOT use:
 - Foundation
 - CSS-in-JS libraries
 - Inline styles, embedded `<style>` blocks, or HTML `style` attributes
+
+Allowed exceptions:
+
+- Framework-native scoped styles (Vue `<style scoped lang="scss">`, CSS Modules) when the project already uses them
+- Dynamic style bindings for values computed at runtime, such as a drag position, a progress width, or a CSS custom property set from data
+- Third-party component libraries the project already depends on
 
 ---
 
@@ -63,7 +71,24 @@ A wrapper is unnecessary when removing it changes no rendered output, no selecto
 
 ---
 
-## 3. SCSS Standards
+## 3. Markup Quality
+
+These rules mirror the UIUX Code Review Standard. Generated markup will be reviewed against them.
+
+- Use `<button>` for actions and `<a href>` for navigation. Never make a `div` or `span` clickable.
+- Every `<button>` inside a form has an explicit `type`. Default to `type="button"`; use `type="submit"` only for the submit action.
+- Every `<img>` has `alt`. Meaningful images describe content or purpose. Decorative images use `alt=""`.
+- Icon-only controls have an accessible name through `aria-label` or visually hidden text. Icon SVGs carry `aria-hidden="true" focusable="false"`.
+- Every form control has a visible `<label for>` matching a unique `id`. Placeholder is not a label.
+- Use the native input type that matches the data: `email`, `password`, `search`, `tel`, `url`. Use `type="number"` only for quantities; use `inputmode="numeric"` with a `pattern` for codes and identifiers. Do not use `type="date"` unless the project uses native date inputs.
+- Content that is a list uses `ul` or `ol`. Tabular data uses `table` with `caption`, `thead`, `tbody`, `th scope`.
+- No `<br>` for spacing. No empty elements for spacing. Spacing comes from SCSS.
+- Do not add ARIA that duplicates native semantics. Never add `role="button"` or `aria-label` to a native `<button>` with visible text.
+- Prefer native HTML (`button`, `a`, `input`, `select`, `details`/`summary`, `dialog`) over custom implementations unless the design requires behavior native elements cannot provide.
+
+---
+
+## 4. SCSS Standards
 
 All styling must be written using SCSS.
 
@@ -101,7 +126,7 @@ Avoid duplicate styling. Shared components share the same SCSS.
 
 ---
 
-## 4. Component Standards
+## 5. Component Standards
 
 Create reusable components for UI patterns that appear more than once or are clearly part of a design system.
 
@@ -123,7 +148,7 @@ Layouts (Header, Sidebar, Footer, Navigation) are not components. See Layout.
 
 ---
 
-## 5. Naming Convention
+## 6. Naming Convention
 
 Use kebab-case.
 
@@ -141,7 +166,7 @@ Use IDs only for functional purposes, such as associating a label with a form co
 
 ---
 
-## 6. Layout
+## 7. Layout
 
 Keep layouts modular.
 
@@ -156,7 +181,7 @@ Each layout has its own SCSS file under `layouts/`.
 
 ---
 
-## 7. Responsive Design
+## 8. Responsive Design
 
 Support desktop, tablet, and mobile by default. When the project supplies breakpoints or responsive requirements, follow them exactly.
 
@@ -171,7 +196,7 @@ Prefer flexible layouts using:
 
 ---
 
-## 8. Design Tokens
+## 9. Design Tokens
 
 Design tokens are SCSS variables defined in `_variables.scss`.
 
@@ -192,20 +217,58 @@ The project must be structured so that branding or theme changes can be made fro
 
 ---
 
-## 9. Accessibility
+## 10. Accessibility
 
-Follow semantic HTML.
+All generated UI must conform to WCAG 2.2 Level AA. Form, image, and ARIA rules are in Markup Quality.
 
-Include:
+Document and structure:
 
-- labels
-- alt attributes
-- button types
-- keyboard-friendly elements
+- Set `lang` on `<html>`.
+- Use landmarks: one `main`, plus `header`, `nav`, `footer`, `aside` as applicable. Name repeated landmarks (`<nav aria-label="Footer">`).
+- Add a skip link to `main` as the first focusable element.
+
+Color and focus:
+
+- Contrast: text 4.5:1, large text 3:1, UI component boundaries and focus indicators 3:1.
+- Never convey state, error, or meaning by color alone.
+- Keep a visible focus indicator. Never write `outline: none` without a `:focus-visible` replacement of at least 3:1 contrast.
+
+Keyboard:
+
+- Every control is reachable with Tab in DOM order.
+- Never use `tabindex` greater than 0.
+- Custom controls need a `role`, `tabindex="0"`, and key handlers. Prefer native elements first.
+- No keyboard traps. Modals trap focus while open, close on Escape, and return focus to the opener.
+
+Forms:
+
+- Group radio and checkbox sets with `fieldset` and `legend`.
+- Mark required fields with `required` and explain the indicator in text.
+- Add `autocomplete` to identity fields (name, email, tel, address).
+- Errors: show the message as text, set `aria-invalid="true"`, link the message with `aria-describedby`, and announce it with `role="alert"` or by moving focus to the first invalid field.
+
+Dynamic content and motion:
+
+- Alerts, toasts, and status updates use `role="status"` (polite) or `role="alert"` (assertive).
+- Wrap non-essential animation in `@media (prefers-reduced-motion: no-preference)`.
+
+Size and zoom:
+
+- Interactive targets are at least 24x24 CSS px; 44px for primary touch actions.
+- Never set `user-scalable=no` or `maximum-scale` on the viewport meta.
+- Use `rem` for type and spacing. Layouts reflow at 320px width without horizontal scroll.
+
+Component contracts (WAI-ARIA Authoring Practices):
+
+- Dropdown menu: trigger has `aria-expanded` and `aria-controls`; Arrow keys move between items; Escape closes and returns focus. Use native `<select>` for simple choice.
+- Tabs: `role="tablist"`, `tab`, `tabpanel`; `aria-selected` and `aria-controls` on tabs; Left/Right arrows move between tabs; only the active tab is in the Tab order.
+- Modal: use `<dialog>` with `showModal()`, or `role="dialog" aria-modal="true"`; name it with `aria-labelledby`; trap focus, close on Escape, restore focus.
+- Alerts: `role="alert"` for errors, `role="status"` for confirmations; the dismiss button has an accessible name.
+- Pagination: `<nav aria-label="Pagination">` with a list of links; current page has `aria-current="page"`; disabled prev/next are `<button disabled>` or omitted, not dead links.
 
 ---
 
-## 10. Performance
+## 11. Performance
 
 Avoid:
 
@@ -218,7 +281,7 @@ Keep markup clean and maintainable.
 
 ---
 
-## 11. JavaScript
+## 12. JavaScript
 
 Keep JavaScript separate from HTML. Do not embed scripts inside HTML.
 
@@ -228,7 +291,7 @@ Keep functionality modular.
 
 ---
 
-## 12. Browser Support
+## 13. Browser Support
 
 Target the following browserslist:
 
@@ -240,7 +303,7 @@ Do not use features that fall outside this target without a fallback.
 
 ---
 
-## 13. Output Requirements
+## 14. Output Requirements
 
 The generated project must:
 
@@ -255,6 +318,8 @@ The generated project must:
 - [ ] Support desktop, tablet, and mobile
 - [ ] Use the project's framework for behavior, with framework-free JavaScript only when no framework is in use
 - [ ] Meet the browser support target
+- [ ] Follow the Markup Quality rules
+- [ ] Conform to WCAG 2.2 AA as described in Accessibility
 - [ ] Be maintainable and scalable
 - [ ] Be production-ready
 
