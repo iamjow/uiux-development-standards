@@ -100,6 +100,14 @@ When the wrappers are unnecessary, recommend a simpler structure:
 
 Do not flag a wrapper if it has a legitimate layout, styling, component, or functional purpose.
 
+A wrapper is unnecessary when all of the following are true:
+
+- Removing it changes no rendered output.
+- No selector, script, or test hook targets it.
+- It is not a framework component root, slot, or template container.
+
+When flagging a wrapper, state which of these checks it failed.
+
 ---
 
 ## 3. DOM Structure and Nesting
@@ -159,7 +167,7 @@ Good classes should describe:
 <button class="blue-button">
 ```
 
-Flag classes that describe purely visual properties when they should represent the element's purpose.
+Flag a visual class only when it is the element's sole identity, as in `blue-button` above. Modifier classes such as `button--large` and utility classes from the project's established system are not findings.
 
 Also check for:
 
@@ -215,7 +223,15 @@ Use `<a>` for navigation:
 - Clickable `div` elements used as buttons
 - Clickable `span` elements used as buttons
 - Links used for non-navigation actions
-- Buttons used when the interaction is actually navigation
+- Buttons used for pure navigation to a URL
+- `<a>` without `href`, or with `href="#"` or `javascript:`, used as a button
+
+Do not flag:
+
+- A submit button that navigates after the form is processed
+- A button that performs work (validation, saving) and then navigates
+- Router links that render an `<a>` with an `href`
+- An `<a download>` styled as a button
 
 Prefer native interactive elements over recreating their behavior with generic elements.
 
@@ -316,10 +332,12 @@ Flag inputs that rely only on placeholder text when a proper label is required.
 
 Also check:
 
-- Correct label associations
+- Correct label associations: `for` points at a unique `id`, or the label wraps the control. Placeholder, `title`, and adjacent text are not labels.
+- Radio and checkbox groups use `fieldset` and `legend`.
 - Appropriate input types
-- Required fields
-- Accessible error messages where applicable
+- Required fields: the control has the `required` attribute and the required indicator is explained in text, not by an asterisk or color alone.
+- Error messages: the message is visible text, not color or an icon alone; the control has `aria-invalid="true"`; the message is linked with `aria-describedby`; the error is announced with `role="alert"` or focus moves to the first invalid field or an error summary; the message identifies the field and how to fix it.
+- Identity fields (name, email, phone, address) have `autocomplete`.
 
 ---
 
@@ -505,7 +523,50 @@ Only recommend custom implementations when the design or project requirements re
 
 ---
 
-## 19. Existing Project Consistency
+## 19. Keyboard Accessibility
+
+Verify that every interactive element can be reached and operated with a keyboard alone.
+
+Check for:
+
+- Every control is reachable with Tab in DOM order.
+- Buttons activate on Enter and Space. Links activate on Enter.
+- Composite widgets (tabs, menus, listboxes) use Arrow keys per WAI-ARIA Authoring Practices.
+- Custom interactive elements have a `role`, `tabindex="0"`, and key handlers.
+- Focus is visible on every focusable element.
+- Modals trap focus while open, close on Escape, and return focus to the opener.
+- Focus moves to new content when the interaction expects it (opened dialog, error summary).
+
+**Flag:**
+
+- `tabindex` greater than 0
+- `aria-hidden="true"` on a focusable element or its ancestor
+- Clickable `div` or `span` without role, `tabindex`, and key handling
+- `outline: none` or `outline: 0` without a `:focus-visible` replacement
+- Mouse-only handlers with no keyboard equivalent
+- Keyboard traps
+
+**Flag:**
+
+```html
+<div class="dropdown-trigger" onclick="toggleMenu()">
+    Options
+</div>
+```
+
+**Recommend:**
+
+```html
+<button type="button" aria-expanded="false" aria-controls="options-menu">
+    Options
+</button>
+```
+
+Do not flag `tabindex="-1"` used to make a container programmatically focusable, or custom widgets that already implement the APG keyboard pattern.
+
+---
+
+## 20. Existing Project Consistency
 
 Code review must consider the existing project's conventions.
 
@@ -522,7 +583,7 @@ Do not flag code simply because it differs from a generic convention if the exis
 
 ---
 
-## 20. Scope of Review
+## 21. Scope of Review
 
 Focus the review on the requested UI change.
 
@@ -534,56 +595,64 @@ Avoid recommending unrelated changes.
 
 ---
 
-## 21. Review Severity
+## 22. Review Severity
 
-Use the following severity when reporting findings.
+Severity is determined by user impact, not by which section the finding comes from.
 
 ### Critical
 
-Issues that can cause major functionality or accessibility problems.
+The issue blocks a task for some users, or breaks functionality.
 
 **Examples:**
 
-- Broken interactive behavior
-- Critical accessibility failure
-- Invalid markup that breaks functionality
+- Broken interactive behavior or invalid markup that breaks functionality
+- A primary control that cannot be reached or operated with a keyboard
+- A form control with no accessible label
+- `aria-hidden="true"` on main content or on a focusable element
+- A viewport meta that blocks zoom (`user-scalable=no`, `maximum-scale=1`)
+- An icon-only control with no accessible name
+- A keyboard trap, including a modal that does not return focus
+- `aria-label` that replaces the visible text with a different name
+- Status, error, or success messages that are never announced to assistive technology
 
 ### High
 
-Issues that should be fixed before approval.
+The issue degrades the experience for some users but a workaround exists. Fix before approval.
 
 **Examples:**
 
-- Incorrect semantic structure affecting accessibility
-- Clickable `div` used as a critical interactive control
-- Missing accessible names for important controls
-- Incorrect form behavior
+- Clickable `div` or `span` used as a secondary interactive control
+- Skipped heading levels or a page with no `h1`
+- Links used for actions, or buttons used for pure navigation
+- Missing `type` on a button inside a form
+- Unhelpful alt text on a meaningful image
+- Missing semantic list or table structure for content that is clearly a list or table
 
 ### Medium
 
-Issues that should be addressed but do not block functionality.
+No user impact. The issue affects maintainability or clarity.
 
 **Examples:**
 
 - Excessive DOM nesting
 - Unnecessary wrapper elements
-- Incorrect heading hierarchy
-- Poor class naming
-- Missing semantic list structure
+- Headings used for visual size only, with hierarchy still correct
+- Poor or purely visual class naming
+- Unnecessary ARIA that duplicates native semantics
 
 ### Low
 
-Minor improvements that improve code quality or maintainability.
+Minor cleanup.
 
 **Examples:**
 
 - Minor redundant markup
 - Unnecessary class
-- Small HTML cleanup
+- Unnecessary `<br>` or empty element
 
 ---
 
-## 22. Code Review Comment Format
+## 23. Code Review Comment Format
 
 When identifying an issue, provide:
 
@@ -609,7 +678,7 @@ Keep review comments specific and actionable.
 
 ---
 
-## 23. Avoid False Positives
+## 24. Avoid False Positives
 
 Do not flag code simply because:
 
@@ -620,13 +689,15 @@ Do not flag code simply because:
 - A custom component is used.
 - An existing project pattern differs from generic HTML examples.
 
-Before raising a finding, determine whether the element has a legitimate structural, styling, functional, framework, or project-specific purpose.
+Before raising a finding, determine whether the element has a legitimate structural, styling, functional, framework, or project-specific purpose. For wrappers, apply the three-part test in section 2. For other findings, state the purpose you looked for and could not find.
+
+Review examples in this document use plain HTML. In Vue, React, Blade, or similar templates, a component root element, a slot container, or a wrapper the framework requires is not a finding.
 
 Only report issues that have a clear reason for improvement.
 
 ---
 
-## 24. Final Code Review Checklist
+## 25. Final Code Review Checklist
 
 ### HTML Structure
 
@@ -652,11 +723,17 @@ Only report issues that have a clear reason for improvement.
 - [ ] Decorative images use `alt=""`.
 - [ ] Form controls have accessible labels.
 - [ ] Icon-only controls have accessible names.
+- [ ] Decorative SVGs have `aria-hidden="true" focusable="false"`.
 - [ ] Buttons use appropriate types.
+- [ ] Inputs use appropriate native types.
+- [ ] Data tables use `caption`, `th`, and `scope`.
+- [ ] Native elements are used instead of custom implementations where they meet the requirement.
 - [ ] Links are used for navigation.
 - [ ] Buttons are used for actions.
 - [ ] ARIA is used only when necessary.
-- [ ] Interactive elements are keyboard accessible.
+- [ ] Interactive elements are keyboard accessible (see section 19).
+- [ ] No `tabindex` greater than 0.
+- [ ] Form errors are announced and linked to their controls.
 
 ### Code Quality
 
