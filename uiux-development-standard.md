@@ -177,7 +177,7 @@ Separate:
 - Main Content
 - Footer
 
-Each layout has its own SCSS file under `layouts/`.
+Each layout has its own SCSS filegit under `layouts/`.
 
 ---
 
