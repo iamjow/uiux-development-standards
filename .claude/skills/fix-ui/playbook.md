@@ -1,6 +1,6 @@
 # Fix Playbook
 
-How to fix each kind of finding from a `/validate-uiux` report. The rules live in the standards; this file covers the order and technique. When a recipe and the standard disagree, the standard wins.
+How to fix each kind of finding from a `/validate-ui` report. The rules live in the standards; this file covers the order and technique. When a recipe and the standard disagree, the standard wins.
 
 - **Dev** = `uiux-development-standard.md`
 - **Review** = `uiux-code-review-standard.md`

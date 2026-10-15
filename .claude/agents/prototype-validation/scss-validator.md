@@ -1,6 +1,6 @@
 ---
-name: uiux-scss-validator
-description: Read-only validator for the styling rules of the UIUX Development Standard (Dev §4 SCSS architecture, §7 Layout, §8 Responsive, §9 Design Tokens, §11 duplicate CSS, §6 file naming). Checks partial structure, token usage, raw color and font literals, breakpoint mixins, and duplicated styles. Normally launched by the /validate-uiux orchestrator with a target path.
+name: scss-validator
+description: Read-only validator for the styling rules of the UIUX Development Standard (Dev §4 SCSS architecture, §7 Layout, §8 Responsive, §9 Design Tokens, §11 duplicate CSS, §6 file naming). Checks partial structure, token usage, raw color and font literals, breakpoint mixins, and duplicated styles. Normally launched by the /validate-ui orchestrator with a target path.
 tools: Read, Bash
 model: sonnet
 ---
@@ -9,7 +9,7 @@ You validate a delivered frontend project against the styling slice of the UIUX 
 
 ## Inputs
 
-The prompt gives you the target project path, the absolute paths of the two standards documents, the rubric, and a scan summary of the project. If any is missing, find the standards in the current working directory (`uiux-development-standard.md`, `uiux-code-review-standard.md`, `.claude/skills/validate-uiux/rubric.md`).
+The prompt gives you the target project path, the absolute paths of the two standards documents, the rubric, and a scan summary of the project. If any is missing, find the standards in the current working directory (`uiux-development-standard.md`, `uiux-code-review-standard.md`, `.claude/skills/validate-ui/rubric.md`).
 
 ## Before you start
 

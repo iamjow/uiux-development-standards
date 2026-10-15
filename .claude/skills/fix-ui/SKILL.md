@@ -1,6 +1,6 @@
 ---
-name: fix-uiux
-description: Fix the findings in a /validate-uiux report for any delivered frontend project, in a safe order (structure, markup, accessibility, cleanups), on your fix branch, then re-run /validate-uiux once as QA and write a fix summary. Use when asked to fix, remediate, or resolve UIUX validation findings.
+name: fix-ui
+description: Fix the findings in a /validate-ui report for any delivered frontend project, in a safe order (structure, markup, accessibility, cleanups), on your fix branch, then re-run /validate-ui once as QA and write a fix summary. Use when asked to fix, remediate, or resolve UIUX validation findings.
 argument-hint: <report-path> [--blocking | --all | F-1 F-2 ...] [--target <path>] [--no-qa]
 disable-model-invocation: true
 ---
@@ -13,7 +13,7 @@ Arguments: `$ARGUMENTS`
 
 ## 1. Parse the arguments
 
-- `REPORT`: the first argument, a report written by `/validate-uiux`. If it is missing, ask for it and stop.
+- `REPORT`: the first argument, a report written by `/validate-ui`. If it is missing, ask for it and stop.
 - Selection, default `--blocking`:
   - `--blocking`: every Critical and High finding.
   - `--all`: every finding.
@@ -26,7 +26,7 @@ Arguments: `$ARGUMENTS`
 1. Read `REPORT` in full. Note the Target and its commit, the framework, the verdict, every finding (ID, severity, rule, requirement, locations, evidence, recommendation), the "Needs confirmation" items, and the "Manual checks".
 2. Resolve `TARGET` to an absolute path and confirm it exists. If the report's Target is not an existing path and no `--target` was given, ask for it and stop.
 3. Read [playbook.md](playbook.md) in full.
-4. Read `uiux-development-standard.md` in full; it describes the end state. Read `.claude/skills/validate-uiux/rubric.md` §2 and §3. Open sections of `uiux-code-review-standard.md` as individual findings cite them.
+4. Read `uiux-development-standard.md` in full; it describes the end state. Read `.claude/skills/validate-ui/rubric.md` §2 and §3. Open sections of `uiux-code-review-standard.md` as individual findings cite them.
 
 ## 3. Prepare a safe workspace
 
@@ -66,14 +66,14 @@ At the end of phase 1 (structure), run the build checks in step 6 before startin
 
 ## 7. QA: re-validate once
 
-This is the only step in `/fix-uiux` that runs agents. It runs `/validate-uiux` exactly once, which is 4 agents. Skip it when `--no-qa` was given.
+This is the only step in `/fix-ui` that runs agents. It runs `/validate-ui` exactly once, which is 4 agents. Skip it when `--no-qa` was given.
 
-1. Invoke the `validate-uiux` skill with `WORK` as its argument. If the skill can't be invoked, read `.claude/skills/validate-uiux/SKILL.md` and follow it. It writes a new report.
+1. Invoke the `validate-ui` skill with `WORK` as its argument. If the skill can't be invoked, read `.claude/skills/validate-ui/SKILL.md` and follow it. It writes a new report.
 2. Compare the old and new reports. IDs are renumbered, so match findings by rule, file, and evidence.
    - **FIXED:** a selected finding no longer appears.
    - **STILL OPEN:** a selected finding still appears.
    - **NEW:** a finding that was not in the old report, in a file you changed. This is a regression.
-3. If a selected finding is STILL OPEN, or a NEW finding is Critical or High, fix it in this session (step 5) and re-run the build checks and self-check (step 6). **Do not re-validate again.** Mark those findings "fixed after QA, not re-validated", and recommend that the user run `/validate-uiux` when they're ready.
+3. If a selected finding is STILL OPEN, or a NEW finding is Critical or High, fix it in this session (step 5) and re-run the build checks and self-check (step 6). **Do not re-validate again.** Mark those findings "fixed after QA, not re-validated", and recommend that the user run `/validate-ui` when they're ready.
 
 ## 8. Write the fix summary
 
@@ -89,7 +89,7 @@ Write `validation-reports/<project-name>-<YYYY-MM-DD>-fix.md` in this repository
 | Workspace | branch `<branch>` in `<TARGET>`, or copy `<WORK>` |
 | Base commit | `<commit>` or "not a git repository" |
 | Selection | `--blocking` / `--all` / IDs |
-| QA | `/validate-uiux` once (`<path to the QA report>`), or "skipped (`--no-qa`)" |
+| QA | `/validate-ui` once (`<path to the QA report>`), or "skipped (`--no-qa`)" |
 
 ## Summary
 

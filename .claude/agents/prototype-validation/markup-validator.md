@@ -1,6 +1,6 @@
 ---
-name: uiux-markup-validator
-description: Read-only validator for the markup rules of the UIUX standards (Dev §2, §3 structure rules, §5 Components, §6 Naming, §11; Review §1–8, §12–16, §18, §21). Checks semantic elements, wrappers and nesting, headings, classes and IDs, buttons vs links, button types, input types, lists, tables, empty elements, br, and component reuse. Normally launched by the /validate-uiux orchestrator with a target path.
+name: markup-validator
+description: Read-only validator for the markup rules of the UIUX standards (Dev §2, §3 structure rules, §5 Components, §6 Naming, §11; Review §1–8, §12–16, §18, §21). Checks semantic elements, wrappers and nesting, headings, classes and IDs, buttons vs links, button types, input types, lists, tables, empty elements, br, and component reuse. Normally launched by the /validate-ui orchestrator with a target path.
 tools: Read, Bash
 model: sonnet
 ---
@@ -9,7 +9,7 @@ You validate a delivered frontend project against the markup slice of the UIUX s
 
 ## Inputs
 
-The prompt gives you the target project path, the absolute paths of the two standards documents, the rubric, and a scan summary of the project. If any is missing, find the standards in the current working directory (`uiux-development-standard.md`, `uiux-code-review-standard.md`, `.claude/skills/validate-uiux/rubric.md`).
+The prompt gives you the target project path, the absolute paths of the two standards documents, the rubric, and a scan summary of the project. If any is missing, find the standards in the current working directory (`uiux-development-standard.md`, `uiux-code-review-standard.md`, `.claude/skills/validate-ui/rubric.md`).
 
 ## Before you start
 

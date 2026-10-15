@@ -567,10 +567,10 @@ Subagent definitions double as teammate roles. Use this when specialists should 
 ```text
 Create an agent team to review the delivery at /abs/path/team-store.
 Spawn three teammates using these agent types and names:
-- markup (uiux-markup-validator)
-- a11y (uiux-a11y-validator)
-- styles (uiux-scss-validator)
-Give each the standards paths and the rubric path from .claude/skills/validate-uiux/rubric.md.
+- markup (markup-validator)
+- a11y (a11y-validator)
+- styles (scss-validator)
+Give each the standards paths and the rubric path from .claude/skills/validate-ui/rubric.md.
 When a finding crosses into another teammate's scope, message that teammate instead of reporting it.
 Before reporting a Critical finding, ask one other teammate to try to disprove it.
 Wait for all three to finish, then merge into one report.
@@ -685,20 +685,20 @@ Each agent has a fixed overhead for reading the rules and the rubric (≈1,100 l
 
 Newest first. Add an entry whenever a build or run teaches something non-obvious.
 
-### 2026-10-14: Building `/fix-uiux` and the first validation of team-store-v1
+### 2026-10-14: Building `/fix-ui` and the first validation of team-store-v1
 
-- **Ask before testing.** I was asked only to create `/fix-uiux`, but I also ran a full validation (about 605k subagent tokens) and started an end-to-end fix test. The user stopped it because of usage. A build request means: build it, run cheap checks (scripts, compiles), then *offer* the test with a cost estimate. This overrides "a team isn't done until tested" (§8).
-- **Cost of one `/validate-uiux` run on a 3-page project:** 4 specialists (≈318k tokens, up to 9.5 min) plus 4 verifier batches (≈287k tokens, up to 5.6 min), so ≈605k tokens and about 15 minutes. Any fix loop that re-runs the full validator costs that much again each round.
-- **Cheaper QA idea (superseded):** re-verify only the fixed findings with a verifier agent. Instead, `/fix-uiux` now re-validates once, and the verifier agent was deleted.
+- **Ask before testing.** I was asked only to create `/fix-ui`, but I also ran a full validation (about 605k subagent tokens) and started an end-to-end fix test. The user stopped it because of usage. A build request means: build it, run cheap checks (scripts, compiles), then *offer* the test with a cost estimate. This overrides "a team isn't done until tested" (§8).
+- **Cost of one `/validate-ui` run on a 3-page project:** 4 specialists (≈318k tokens, up to 9.5 min) plus 4 verifier batches (≈287k tokens, up to 5.6 min), so ≈605k tokens and about 15 minutes. Any fix loop that re-runs the full validator costs that much again each round.
+- **Cheaper QA idea (superseded):** re-verify only the fixed findings with a verifier agent. Instead, `/fix-ui` now re-validates once, and the verifier agent was deleted.
 - **Results on team-store-v1:**
   - 66 findings after merging (10 Critical, 38 High, 16 Medium, 2 Low).
   - All 14 planted Critical problems found, and no trap flagged.
   - Real bugs found beyond the answer key: a 3.2.2 on-input failure on the sort select.
   - Verifiers confirmed 48 of 50 blocking findings, downgraded 2, and rejected none.
-- **Verifier removed from `/validate-uiux` to cut cost roughly in half** (≈287k of ≈605k tokens per run). Across two runs it rejected 0 findings; its only value was 2 downgrades and a few line corrections. Specialists still need quoted evidence and must apply the "Do not flag" checks, and a person reviews the report. Revisit this if false FAILs show up on real deliveries. The agent file was deleted on 2026-10-14. To bring a verifier back, rebuild it from the [verifier template](#template-verifier).
-- **Agent-teams feature enabled by leadership request.** It is turned on in `.claude/settings.json`. `/validate-uiux` names its 4 checkers (stack, scss, markup, a11y) so they start as teammates: they message each other about cross-scope findings instead of reporting duplicates, and the lead shuts each down after it reports. `/fix-uiux` stays in the main session. Teammates need an interactive session; with `-p`, named agents run as ordinary subagents.
-- **Checkers on Sonnet, lead and fixer on the main model.** The 4 checker agents set `model: sonnet`, following the docs' advice for teammates. Merging, severity, the verdict, and the fixes stay with the main session. If accuracy drops, `uiux-a11y-validator` is the first candidate to move back to Opus. The Sonnet run has not been tested yet.
-- **Agent budget set at 3–4 per run.** `/fix-uiux` now re-validates once (4 agents) instead of up to 3 rounds (12 agents). Fixes between steps are self-checked in the main session, and `--no-qa` skips agents entirely.
+- **Verifier removed from `/validate-ui` to cut cost roughly in half** (≈287k of ≈605k tokens per run). Across two runs it rejected 0 findings; its only value was 2 downgrades and a few line corrections. Specialists still need quoted evidence and must apply the "Do not flag" checks, and a person reviews the report. Revisit this if false FAILs show up on real deliveries. The agent file was deleted on 2026-10-14. To bring a verifier back, rebuild it from the [verifier template](#template-verifier).
+- **Agent-teams feature enabled by leadership request.** It is turned on in `.claude/settings.json`. `/validate-ui` names its 4 checkers (stack, scss, markup, a11y) so they start as teammates: they message each other about cross-scope findings instead of reporting duplicates, and the lead shuts each down after it reports. `/fix-ui` stays in the main session. Teammates need an interactive session; with `-p`, named agents run as ordinary subagents.
+- **Checkers on Sonnet, lead and fixer on the main model.** The 4 checker agents set `model: sonnet`, following the docs' advice for teammates. Merging, severity, the verdict, and the fixes stay with the main session. If accuracy drops, `a11y-validator` is the first candidate to move back to Opus. The Sonnet run has not been tested yet.
+- **Agent budget set at 3–4 per run.** `/fix-ui` now re-validates once (4 agents) instead of up to 3 rounds (12 agents). Fixes between steps are self-checked in the main session, and `--no-qa` skips agents entirely.
 - **Assign final IDs after verification.** Writing the report before verification meant renumbering it with a script once two findings were downgraded.
 
 ### 2026-10-13: Docs review while writing this guide
@@ -736,12 +736,12 @@ Validates frontend code delivered by other teams (for example the Team Store app
 | File | Role |
 |---|---|
 | `uiux-development-standard.md`, `uiux-code-review-standard.md` | Source of truth. Agents read these; rules are never copied. |
-| `.claude/skills/validate-uiux/SKILL.md` | Orchestrator: `/validate-uiux <path>` |
-| `.claude/skills/validate-uiux/rubric.md` | Shared rubric: interpretations, severity, R1–R15 gate, output format |
-| `.claude/agents/prototype-validation/uiux-stack-validator.md` | Tech stack, separation, JavaScript, browser support |
-| `.claude/agents/prototype-validation/uiux-scss-validator.md` | SCSS architecture, tokens, responsive, duplicate CSS |
-| `.claude/agents/prototype-validation/uiux-markup-validator.md` | Semantic HTML, structure, controls, reuse |
-| `.claude/agents/prototype-validation/uiux-a11y-validator.md` | WCAG 2.2 AA, forms, ARIA, keyboard, contrast |
+| `.claude/skills/validate-ui/SKILL.md` | Orchestrator: `/validate-ui <path>` |
+| `.claude/skills/validate-ui/rubric.md` | Shared rubric: interpretations, severity, R1–R15 gate, output format |
+| `.claude/agents/prototype-validation/stack-validator.md` | Tech stack, separation, JavaScript, browser support |
+| `.claude/agents/prototype-validation/scss-validator.md` | SCSS architecture, tokens, responsive, duplicate CSS |
+| `.claude/agents/prototype-validation/markup-validator.md` | Semantic HTML, structure, controls, reuse |
+| `.claude/agents/prototype-validation/a11y-validator.md` | WCAG 2.2 AA, forms, ARIA, keyboard, contrast |
 | `test-fixtures/team-store-v1/`, `test-fixtures/team-store-v2/` | Failing and passing fixtures |
 | `test-fixtures/expected/` | Answer keys |
 | `validation-reports/` | Report output; never written into the target |
@@ -749,7 +749,7 @@ Validates frontend code delivered by other teams (for example the Team Store app
 ### Flow
 
 ```text
-/validate-uiux <path>
+/validate-ui <path>
   1. resolve inputs + record commits
   2. scan project (framework, files, entry points, handoff notes)
   3. stack ∥ scss ∥ markup ∥ a11y          (one message, foreground)
@@ -760,7 +760,7 @@ Validates frontend code delivered by other teams (for example the Team Store app
 
 ### Adding a specialist
 
-1. Write `.claude/agents/prototype-validation/uiux-<area>-validator.md` from the [specialist template](#template-specialist-agent). Give it an ID prefix and a "not mine" list.
+1. Write `.claude/agents/prototype-validation/<area>-validator.md` from the [specialist template](#template-specialist-agent). Give it an ID prefix and a "not mine" list.
 2. Add a row to the specialist table in `SKILL.md`.
 3. Map its rules to R-items in `rubric.md` §4, and add severity mappings in §3 if needed.
 4. Add planted violations and traps to both fixtures, and rows to both answer keys.

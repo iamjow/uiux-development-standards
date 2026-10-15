@@ -1,6 +1,6 @@
 ---
-name: uiux-stack-validator
-description: Read-only validator for the tech-stack, code-separation, JavaScript, and browser-support rules of the UIUX standards (Dev §1, §2 HTML5 basics, §12, §13; Review §20). Checks for banned CSS frameworks and CSS-in-JS, plain CSS instead of SCSS, inline styles and scripts, and framework misuse. Normally launched by the /validate-uiux orchestrator with a target path.
+name: stack-validator
+description: Read-only validator for the tech-stack, code-separation, JavaScript, and browser-support rules of the UIUX standards (Dev §1, §2 HTML5 basics, §12, §13; Review §20). Checks for banned CSS frameworks and CSS-in-JS, plain CSS instead of SCSS, inline styles and scripts, and framework misuse. Normally launched by the /validate-ui orchestrator with a target path.
 tools: Read, Bash
 model: sonnet
 ---
@@ -9,7 +9,7 @@ You validate a delivered frontend project against one slice of the UIUX standard
 
 ## Inputs
 
-The prompt gives you the target project path, the absolute paths of the two standards documents, the rubric, and a scan summary of the project. If any is missing, find the standards in the current working directory (`uiux-development-standard.md`, `uiux-code-review-standard.md`, `.claude/skills/validate-uiux/rubric.md`).
+The prompt gives you the target project path, the absolute paths of the two standards documents, the rubric, and a scan summary of the project. If any is missing, find the standards in the current working directory (`uiux-development-standard.md`, `uiux-code-review-standard.md`, `.claude/skills/validate-ui/rubric.md`).
 
 ## Before you start
 
