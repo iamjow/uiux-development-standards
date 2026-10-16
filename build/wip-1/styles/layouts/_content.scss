@@ -1,0 +1,148 @@
+@use '../variables' as *;
+@use '../mixins' as *;
+
+// App shell: top nav, side nav, main
+.app {
+  display: grid;
+  grid-template-rows: auto 1fr;
+  grid-template-columns: $size-240 1fr;
+  height: 100vh;
+
+  &__top-nav {
+    grid-column: 1 / -1;
+  }
+
+  &__main {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    min-height: 0;
+    background: $color-bg-primary;
+  }
+
+  @include tablet-down {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto 1fr;
+    height: auto;
+    min-height: 100vh;
+  }
+}
+
+// Page header (Figma: page header 4177:77182)
+.page-header {
+  display: flex;
+  flex-direction: column;
+  gap: $space-8;
+  min-height: $size-112;
+  padding: $space-24 $space-24 $space-15 $space-16; // 24 + 32 + 8 + 32 + 15 + 1px border = 112
+  background: $color-bg-primary;
+  border-bottom: $border-default;
+
+  &__row {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: $space-16;
+  }
+
+  &__title-group {
+    display: flex;
+    align-items: center;
+    gap: $space-24;
+  }
+
+  &__title {
+    @include type-heading-md;
+    color: $color-black;
+    white-space: nowrap;
+  }
+
+  &__actions {
+    display: flex;
+    align-items: flex-end;
+    gap: $space-8;
+    margin-top: $space-2; // icons sit at y26, title at y24
+  }
+
+  &__summary {
+    display: flex;
+    align-items: center;
+    gap: $space-16;
+  }
+
+  &__tools {
+    display: flex;
+    align-items: flex-start;
+    gap: $space-4;
+  }
+
+  @include tablet-down {
+    min-height: 0;
+
+    &__row,
+    &__title-group,
+    &__summary,
+    &__tools {
+      flex-wrap: wrap;
+    }
+
+    &__tools {
+      width: 100%;
+    }
+  }
+}
+
+// Date control "December 5"
+.date-control {
+  @include button-reset;
+  display: flex;
+  align-items: center;
+  gap: $space-4;
+  padding: $space-4 0;
+  color: $color-black;
+  text-align: left;
+  @include type-body-lg;
+
+  &__month {
+    font-weight: $font-weight-medium;
+  }
+
+  &__day {
+    min-width: $size-24;
+  }
+}
+
+// Queue region (Figma: Queue 4124:35374) scrolls between header and footer
+.queue {
+  flex: 1;
+  min-height: 0;
+  padding: $space-16 $space-46;
+  overflow-x: hidden; // rows shrink below 1728 instead of scrolling sideways
+  overflow-y: auto;
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: $space-16;
+    width: 100%;
+    max-width: $size-1396;
+  }
+
+  @include tablet-down {
+    padding: $space-16;
+  }
+}
+
+// Footer row: items per page left, pagination right
+.queue-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: $space-16;
+  padding: $space-16 $space-48 $space-24 $space-24;
+
+  @include tablet-down {
+    flex-wrap: wrap;
+    padding: $space-16;
+  }
+}

@@ -1,0 +1,42 @@
+@use '../variables' as *;
+@use '../mixins' as *;
+
+// Icon-only button: the accessible name comes from aria-label in the markup.
+.icon-button {
+  @include button-reset;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: $size-24;
+  height: $size-24;
+  border-radius: $radius-xs;
+
+  &--20 {
+    width: $size-20;
+    height: $size-20;
+  }
+}
+
+// Pill buttons used in modal footers (Figma: Button 4059:30621 / 4059:30622)
+.button {
+  @include button-reset;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: $size-120;
+  padding: $space-8 $space-16;
+  border-radius: $radius-full;
+  text-decoration: none;
+  text-align: center;
+  @include type-body-md($font-weight-medium);
+  letter-spacing: 0;
+
+  &--primary {
+    background: $color-bg-button-primary;
+    color: $color-white;
+  }
+
+  &--text {
+    color: $color-brand-primary;
+  }
+}

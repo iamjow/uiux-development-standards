@@ -1,0 +1,947 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Work In Progress - Main Queue | Quickstrike Factory</title>
+  <link rel="stylesheet" href="styles/app.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <div class="app">
+    <header class="app__top-nav top-nav">
+      <div class="top-nav__group">
+        <button type="button" class="top-nav__apps" aria-label="Apps">
+          <span class="top-nav__apps-dot"></span><span class="top-nav__apps-dot"></span><span class="top-nav__apps-dot"></span>
+          <span class="top-nav__apps-dot"></span><span class="top-nav__apps-dot"></span><span class="top-nav__apps-dot"></span>
+          <span class="top-nav__apps-dot"></span><span class="top-nav__apps-dot"></span><span class="top-nav__apps-dot"></span>
+        </button>
+        <a class="top-nav__brand" href="#main">
+          <img src="assets/icons/qx-logo.svg" alt="" width="28" height="24">
+          <span class="top-nav__wordmark">QUICKSTRIKE<br>FACTORY</span>
+        </a>
+      </div>
+      <div class="top-nav__group">
+        <button type="button" class="top-nav__avatar" aria-label="Account, W">W</button>
+        <button type="button" class="icon-button" aria-label="Settings">
+          <img class="icon icon--24" src="assets/icons/settings-large.svg" alt="" width="24" height="24">
+        </button>
+      </div>
+    </header>
+
+    <nav class="side-nav" aria-label="Factory">
+      <button type="button" class="side-nav__switcher">
+        All Factories
+        <img class="icon icon--16" src="assets/icons/chevron-down-small.svg" alt="" width="16" height="16">
+      </button>
+      <ul class="side-nav__list">
+        <li>
+          <a class="side-nav__item" href="#main" aria-current="page">
+            <img class="icon icon--20" src="assets/icons/picture.svg" alt="" width="20" height="20">
+            <span class="side-nav__label">Home</span>
+          </a>
+        </li>
+        <li>
+          <a class="side-nav__item" href="#about-us">
+            <img class="icon icon--20" src="assets/icons/picture.svg" alt="" width="20" height="20">
+            <span class="side-nav__label">About Us</span>
+          </a>
+        </li>
+        <li>
+          <button type="button" class="side-nav__item" aria-expanded="true" aria-controls="side-nav-services">
+            <img class="icon icon--20" src="assets/icons/picture.svg" alt="" width="20" height="20">
+            <span class="side-nav__label">Services</span>
+            <img class="icon icon--16 side-nav__chevron" src="assets/icons/chevron-up-small.svg" alt="" width="16" height="16">
+          </button>
+          <ul class="side-nav__sublist" id="side-nav-services">
+            <li><a class="side-nav__sublink" href="#services-1">Services 1</a></li>
+            <li><a class="side-nav__sublink" href="#services-2">Services 2</a></li>
+            <li><a class="side-nav__sublink" href="#services-3">Services 3</a></li>
+          </ul>
+        </li>
+        <li>
+          <a class="side-nav__item" href="#portfolio">
+            <img class="icon icon--20" src="assets/icons/picture.svg" alt="" width="20" height="20">
+            <span class="side-nav__label">Portfolio</span>
+          </a>
+        </li>
+        <li>
+          <a class="side-nav__item" href="#blog">
+            <img class="icon icon--20" src="assets/icons/picture.svg" alt="" width="20" height="20">
+            <span class="side-nav__label">Blog</span>
+          </a>
+        </li>
+        <li>
+          <a class="side-nav__item" href="#contact">
+            <img class="icon icon--20" src="assets/icons/picture.svg" alt="" width="20" height="20">
+            <span class="side-nav__label">Contact</span>
+          </a>
+        </li>
+        <li>
+          <a class="side-nav__item" href="#testimonials">
+            <img class="icon icon--20" src="assets/icons/picture.svg" alt="" width="20" height="20">
+            <span class="side-nav__label">Testimonials</span>
+          </a>
+        </li>
+        <li>
+          <a class="side-nav__item" href="#faqs">
+            <img class="icon icon--20" src="assets/icons/picture.svg" alt="" width="20" height="20">
+            <span class="side-nav__label">FAQs</span>
+          </a>
+        </li>
+        <li>
+          <a class="side-nav__item" href="#careers">
+            <img class="icon icon--20" src="assets/icons/picture.svg" alt="" width="20" height="20">
+            <span class="side-nav__label">Careers</span>
+          </a>
+        </li>
+        <li>
+          <a class="side-nav__item" href="#privacy-policy">
+            <img class="icon icon--20" src="assets/icons/picture.svg" alt="" width="20" height="20">
+            <span class="side-nav__label">Privacy Policy</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+
+    <main class="app__main" id="main">
+      <header class="page-header">
+        <div class="page-header__row">
+          <div class="page-header__title-group">
+            <h1 class="page-header__title">Work In Progress</h1>
+            <div class="pill-tabs" role="tablist" aria-label="Queue">
+              <button type="button" class="pill-tabs__tab" role="tab" id="tab-main-queue" aria-selected="true" aria-controls="panel-queue">Main Queue</button>
+              <button type="button" class="pill-tabs__tab" role="tab" id="tab-on-hold" aria-selected="false" aria-controls="panel-queue" tabindex="-1">On Hold</button>
+            </div>
+          </div>
+          <div class="page-header__actions">
+            <button type="button" class="icon-button icon-button--20" aria-label="Trends">
+              <img class="icon icon--20" src="assets/icons/arrow-trending-up.svg" alt="" width="20" height="20">
+            </button>
+            <button type="button" class="icon-button icon-button--20" aria-label="Pin">
+              <img class="icon icon--20" src="assets/icons/pin.svg" alt="" width="20" height="20">
+            </button>
+            <button type="button" class="icon-button icon-button--20" aria-label="Queue settings" data-opens="wip-settings-modal">
+              <img class="icon icon--20" src="assets/icons/settings-medium.svg" alt="" width="20" height="20">
+            </button>
+          </div>
+        </div>
+        <div class="page-header__row">
+          <div class="page-header__summary">
+            <button type="button" class="date-control">
+              <img class="icon icon--24" src="assets/icons/calendar.svg" alt="" width="24" height="24">
+              <span class="date-control__month">December</span>
+              <span class="date-control__day">5</span>
+            </button>
+            <ul class="stat-chips">
+              <li class="stat-chip"><span class="stat-chip__label">Items</span> <span>9354<span class="stat-chip__suffix">W</span></span></li>
+              <li class="stat-chip"><span class="stat-chip__label">Parts</span> <span>166</span></li>
+              <li class="stat-chip"><span class="stat-chip__label">Orders</span> <span>45</span></li>
+            </ul>
+          </div>
+          <div class="page-header__tools">
+            <form class="search-field" role="search">
+              <label class="visually-hidden" for="queue-search">Search</label>
+              <img class="icon icon--20" src="assets/icons/search.svg" alt="" width="20" height="20">
+              <input class="search-field__input" type="search" id="queue-search" name="q" placeholder="Search">
+            </form>
+            <button type="button" class="tool-button">
+              <img class="icon icon--20" src="assets/icons/sort.svg" alt="" width="20" height="20">
+              <span class="tool-button__label">Sort</span>
+            </button>
+            <button type="button" class="tool-button">
+              <img class="icon icon--20" src="assets/icons/filter.svg" alt="" width="20" height="20">
+              <span class="tool-button__label">Filter</span>
+            </button>
+          </div>
+        </div>
+      </header>
+
+      <section class="queue" id="panel-queue" role="tabpanel" aria-labelledby="tab-main-queue" tabindex="0">
+        <ol class="queue__list">
+      <li class="queue-item">
+        <div class="queue-item__rail">
+          <button type="button" class="queue-item__number" aria-expanded="false" aria-controls="order-1-parts">1<span class="visually-hidden">: show parts for order 23393210</span></button>
+          <button type="button" class="queue-item__rail-action" aria-label="Reorder order 23393210">
+            <img class="icon icon--grip" src="assets/icons/grip-dots.svg" alt="" width="9" height="15">
+          </button>
+          <button type="button" class="queue-item__rail-action" aria-label="Move order 23393210 to top">
+            <img class="icon icon--16" src="assets/icons/arrow-up-small.svg" alt="" width="16" height="16">
+          </button>
+        </div>
+        <article class="order-tile" aria-labelledby="order-1-number">
+          <div class="order-tile__header">
+            <div class="order-tile__identity">
+              <div class="order-tile__order-row">
+                <h2 class="order-tile__number" id="order-1-number">23393210</h2>
+                <div class="order-tile__badges">
+                  <button type="button" class="priority-badge priority-badge--rush" aria-haspopup="menu" aria-expanded="false" aria-controls="priority-menu">Rush 1<span class="visually-hidden">, change priority for order 23393210</span></button>
+                  
+              <div class="priority-dropdown" id="priority-menu" role="menu" aria-label="Change priority" hidden>
+                <button type="button" role="menuitem" class="priority-dropdown__option" data-priority="regular"><span class="priority-badge priority-badge--regular">Regular</span></button>
+                <button type="button" role="menuitem" class="priority-dropdown__option" data-priority="rush"><span class="priority-badge priority-badge--rush">Rush 1</span></button>
+                <button type="button" role="menuitem" class="priority-dropdown__option" data-priority="rush"><span class="priority-badge priority-badge--rush">Rush 2</span></button>
+                <button type="button" role="menuitem" class="priority-dropdown__option" data-priority="rush"><span class="priority-badge priority-badge--rush">Rush 3</span></button>
+                <button type="button" role="menuitem" class="priority-dropdown__option" data-priority="day"><span class="priority-badge priority-badge--day">90 Day</span></button>
+                <button type="button" role="menuitem" class="priority-dropdown__option" data-priority="day"><span class="priority-badge priority-badge--day">60 Day</span></button>
+                <button type="button" role="menuitem" class="priority-dropdown__option" data-priority="day"><span class="priority-badge priority-badge--day">30 Day</span></button>
+              </div>
+                </div>
+              </div>
+              <div class="order-progress" role="progressbar" aria-label="Order 23393210 progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50" style="--order-progress: 50%">
+                <span class="order-progress__value">50%</span>
+                <span class="order-progress__track"><span class="order-progress__fill"></span></span>
+              </div>
+            </div>
+            <dl class="order-tile__dates">
+              <div class="order-tile__date"><dt class="order-tile__date-label">FDD</dt><dd class="order-tile__date-value">1/20 <img class="icon icon--20" src="assets/icons/alert-tri.svg" alt="Alert" width="20" height="20"></dd></div>
+              <div class="order-tile__date"><dt class="order-tile__date-label">OSD</dt><dd class="order-tile__date-value">1/20</dd></div>
+              <div class="order-tile__date"><dt class="order-tile__date-label">ESD</dt><dd class="order-tile__date-value">1/20 <img class="icon icon--20" src="assets/icons/alert-tri.svg" alt="Alert" width="20" height="20"></dd></div>
+              <div class="order-tile__date"><dt class="order-tile__date-label">SUB</dt><dd class="order-tile__date-value">1/20</dd></div>
+            </dl>
+            <dl class="order-tile__meta">
+              <div class="order-tile__meta-item"><dt class="order-tile__meta-label">Brand</dt><dd class="order-tile__meta-value">PROLOOK</dd></div>
+              <div class="order-tile__meta-item"><dt class="order-tile__meta-label">Team Store</dt><dd class="order-tile__meta-value">9954783256</dd></div>
+              <div class="order-tile__meta-item"><dt class="order-tile__meta-label">Client</dt><dd class="order-tile__meta-value">Client Name</dd></div>
+              <div class="order-tile__meta-item"><dt class="order-tile__meta-label">Dealer</dt><dd class="order-tile__meta-value">Dealer Name</dd></div>
+            </dl>
+            <button type="button" class="icon-button order-tile__menu" aria-label="Order 23393210 actions">
+              <img class="icon icon--24" src="assets/icons/ellipsis-vertical.svg" alt="" width="24" height="24">
+            </button>
+          </div>
+          <dl class="order-tile__counts">
+            <div class="order-tile__count"><dt class="order-tile__count-label">Parts</dt><dd class="order-tile__count-value">1000</dd></div>
+            <div class="order-tile__count"><dt class="order-tile__count-label">Items</dt><dd class="order-tile__count-value">1000</dd></div>
+          </dl>
+        <div class="order-tile__parts" id="order-1-parts" tabindex="0" aria-labelledby="order-1-parts-caption">
+          <table class="parts-table">
+            <caption class="visually-hidden" id="order-1-parts-caption">Parts for order 23393210</caption>
+            <colgroup>
+              <col class="parts-table__col-pid">
+              <col class="parts-table__col-category">
+              <col class="parts-table__col-item">
+              <col class="parts-table__col-qty">
+              <col class="parts-table__col-sport">
+              <col class="parts-table__col-fabric">
+              <col class="parts-table__col-location">
+              <col class="parts-table__col-progress">
+              <col>
+            </colgroup>
+            <thead>
+              <tr>
+                <th scope="col">PID</th>
+                <th scope="col">Category</th>
+                <th scope="col">Item</th>
+                <th scope="col">Qty</th>
+                <th scope="col">Sport</th>
+                <th scope="col">Fabric</th>
+                <th scope="col">Location</th>
+                <th scope="col" class="parts-table__progress">Progress</th>
+                <th scope="col">
+                  <span class="visually-hidden">Actions</span>
+                  <button type="button" class="icon-button icon-button--20 parts-table__settings" aria-label="Column settings">
+                    <img class="icon icon--20" src="assets/icons/squares-plus.svg" alt="" width="20" height="20">
+                  </button>
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+            <tr>
+              <th scope="row"><a class="parts-table__pid" href="#part-23393210-1">WM99GH55</a></th>
+              <td>Category</td>
+              <td>Style Name</td>
+              <td>000</td>
+              <td>Sport Name</td>
+              <td>
+                <span class="parts-table__fabric">Fabric Name <span class="color-tile" role="img" aria-label="Colour W">W</span> +1</span>
+              </td>
+              <td><span class="parts-table__location">Location +1</span></td>
+              <td class="parts-table__progress">50%</td>
+              <td>
+                <button type="button" class="icon-button parts-table__row-menu" aria-label="Part WM99GH55 actions">
+                  <img class="icon icon--24 icon--rotate-90" src="assets/icons/ellipsis-horizontal.svg" alt="" width="24" height="24">
+                </button>
+              </td>
+            </tr>
+            <tr>
+              <th scope="row"><a class="parts-table__pid" href="#part-23393210-2">WM99GH55</a></th>
+              <td>Category</td>
+              <td>Item Name</td>
+              <td>000</td>
+              <td>Sport Name</td>
+              <td>
+                <span class="parts-table__fabric">Fabric Name <span class="color-tile" role="img" aria-label="Colour W">W</span> +1</span>
+              </td>
+              <td><span class="parts-table__location">Location +1</span></td>
+              <td class="parts-table__progress">50%</td>
+              <td>
+                <button type="button" class="icon-button parts-table__row-menu" aria-label="Part WM99GH55 actions">
+                  <img class="icon icon--24 icon--rotate-90" src="assets/icons/ellipsis-horizontal.svg" alt="" width="24" height="24">
+                </button>
+              </td>
+            </tr>
+            <tr>
+              <th scope="row"><a class="parts-table__pid" href="#part-23393210-3">WM99GH55</a></th>
+              <td>Category</td>
+              <td>Item Name</td>
+              <td>000</td>
+              <td>Sport Name</td>
+              <td>
+                <span class="parts-table__fabric">Fabric Name <span class="color-tile" role="img" aria-label="Colour W">W</span> +1</span>
+              </td>
+              <td><span class="parts-table__location">Location +1</span></td>
+              <td class="parts-table__progress">50%</td>
+              <td>
+                <button type="button" class="icon-button parts-table__row-menu" aria-label="Part WM99GH55 actions">
+                  <img class="icon icon--24 icon--rotate-90" src="assets/icons/ellipsis-horizontal.svg" alt="" width="24" height="24">
+                </button>
+              </td>
+            </tr>
+            <tr>
+              <th scope="row"><a class="parts-table__pid" href="#part-23393210-4">WM99GH55</a></th>
+              <td>Category</td>
+              <td>Item Name</td>
+              <td>000</td>
+              <td>Sport Name</td>
+              <td>
+                <span class="parts-table__fabric">Fabric Name <span class="color-tile" role="img" aria-label="Colour W">W</span> +1</span>
+              </td>
+              <td><span class="parts-table__location">Location +1</span></td>
+              <td class="parts-table__progress">50%</td>
+              <td>
+                <button type="button" class="icon-button parts-table__row-menu" aria-label="Part WM99GH55 actions">
+                  <img class="icon icon--24 icon--rotate-90" src="assets/icons/ellipsis-horizontal.svg" alt="" width="24" height="24">
+                </button>
+              </td>
+            </tr>
+            <tr>
+              <th scope="row"><a class="parts-table__pid" href="#part-23393210-5">WM99GH55</a></th>
+              <td>Category</td>
+              <td>Item Name</td>
+              <td>000</td>
+              <td>Sport Name</td>
+              <td>
+                <span class="parts-table__fabric">Fabric Name <span class="color-tile" role="img" aria-label="Colour W">W</span> +1</span>
+              </td>
+              <td><span class="parts-table__location">Location +1</span></td>
+              <td class="parts-table__progress">50%</td>
+              <td>
+                <button type="button" class="icon-button parts-table__row-menu" aria-label="Part WM99GH55 actions">
+                  <img class="icon icon--24 icon--rotate-90" src="assets/icons/ellipsis-horizontal.svg" alt="" width="24" height="24">
+                </button>
+              </td>
+            </tr>
+            <tr>
+              <th scope="row"><a class="parts-table__pid" href="#part-23393210-6">WM99GH55</a></th>
+              <td>Category</td>
+              <td>Item Name</td>
+              <td>000</td>
+              <td>Sport Name</td>
+              <td>
+                <span class="parts-table__fabric">Fabric Name <span class="color-tile" role="img" aria-label="Colour W">W</span> +1</span>
+              </td>
+              <td><span class="parts-table__location">Location +1</span></td>
+              <td class="parts-table__progress">50%</td>
+              <td>
+                <button type="button" class="icon-button parts-table__row-menu" aria-label="Part WM99GH55 actions">
+                  <img class="icon icon--24 icon--rotate-90" src="assets/icons/ellipsis-horizontal.svg" alt="" width="24" height="24">
+                </button>
+              </td>
+            </tr>
+            <tr>
+              <th scope="row"><a class="parts-table__pid" href="#part-23393210-7">WM99GH55</a></th>
+              <td>Category</td>
+              <td>Item Name</td>
+              <td>000</td>
+              <td>Sport Name</td>
+              <td>
+                <span class="parts-table__fabric">Fabric Name <span class="color-tile" role="img" aria-label="Colour W">W</span> +1</span>
+              </td>
+              <td><span class="parts-table__location">Location +1</span></td>
+              <td class="parts-table__progress">50%</td>
+              <td>
+                <button type="button" class="icon-button parts-table__row-menu" aria-label="Part WM99GH55 actions">
+                  <img class="icon icon--24 icon--rotate-90" src="assets/icons/ellipsis-horizontal.svg" alt="" width="24" height="24">
+                </button>
+              </td>
+            </tr>
+            <tr>
+              <th scope="row"><a class="parts-table__pid" href="#part-23393210-8">WM99GH55</a></th>
+              <td>Category</td>
+              <td>Item Name</td>
+              <td>000</td>
+              <td>Sport Name</td>
+              <td>
+                <span class="parts-table__fabric">Fabric Name <span class="color-tile" role="img" aria-label="Colour W">W</span> +1</span>
+              </td>
+              <td><span class="parts-table__location">Location +1</span></td>
+              <td class="parts-table__progress">50%</td>
+              <td>
+                <button type="button" class="icon-button parts-table__row-menu" aria-label="Part WM99GH55 actions">
+                  <img class="icon icon--24 icon--rotate-90" src="assets/icons/ellipsis-horizontal.svg" alt="" width="24" height="24">
+                </button>
+              </td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+        </article>
+      </li>
+      <li class="queue-item">
+        <div class="queue-item__rail">
+          <span class="queue-item__number">2</span>
+          <button type="button" class="queue-item__rail-action" aria-label="Reorder order 23393216">
+            <img class="icon icon--grip" src="assets/icons/grip-dots.svg" alt="" width="9" height="15">
+          </button>
+          <button type="button" class="queue-item__rail-action" aria-label="Move order 23393216 to top">
+            <img class="icon icon--16" src="assets/icons/arrow-up-small.svg" alt="" width="16" height="16">
+          </button>
+        </div>
+        <article class="order-tile" aria-labelledby="order-2-number">
+          <div class="order-tile__header">
+            <div class="order-tile__identity">
+              <div class="order-tile__order-row">
+                <h2 class="order-tile__number" id="order-2-number">23393216</h2>
+                <div class="order-tile__badges">
+                  <button type="button" class="priority-badge priority-badge--regular" aria-haspopup="menu" aria-expanded="false" aria-controls="priority-menu">Regular<span class="visually-hidden">, change priority for order 23393216</span></button>
+                  <span class="status-chip status-chip--reorder"><img class="icon icon--16" src="assets/icons/reorder-r.svg" alt="Reordered" width="16" height="16"></span>
+                </div>
+              </div>
+              <div class="order-progress" role="progressbar" aria-label="Order 23393216 progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50" style="--order-progress: 50%">
+                <span class="order-progress__value">50%</span>
+                <span class="order-progress__track"><span class="order-progress__fill"></span></span>
+              </div>
+            </div>
+            <dl class="order-tile__dates">
+              <div class="order-tile__date"><dt class="order-tile__date-label">FDD</dt><dd class="order-tile__date-value">1/20</dd></div>
+              <div class="order-tile__date"><dt class="order-tile__date-label">OSD</dt><dd class="order-tile__date-value">1/20</dd></div>
+              <div class="order-tile__date"><dt class="order-tile__date-label">ESD</dt><dd class="order-tile__date-value">1/20</dd></div>
+              <div class="order-tile__date"><dt class="order-tile__date-label">SUB</dt><dd class="order-tile__date-value">1/20</dd></div>
+            </dl>
+            <dl class="order-tile__meta">
+              <div class="order-tile__meta-item"><dt class="order-tile__meta-label">Brand</dt><dd class="order-tile__meta-value">PROLOOK</dd></div>
+              <div class="order-tile__meta-item"><dt class="order-tile__meta-label">Team Store</dt><dd class="order-tile__meta-value">9954783256</dd></div>
+              <div class="order-tile__meta-item"><dt class="order-tile__meta-label">Client</dt><dd class="order-tile__meta-value">Client Name</dd></div>
+              <div class="order-tile__meta-item"><dt class="order-tile__meta-label">Dealer</dt><dd class="order-tile__meta-value">Dealer Name</dd></div>
+            </dl>
+            <button type="button" class="icon-button order-tile__menu" aria-label="Order 23393216 actions">
+              <img class="icon icon--24" src="assets/icons/ellipsis-vertical.svg" alt="" width="24" height="24">
+            </button>
+          </div>
+          <dl class="order-tile__counts">
+            <div class="order-tile__count"><dt class="order-tile__count-label">Parts</dt><dd class="order-tile__count-value">1000</dd></div>
+            <div class="order-tile__count"><dt class="order-tile__count-label">Items</dt><dd class="order-tile__count-value">1000</dd></div>
+          </dl>
+        </article>
+      </li>
+      <li class="queue-item">
+        <div class="queue-item__rail">
+          <span class="queue-item__number">3</span>
+          <button type="button" class="queue-item__rail-action" aria-label="Reorder order 23393218">
+            <img class="icon icon--grip" src="assets/icons/grip-dots.svg" alt="" width="9" height="15">
+          </button>
+          <button type="button" class="queue-item__rail-action" aria-label="Move order 23393218 to top">
+            <img class="icon icon--16" src="assets/icons/arrow-up-small.svg" alt="" width="16" height="16">
+          </button>
+        </div>
+        <article class="order-tile" aria-labelledby="order-3-number">
+          <div class="order-tile__header">
+            <div class="order-tile__identity">
+              <div class="order-tile__order-row">
+                <h2 class="order-tile__number" id="order-3-number">23393218</h2>
+                <div class="order-tile__badges">
+                  <button type="button" class="priority-badge priority-badge--regular" aria-haspopup="menu" aria-expanded="false" aria-controls="priority-menu">Regular<span class="visually-hidden">, change priority for order 23393218</span></button>
+                  <span class="status-chip status-chip--reorder"><img class="icon icon--16" src="assets/icons/reorder-r.svg" alt="Reordered" width="16" height="16"></span>
+              <span class="status-chip status-chip--split"><img class="icon icon--16" src="assets/icons/split.svg" alt="Split order" width="16" height="16"></span>
+                </div>
+              </div>
+              <div class="order-progress" role="progressbar" aria-label="Order 23393218 progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50" style="--order-progress: 50%">
+                <span class="order-progress__value">50%</span>
+                <span class="order-progress__track"><span class="order-progress__fill"></span></span>
+              </div>
+            </div>
+            <dl class="order-tile__dates">
+              <div class="order-tile__date"><dt class="order-tile__date-label">FDD</dt><dd class="order-tile__date-value">1/20</dd></div>
+              <div class="order-tile__date"><dt class="order-tile__date-label">OSD</dt><dd class="order-tile__date-value">1/20</dd></div>
+              <div class="order-tile__date"><dt class="order-tile__date-label">ESD</dt><dd class="order-tile__date-value">1/20</dd></div>
+              <div class="order-tile__date"><dt class="order-tile__date-label">SUB</dt><dd class="order-tile__date-value">1/20</dd></div>
+            </dl>
+            <dl class="order-tile__meta">
+              <div class="order-tile__meta-item"><dt class="order-tile__meta-label">Brand</dt><dd class="order-tile__meta-value">PROLOOK</dd></div>
+              <div class="order-tile__meta-item"><dt class="order-tile__meta-label">Team Store</dt><dd class="order-tile__meta-value">9954783256</dd></div>
+              <div class="order-tile__meta-item"><dt class="order-tile__meta-label">Client</dt><dd class="order-tile__meta-value">Client Name</dd></div>
+              <div class="order-tile__meta-item"><dt class="order-tile__meta-label">Dealer</dt><dd class="order-tile__meta-value">Dealer Name</dd></div>
+            </dl>
+            <button type="button" class="icon-button order-tile__menu" aria-label="Order 23393218 actions">
+              <img class="icon icon--24" src="assets/icons/ellipsis-vertical.svg" alt="" width="24" height="24">
+            </button>
+          </div>
+          <dl class="order-tile__counts">
+            <div class="order-tile__count"><dt class="order-tile__count-label">Parts</dt><dd class="order-tile__count-value">1000</dd></div>
+            <div class="order-tile__count"><dt class="order-tile__count-label">Items</dt><dd class="order-tile__count-value">1000</dd></div>
+          </dl>
+        </article>
+      </li>
+      <li class="queue-item">
+        <div class="queue-item__rail">
+          <span class="queue-item__number">4</span>
+          <button type="button" class="queue-item__rail-action" aria-label="Reorder order 23393225">
+            <img class="icon icon--grip" src="assets/icons/grip-dots.svg" alt="" width="9" height="15">
+          </button>
+          <button type="button" class="queue-item__rail-action" aria-label="Move order 23393225 to top">
+            <img class="icon icon--16" src="assets/icons/arrow-up-small.svg" alt="" width="16" height="16">
+          </button>
+        </div>
+        <article class="order-tile" aria-labelledby="order-4-number">
+          <div class="order-tile__header">
+            <div class="order-tile__identity">
+              <div class="order-tile__order-row">
+                <h2 class="order-tile__number" id="order-4-number">23393225</h2>
+                <div class="order-tile__badges">
+                  <button type="button" class="priority-badge priority-badge--regular" aria-haspopup="menu" aria-expanded="false" aria-controls="priority-menu">Regular<span class="visually-hidden">, change priority for order 23393225</span></button>
+                  <span class="status-chip status-chip--split"><img class="icon icon--16" src="assets/icons/split.svg" alt="Split order" width="16" height="16"></span>
+                </div>
+              </div>
+              <div class="order-progress" role="progressbar" aria-label="Order 23393225 progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50" style="--order-progress: 50%">
+                <span class="order-progress__value">50%</span>
+                <span class="order-progress__track"><span class="order-progress__fill"></span></span>
+              </div>
+            </div>
+            <dl class="order-tile__dates">
+              <div class="order-tile__date"><dt class="order-tile__date-label">FDD</dt><dd class="order-tile__date-value">1/20</dd></div>
+              <div class="order-tile__date"><dt class="order-tile__date-label">OSD</dt><dd class="order-tile__date-value">1/20</dd></div>
+              <div class="order-tile__date"><dt class="order-tile__date-label">ESD</dt><dd class="order-tile__date-value">1/20</dd></div>
+              <div class="order-tile__date"><dt class="order-tile__date-label">SUB</dt><dd class="order-tile__date-value">1/20</dd></div>
+            </dl>
+            <dl class="order-tile__meta">
+              <div class="order-tile__meta-item"><dt class="order-tile__meta-label">Brand</dt><dd class="order-tile__meta-value">PROLOOK</dd></div>
+              <div class="order-tile__meta-item"><dt class="order-tile__meta-label">Team Store</dt><dd class="order-tile__meta-value">9954783256</dd></div>
+              <div class="order-tile__meta-item"><dt class="order-tile__meta-label">Client</dt><dd class="order-tile__meta-value">Client Name</dd></div>
+              <div class="order-tile__meta-item"><dt class="order-tile__meta-label">Dealer</dt><dd class="order-tile__meta-value">Dealer Name</dd></div>
+            </dl>
+            <button type="button" class="icon-button order-tile__menu" aria-label="Order 23393225 actions">
+              <img class="icon icon--24" src="assets/icons/ellipsis-vertical.svg" alt="" width="24" height="24">
+            </button>
+          </div>
+          <dl class="order-tile__counts">
+            <div class="order-tile__count"><dt class="order-tile__count-label">Parts</dt><dd class="order-tile__count-value">1000</dd></div>
+            <div class="order-tile__count"><dt class="order-tile__count-label">Items</dt><dd class="order-tile__count-value">1000</dd></div>
+          </dl>
+        </article>
+      </li>
+      <li class="queue-item">
+        <div class="queue-item__rail">
+          <span class="queue-item__number">5</span>
+          <button type="button" class="queue-item__rail-action" aria-label="Reorder order 23393224">
+            <img class="icon icon--grip" src="assets/icons/grip-dots.svg" alt="" width="9" height="15">
+          </button>
+          <button type="button" class="queue-item__rail-action" aria-label="Move order 23393224 to top">
+            <img class="icon icon--16" src="assets/icons/arrow-up-small.svg" alt="" width="16" height="16">
+          </button>
+        </div>
+        <article class="order-tile" aria-labelledby="order-5-number">
+          <div class="order-tile__header">
+            <div class="order-tile__identity">
+              <div class="order-tile__order-row">
+                <h2 class="order-tile__number" id="order-5-number">23393224</h2>
+                <div class="order-tile__badges">
+                  <button type="button" class="priority-badge priority-badge--regular" aria-haspopup="menu" aria-expanded="false" aria-controls="priority-menu">Regular<span class="visually-hidden">, change priority for order 23393224</span></button>
+                  
+                </div>
+              </div>
+              <div class="order-progress" role="progressbar" aria-label="Order 23393224 progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50" style="--order-progress: 50%">
+                <span class="order-progress__value">50%</span>
+                <span class="order-progress__track"><span class="order-progress__fill"></span></span>
+              </div>
+            </div>
+            <dl class="order-tile__dates">
+              <div class="order-tile__date"><dt class="order-tile__date-label">FDD</dt><dd class="order-tile__date-value">1/20</dd></div>
+              <div class="order-tile__date"><dt class="order-tile__date-label">OSD</dt><dd class="order-tile__date-value">1/20</dd></div>
+              <div class="order-tile__date"><dt class="order-tile__date-label">ESD</dt><dd class="order-tile__date-value">1/20</dd></div>
+              <div class="order-tile__date"><dt class="order-tile__date-label">SUB</dt><dd class="order-tile__date-value">1/20</dd></div>
+            </dl>
+            <dl class="order-tile__meta">
+              <div class="order-tile__meta-item"><dt class="order-tile__meta-label">Brand</dt><dd class="order-tile__meta-value">PROLOOK</dd></div>
+              <div class="order-tile__meta-item"><dt class="order-tile__meta-label">Team Store</dt><dd class="order-tile__meta-value">9954783256</dd></div>
+              <div class="order-tile__meta-item"><dt class="order-tile__meta-label">Client</dt><dd class="order-tile__meta-value">Client Name</dd></div>
+              <div class="order-tile__meta-item"><dt class="order-tile__meta-label">Dealer</dt><dd class="order-tile__meta-value">Dealer Name</dd></div>
+            </dl>
+            <button type="button" class="icon-button order-tile__menu" aria-label="Order 23393224 actions">
+              <img class="icon icon--24" src="assets/icons/ellipsis-vertical.svg" alt="" width="24" height="24">
+            </button>
+          </div>
+          <dl class="order-tile__counts">
+            <div class="order-tile__count"><dt class="order-tile__count-label">Parts</dt><dd class="order-tile__count-value">1000</dd></div>
+            <div class="order-tile__count"><dt class="order-tile__count-label">Items</dt><dd class="order-tile__count-value">1000</dd></div>
+          </dl>
+        </article>
+      </li>
+      <li class="queue-item">
+        <div class="queue-item__rail">
+          <span class="queue-item__number">6</span>
+          <button type="button" class="queue-item__rail-action" aria-label="Reorder order 23393226">
+            <img class="icon icon--grip" src="assets/icons/grip-dots.svg" alt="" width="9" height="15">
+          </button>
+          <button type="button" class="queue-item__rail-action" aria-label="Move order 23393226 to top">
+            <img class="icon icon--16" src="assets/icons/arrow-up-small.svg" alt="" width="16" height="16">
+          </button>
+        </div>
+        <article class="order-tile" aria-labelledby="order-6-number">
+          <div class="order-tile__header">
+            <div class="order-tile__identity">
+              <div class="order-tile__order-row">
+                <h2 class="order-tile__number" id="order-6-number">23393226</h2>
+                <div class="order-tile__badges">
+                  <button type="button" class="priority-badge priority-badge--regular" aria-haspopup="menu" aria-expanded="false" aria-controls="priority-menu">Regular<span class="visually-hidden">, change priority for order 23393226</span></button>
+                  
+                </div>
+              </div>
+              <div class="order-progress" role="progressbar" aria-label="Order 23393226 progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50" style="--order-progress: 50%">
+                <span class="order-progress__value">50%</span>
+                <span class="order-progress__track"><span class="order-progress__fill"></span></span>
+              </div>
+            </div>
+            <dl class="order-tile__dates">
+              <div class="order-tile__date"><dt class="order-tile__date-label">FDD</dt><dd class="order-tile__date-value">1/20</dd></div>
+              <div class="order-tile__date"><dt class="order-tile__date-label">OSD</dt><dd class="order-tile__date-value">1/20</dd></div>
+              <div class="order-tile__date"><dt class="order-tile__date-label">ESD</dt><dd class="order-tile__date-value">1/20</dd></div>
+              <div class="order-tile__date"><dt class="order-tile__date-label">SUB</dt><dd class="order-tile__date-value">1/20</dd></div>
+            </dl>
+            <dl class="order-tile__meta">
+              <div class="order-tile__meta-item"><dt class="order-tile__meta-label">Brand</dt><dd class="order-tile__meta-value">PROLOOK</dd></div>
+              <div class="order-tile__meta-item"><dt class="order-tile__meta-label">Team Store</dt><dd class="order-tile__meta-value">9954783256</dd></div>
+              <div class="order-tile__meta-item"><dt class="order-tile__meta-label">Client</dt><dd class="order-tile__meta-value">Client Name</dd></div>
+              <div class="order-tile__meta-item"><dt class="order-tile__meta-label">Dealer</dt><dd class="order-tile__meta-value">Dealer Name</dd></div>
+            </dl>
+            <button type="button" class="icon-button order-tile__menu" aria-label="Order 23393226 actions">
+              <img class="icon icon--24" src="assets/icons/ellipsis-vertical.svg" alt="" width="24" height="24">
+            </button>
+          </div>
+          <dl class="order-tile__counts">
+            <div class="order-tile__count"><dt class="order-tile__count-label">Parts</dt><dd class="order-tile__count-value">1000</dd></div>
+            <div class="order-tile__count"><dt class="order-tile__count-label">Items</dt><dd class="order-tile__count-value">1000</dd></div>
+          </dl>
+        </article>
+      </li>
+      <li class="queue-item">
+        <div class="queue-item__rail">
+          <span class="queue-item__number">7</span>
+          <button type="button" class="queue-item__rail-action" aria-label="Reorder order 23393227">
+            <img class="icon icon--grip" src="assets/icons/grip-dots.svg" alt="" width="9" height="15">
+          </button>
+          <button type="button" class="queue-item__rail-action" aria-label="Move order 23393227 to top">
+            <img class="icon icon--16" src="assets/icons/arrow-up-small.svg" alt="" width="16" height="16">
+          </button>
+        </div>
+        <article class="order-tile" aria-labelledby="order-7-number">
+          <div class="order-tile__header">
+            <div class="order-tile__identity">
+              <div class="order-tile__order-row">
+                <h2 class="order-tile__number" id="order-7-number">23393227</h2>
+                <div class="order-tile__badges">
+                  <button type="button" class="priority-badge priority-badge--regular" aria-haspopup="menu" aria-expanded="false" aria-controls="priority-menu">Regular<span class="visually-hidden">, change priority for order 23393227</span></button>
+                  
+                </div>
+              </div>
+              <div class="order-progress" role="progressbar" aria-label="Order 23393227 progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50" style="--order-progress: 50%">
+                <span class="order-progress__value">50%</span>
+                <span class="order-progress__track"><span class="order-progress__fill"></span></span>
+              </div>
+            </div>
+            <dl class="order-tile__dates">
+              <div class="order-tile__date"><dt class="order-tile__date-label">FDD</dt><dd class="order-tile__date-value">1/20</dd></div>
+              <div class="order-tile__date"><dt class="order-tile__date-label">OSD</dt><dd class="order-tile__date-value">1/20</dd></div>
+              <div class="order-tile__date"><dt class="order-tile__date-label">ESD</dt><dd class="order-tile__date-value">1/20</dd></div>
+              <div class="order-tile__date"><dt class="order-tile__date-label">SUB</dt><dd class="order-tile__date-value">1/20</dd></div>
+            </dl>
+            <dl class="order-tile__meta">
+              <div class="order-tile__meta-item"><dt class="order-tile__meta-label">Brand</dt><dd class="order-tile__meta-value">PROLOOK</dd></div>
+              <div class="order-tile__meta-item"><dt class="order-tile__meta-label">Team Store</dt><dd class="order-tile__meta-value">9954783256</dd></div>
+              <div class="order-tile__meta-item"><dt class="order-tile__meta-label">Client</dt><dd class="order-tile__meta-value">Client Name</dd></div>
+              <div class="order-tile__meta-item"><dt class="order-tile__meta-label">Dealer</dt><dd class="order-tile__meta-value">Dealer Name</dd></div>
+            </dl>
+            <button type="button" class="icon-button order-tile__menu" aria-label="Order 23393227 actions">
+              <img class="icon icon--24" src="assets/icons/ellipsis-vertical.svg" alt="" width="24" height="24">
+            </button>
+          </div>
+          <dl class="order-tile__counts">
+            <div class="order-tile__count"><dt class="order-tile__count-label">Parts</dt><dd class="order-tile__count-value">1000</dd></div>
+            <div class="order-tile__count"><dt class="order-tile__count-label">Items</dt><dd class="order-tile__count-value">1000</dd></div>
+          </dl>
+        </article>
+      </li>
+      <li class="queue-item">
+        <div class="queue-item__rail">
+          <span class="queue-item__number">8</span>
+          <button type="button" class="queue-item__rail-action" aria-label="Reorder order 23393228">
+            <img class="icon icon--grip" src="assets/icons/grip-dots.svg" alt="" width="9" height="15">
+          </button>
+          <button type="button" class="queue-item__rail-action" aria-label="Move order 23393228 to top">
+            <img class="icon icon--16" src="assets/icons/arrow-up-small.svg" alt="" width="16" height="16">
+          </button>
+        </div>
+        <article class="order-tile" aria-labelledby="order-8-number">
+          <div class="order-tile__header">
+            <div class="order-tile__identity">
+              <div class="order-tile__order-row">
+                <h2 class="order-tile__number" id="order-8-number">23393228</h2>
+                <div class="order-tile__badges">
+                  <button type="button" class="priority-badge priority-badge--regular" aria-haspopup="menu" aria-expanded="false" aria-controls="priority-menu">Regular<span class="visually-hidden">, change priority for order 23393228</span></button>
+                  
+                </div>
+              </div>
+              <div class="order-progress" role="progressbar" aria-label="Order 23393228 progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50" style="--order-progress: 50%">
+                <span class="order-progress__value">50%</span>
+                <span class="order-progress__track"><span class="order-progress__fill"></span></span>
+              </div>
+            </div>
+            <dl class="order-tile__dates">
+              <div class="order-tile__date"><dt class="order-tile__date-label">FDD</dt><dd class="order-tile__date-value">1/20</dd></div>
+              <div class="order-tile__date"><dt class="order-tile__date-label">OSD</dt><dd class="order-tile__date-value">1/20</dd></div>
+              <div class="order-tile__date"><dt class="order-tile__date-label">ESD</dt><dd class="order-tile__date-value">1/20</dd></div>
+              <div class="order-tile__date"><dt class="order-tile__date-label">SUB</dt><dd class="order-tile__date-value">1/20</dd></div>
+            </dl>
+            <dl class="order-tile__meta">
+              <div class="order-tile__meta-item"><dt class="order-tile__meta-label">Brand</dt><dd class="order-tile__meta-value">PROLOOK</dd></div>
+              <div class="order-tile__meta-item"><dt class="order-tile__meta-label">Team Store</dt><dd class="order-tile__meta-value">9954783256</dd></div>
+              <div class="order-tile__meta-item"><dt class="order-tile__meta-label">Client</dt><dd class="order-tile__meta-value">Client Name</dd></div>
+              <div class="order-tile__meta-item"><dt class="order-tile__meta-label">Dealer</dt><dd class="order-tile__meta-value">Dealer Name</dd></div>
+            </dl>
+            <button type="button" class="icon-button order-tile__menu" aria-label="Order 23393228 actions">
+              <img class="icon icon--24" src="assets/icons/ellipsis-vertical.svg" alt="" width="24" height="24">
+            </button>
+          </div>
+          <dl class="order-tile__counts">
+            <div class="order-tile__count"><dt class="order-tile__count-label">Parts</dt><dd class="order-tile__count-value">1000</dd></div>
+            <div class="order-tile__count"><dt class="order-tile__count-label">Items</dt><dd class="order-tile__count-value">1000</dd></div>
+          </dl>
+        </article>
+      </li>
+      <li class="queue-item">
+        <div class="queue-item__rail">
+          <span class="queue-item__number">9</span>
+          <button type="button" class="queue-item__rail-action" aria-label="Reorder order 23393229">
+            <img class="icon icon--grip" src="assets/icons/grip-dots.svg" alt="" width="9" height="15">
+          </button>
+          <button type="button" class="queue-item__rail-action" aria-label="Move order 23393229 to top">
+            <img class="icon icon--16" src="assets/icons/arrow-up-small.svg" alt="" width="16" height="16">
+          </button>
+        </div>
+        <article class="order-tile" aria-labelledby="order-9-number">
+          <div class="order-tile__header">
+            <div class="order-tile__identity">
+              <div class="order-tile__order-row">
+                <h2 class="order-tile__number" id="order-9-number">23393229</h2>
+                <div class="order-tile__badges">
+                  <button type="button" class="priority-badge priority-badge--regular" aria-haspopup="menu" aria-expanded="false" aria-controls="priority-menu">Regular<span class="visually-hidden">, change priority for order 23393229</span></button>
+                  
+                </div>
+              </div>
+              <div class="order-progress" role="progressbar" aria-label="Order 23393229 progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50" style="--order-progress: 50%">
+                <span class="order-progress__value">50%</span>
+                <span class="order-progress__track"><span class="order-progress__fill"></span></span>
+              </div>
+            </div>
+            <dl class="order-tile__dates">
+              <div class="order-tile__date"><dt class="order-tile__date-label">FDD</dt><dd class="order-tile__date-value">1/20</dd></div>
+              <div class="order-tile__date"><dt class="order-tile__date-label">OSD</dt><dd class="order-tile__date-value">1/20</dd></div>
+              <div class="order-tile__date"><dt class="order-tile__date-label">ESD</dt><dd class="order-tile__date-value">1/20</dd></div>
+              <div class="order-tile__date"><dt class="order-tile__date-label">SUB</dt><dd class="order-tile__date-value">1/20</dd></div>
+            </dl>
+            <dl class="order-tile__meta">
+              <div class="order-tile__meta-item"><dt class="order-tile__meta-label">Brand</dt><dd class="order-tile__meta-value">PROLOOK</dd></div>
+              <div class="order-tile__meta-item"><dt class="order-tile__meta-label">Team Store</dt><dd class="order-tile__meta-value">9954783256</dd></div>
+              <div class="order-tile__meta-item"><dt class="order-tile__meta-label">Client</dt><dd class="order-tile__meta-value">Client Name</dd></div>
+              <div class="order-tile__meta-item"><dt class="order-tile__meta-label">Dealer</dt><dd class="order-tile__meta-value">Dealer Name</dd></div>
+            </dl>
+            <button type="button" class="icon-button order-tile__menu" aria-label="Order 23393229 actions">
+              <img class="icon icon--24" src="assets/icons/ellipsis-vertical.svg" alt="" width="24" height="24">
+            </button>
+          </div>
+          <dl class="order-tile__counts">
+            <div class="order-tile__count"><dt class="order-tile__count-label">Parts</dt><dd class="order-tile__count-value">1000</dd></div>
+            <div class="order-tile__count"><dt class="order-tile__count-label">Items</dt><dd class="order-tile__count-value">1000</dd></div>
+          </dl>
+        </article>
+      </li>
+        </ol>
+      </section>
+
+      <div class="queue-footer">
+        <div class="items-per-page">
+          <label for="items-per-page">Show</label>
+          <select class="items-per-page__select" id="items-per-page" name="per_page">
+            <option value="100">100 Orders</option>
+          </select>
+          <span>per page (000 total)</span>
+        </div>
+        <nav class="pagination" aria-label="Pagination">
+          <ul class="pagination__list">
+            <li>
+              <a class="pagination__nav" aria-disabled="true">
+                <img class="icon icon--20" src="assets/icons/chevron-left.svg" alt="" width="20" height="20">
+                Prev
+              </a>
+            </li>
+            <li>
+              <ul class="pagination__pages">
+                <li><a class="pagination__page" href="?page=1" aria-current="page">1</a></li>
+                <li><a class="pagination__page" href="?page=2">2</a></li>
+                <li><a class="pagination__page" href="?page=3">3</a></li>
+                <li><span class="pagination__page" aria-hidden="true">...</span></li>
+                <li><a class="pagination__page" href="?page=38">38</a></li>
+              </ul>
+            </li>
+            <li>
+              <a class="pagination__nav" href="?page=2">
+                Next
+                <img class="icon icon--20" src="assets/icons/chevron-right.svg" alt="" width="20" height="20">
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </main>
+  </div>
+
+  <dialog class="modal" id="change-priority-modal" aria-labelledby="change-priority-title">
+    <form method="dialog">
+      <div class="modal__header">
+        <h2 class="modal__title" id="change-priority-title">Change Priority</h2>
+        <button type="button" class="icon-button icon-button--20" aria-label="Close" data-dismiss>
+          <img class="icon icon--20" src="assets/icons/close.svg" alt="" width="20" height="20">
+        </button>
+      </div>
+      <div class="modal__body">
+        <fieldset class="fieldset">
+          <legend class="fieldset__legend">Please provide a reason for changing this order's priority from <span data-old-priority>{old priority}</span> to <span data-new-priority>{new priority}</span>?</legend>
+          <div class="choice">
+            <input type="radio" class="radio" id="reason-1" name="reason" value="1">
+            <label class="choice__label" for="reason-1">Code 1: Over Forecast</label>
+          </div>
+          <div class="choice">
+            <input type="radio" class="radio" id="reason-2" name="reason" value="2">
+            <label class="choice__label" for="reason-2">Code 2: Capacity Constraint</label>
+          </div>
+          <div class="choice">
+            <input type="radio" class="radio" id="reason-3" name="reason" value="3">
+            <label class="choice__label" for="reason-3">Code 3: Production Rework</label>
+          </div>
+          <div class="choice">
+            <input type="radio" class="radio" id="reason-4" name="reason" value="4">
+            <label class="choice__label" for="reason-4">Code 4: Fabric Shortage</label>
+          </div>
+          <div class="choice">
+            <input type="radio" class="radio" id="reason-5" name="reason" value="5">
+            <label class="choice__label" for="reason-5">Code 5: Production Delay</label>
+          </div>
+          <div class="choice">
+            <input type="radio" class="radio" id="reason-6" name="reason" value="6">
+            <label class="choice__label" for="reason-6">Code 6: Raw Material Shipping Delay</label>
+          </div>
+          <div class="choice">
+            <input type="radio" class="radio" id="reason-7" name="reason" value="7">
+            <label class="choice__label" for="reason-7">Code 7: Unforecasted</label>
+          </div>
+          <div class="choice">
+            <input type="radio" class="radio" id="reason-8" name="reason" value="8">
+            <label class="choice__label" for="reason-8">Code 8: Insufficient Time for Production</label>
+          </div>
+        </fieldset>
+        <label class="visually-hidden" for="priority-notes">Additional Notes</label>
+        <textarea class="textarea" id="priority-notes" name="notes" placeholder="Additional Notes"></textarea>
+      </div>
+      <div class="modal__footer">
+        <button type="button" class="button button--text" data-dismiss>Cancel</button>
+        <button type="submit" class="button button--primary" value="confirm">Add To Flow</button>
+      </div>
+    </form>
+  </dialog>
+
+  <dialog class="modal" id="wip-settings-modal" aria-labelledby="wip-settings-title">
+    <form method="dialog">
+      <div class="modal__header">
+        <h2 class="modal__title" id="wip-settings-title">WIP Settings</h2>
+        <button type="button" class="icon-button icon-button--20" aria-label="Close" data-dismiss>
+          <img class="icon icon--20" src="assets/icons/close.svg" alt="" width="20" height="20">
+        </button>
+      </div>
+      <div class="modal__body">
+        <fieldset class="fieldset">
+          <legend class="fieldset__legend">Default item view</legend>
+          <div class="choice">
+            <input type="radio" class="radio" id="view-weighted" name="item_view" value="weighted" checked>
+            <label class="choice__label" for="view-weighted">Weighted</label>
+          </div>
+          <div class="choice">
+            <input type="radio" class="radio" id="view-unweighted" name="item_view" value="unweighted">
+            <label class="choice__label" for="view-unweighted">Unweighted</label>
+          </div>
+        </fieldset>
+        <fieldset class="fieldset">
+          <legend class="fieldset__legend">Order Information Columns: drag and drop to organize</legend>
+          <ul class="column-list">
+            <li class="column-list__item">
+              <img class="icon icon--24" src="assets/icons/lock-closed.svg" alt="Locked" width="24" height="24">
+              <span class="column-list__label">PID</span>
+              <img class="icon icon--grip" src="assets/icons/grip-dots.svg" alt="" width="9" height="15">
+            </li>
+            <li class="column-list__item">
+              <input type="checkbox" class="checkbox" id="column-category" name="columns" value="category" checked>
+              <label class="column-list__label" for="column-category">Category</label>
+              <img class="icon icon--grip" src="assets/icons/grip-dots.svg" alt="" width="9" height="15">
+            </li>
+            <li class="column-list__item">
+              <input type="checkbox" class="checkbox" id="column-item" name="columns" value="item" checked>
+              <label class="column-list__label" for="column-item">Item</label>
+              <img class="icon icon--grip" src="assets/icons/grip-dots.svg" alt="" width="9" height="15">
+            </li>
+            <li class="column-list__item">
+              <input type="checkbox" class="checkbox" id="column-qty" name="columns" value="qty" checked>
+              <label class="column-list__label" for="column-qty">Qty (Quantity)</label>
+              <img class="icon icon--grip" src="assets/icons/grip-dots.svg" alt="" width="9" height="15">
+            </li>
+            <li class="column-list__item">
+              <input type="checkbox" class="checkbox" id="column-sport" name="columns" value="sport" checked>
+              <label class="column-list__label" for="column-sport">Sport</label>
+              <img class="icon icon--24" src="assets/icons/move-bars.svg" alt="" width="24" height="24">
+            </li>
+            <li class="column-list__item">
+              <input type="checkbox" class="checkbox" id="column-fabric" name="columns" value="fabric" checked>
+              <label class="column-list__label" for="column-fabric">Fabric</label>
+              <img class="icon icon--24" src="assets/icons/move-bars.svg" alt="" width="24" height="24">
+            </li>
+            <li class="column-list__item">
+              <input type="checkbox" class="checkbox" id="column-location" name="columns" value="location" checked>
+              <label class="column-list__label" for="column-location">Location</label>
+              <img class="icon icon--24" src="assets/icons/move-bars.svg" alt="" width="24" height="24">
+            </li>
+            <li class="column-list__item">
+              <input type="checkbox" class="checkbox" id="column-progress" name="columns" value="progress" checked>
+              <label class="column-list__label" for="column-progress">Progress</label>
+              <img class="icon icon--24" src="assets/icons/move-bars.svg" alt="" width="24" height="24">
+            </li>
+            <li class="column-list__item">
+              <input type="checkbox" class="checkbox" id="column-factory" name="columns" value="factory">
+              <label class="column-list__label" for="column-factory">Factory</label>
+              <img class="icon icon--24" src="assets/icons/move-bars.svg" alt="" width="24" height="24">
+            </li>
+            <li class="column-list__item">
+              <input type="checkbox" class="checkbox" id="column-price" name="columns" value="price">
+              <label class="column-list__label" for="column-price">Price</label>
+              <img class="icon icon--24" src="assets/icons/move-bars.svg" alt="" width="24" height="24">
+            </li>
+          </ul>
+        </fieldset>
+      </div>
+      <div class="modal__footer">
+        <button type="button" class="button button--text" data-dismiss>Cancel</button>
+        <button type="submit" class="button button--primary" value="confirm">Add To Flow</button>
+      </div>
+    </form>
+  </dialog>
+
+  <script src="js/app.js"></script>
+</body>
+</html>

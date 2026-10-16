@@ -1,0 +1,54 @@
+@use '../variables' as *;
+@use '../mixins' as *;
+
+// Priority badge (Figma: priority 491:14349, 233:7084, 1654:17902)
+.priority-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: $size-72;
+  height: $size-20;
+  border-radius: $radius-sm;
+  white-space: nowrap;
+  @include type-body-md($font-weight-medium);
+
+  &--regular {
+    background: $color-slate-200;
+    color: $color-slate-600;
+  }
+
+  &--rush {
+    background: $color-amber-200;
+    color: $color-amber-800;
+  }
+
+  &--day {
+    background: $color-emerald-200;
+    color: $color-emerald-800;
+  }
+}
+
+button.priority-badge {
+  padding: 0;
+  border: 0;
+  cursor: pointer;
+}
+
+// Reorder "R" and split chips (Figma: reorder 3154:64345, split 4121:50639)
+.status-chip {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: $size-20;
+  height: $size-20;
+  padding: $space-2;
+  border-radius: $radius-sm;
+
+  &--reorder {
+    background: $color-violet-200;
+  }
+
+  &--split {
+    background: $color-orange-200;
+  }
+}

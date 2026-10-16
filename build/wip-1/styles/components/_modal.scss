@@ -1,0 +1,50 @@
+@use '../variables' as *;
+@use '../mixins' as *;
+
+// Modal dialog (Figma: Remove Process 5073:56594 / 5073:56730, modal template 4059:30625)
+.modal {
+  width: $size-612;
+  max-width: calc(100vw - #{$space-32});
+  padding: 0;
+  border: 0;
+  border-radius: $radius-modal;
+  background: $color-bg-primary;
+  color: $color-text-primary;
+
+  &::backdrop {
+    background: $color-scrim;
+  }
+
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: $size-72;
+    padding: $space-24 $space-32;
+  }
+
+  &__title {
+    @include type-heading-md;
+    color: $color-text-primary;
+  }
+
+  &__body {
+    display: flex;
+    flex-direction: column;
+    gap: $space-16;
+    padding: 0 $space-32 $space-24;
+    color: $color-black;
+    @include type-body-md;
+  }
+
+  &__footer {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: $space-16;
+    height: $size-72;
+    padding: $space-8 $space-24;
+    border-top: $border-width solid $color-stroke-primary;
+    box-shadow: $shadow-modal-footer;
+  }
+}

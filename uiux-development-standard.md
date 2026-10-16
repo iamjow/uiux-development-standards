@@ -177,7 +177,7 @@ Separate:
 - Main Content
 - Footer
 
-Each layout has its own SCSS filegit under `layouts/`.
+Each layout has its own SCSS file under `layouts/`.
 
 ---
 
@@ -322,6 +322,32 @@ The generated project must:
 - [ ] Conform to WCAG 2.2 AA as described in Accessibility
 - [ ] Be maintainable and scalable
 - [ ] Be production-ready
+
+---
+
+## 15. Design Fidelity Tolerance
+
+This section defines what "matches the design" means when an implementation is validated against its Figma source. It is the pass/fail rule for the fidelity gate, and it is applied before code review.
+
+A delta is **blocking** when it changes what a user sees or can do. A delta is **minor** when it is within the tolerances below. The implementation matches the design only when there are zero blocking deltas.
+
+| Category | Rule | Blocking when |
+|---|---|---|
+| Tokens | Every color, font, radius, and shadow resolves to a token in `_variables.scss`. The token's value equals the Figma value. | A raw literal is used, or a token value differs from Figma |
+| Typography | Family, weight, size, and line height match the Figma text style at each breakpoint. | Any of the four differs |
+| Spacing and sizing | Padding, margin, gap, and fixed dimensions are within 2px of Figma, to allow rounding. | Difference exceeds 2px, or an element's size class changes (fixed to fluid, or the reverse) |
+| Layout | Element order, alignment, and wrapping match Figma at desktop, tablet, and mobile. | Order, alignment, or wrapping differs at any breakpoint, or an element present in Figma is missing |
+| States | Every state present in Figma is implemented: hover, focus, active, disabled, error, empty, loading, selected. Focus must be visible. | Any Figma state is missing or not visible |
+| Interactions | Every prototype reaction recorded in the spec's Interactions table is implemented: the same trigger (click, hover, press, drag, key, timeout) on the same control navigates to, opens, swaps, or changes to the same destination. Overlays anchor at the Figma offset from their trigger, within 2px. Transitions keep Figma's type and duration, inside the reduced-motion media query. A `CHANGE_TO` state renders the variant's values. | A wired trigger does nothing, fires on a different trigger, or reaches a different destination; an overlay anchors more than 2px off; a transition's type or duration differs from Figma, or a Figma transition is missing |
+| Assets | Icons and images are the ones in Figma, at the Figma size, with the decorative or meaningful treatment the spec records. | A different icon is used, or a meaningful image lacks alt text |
+| Content | Placeholder copy may differ from Figma. Real labels, headings, and button text must match. | A label, heading, or control text differs in meaning |
+
+Rules for the validator:
+
+- Compare against the design spec and the Figma frame, not against the builder's description of the work.
+- Where Figma does not define a breakpoint or state, that is a spec gap, not a fidelity failure. Record it separately. A control with no prototype wiring is a spec gap of the same kind; a control with wiring that the build ignores is a failure.
+- State the comparison method. A rendered screenshot comparison is stronger evidence than a static read of templates and SCSS, and the two must never be reported as the same thing.
+- Do not evaluate code quality here. That belongs to the code review standard.
 
 ---
 

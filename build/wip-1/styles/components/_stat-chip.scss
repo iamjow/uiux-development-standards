@@ -1,0 +1,31 @@
+@use '../variables' as *;
+@use '../mixins' as *;
+
+// Items / Parts / Orders counters (Figma: Item # 7017:4515)
+.stat-chips {
+  display: flex;
+  align-items: center;
+  gap: $space-4;
+}
+
+.stat-chip {
+  display: flex;
+  align-items: center;
+  gap: $space-4;
+  height: $size-32;
+  padding: $space-2 $space-12;
+  background: $color-bg-primary;
+  border: $border-default;
+  border-radius: $radius-chip;
+  color: $color-black;
+  white-space: nowrap;
+  @include type-body-md;
+
+  &__label {
+    font-weight: $font-weight-medium;
+  }
+
+  &__suffix {
+    @include type-caption-sm;
+  }
+}

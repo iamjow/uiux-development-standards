@@ -1,0 +1,109 @@
+@use '../variables' as *;
+@use '../mixins' as *;
+
+// Side nav (Figma: side nav 4587:47240 / 4587:47174)
+.side-nav {
+  display: flex;
+  flex-direction: column;
+  width: $size-240;
+  padding: $space-30 0 $space-6; // 6 + the 24px empty row above the switcher in Figma
+  background: $color-bg-nav-side;
+  color: $color-text-nav-side;
+
+  &__switcher {
+    @include button-reset;
+    display: flex;
+    align-items: center;
+    gap: $space-4;
+    width: 100%;
+    padding: $space-10 $space-16;
+    font-weight: $font-weight-medium;
+    line-height: normal;
+    text-align: left;
+
+    // Spans the full nav width, so keep the ring inside the edges
+    &:focus-visible {
+      outline-offset: -$space-2;
+    }
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    padding: 0 $space-8;
+  }
+
+  &__item {
+    @include button-reset;
+    display: flex;
+    align-items: center;
+    gap: $space-16;
+    width: 100%;
+    padding: $space-10 $space-16;
+    color: $color-text-nav-side;
+    font-weight: $font-weight-medium;
+    line-height: normal;
+    text-decoration: none;
+    text-align: left;
+    border-radius: $radius-sm;
+
+    &[aria-current='page'] {
+      height: $size-40;
+      padding: $space-8 $space-16;
+      background: $color-bg-nav-side-selected;
+    }
+  }
+
+  &__label {
+    flex: 1;
+    min-width: 0;
+  }
+
+  &__chevron {
+    @include motion-ok {
+      transition: transform $motion-rail-duration $motion-rail-easing;
+    }
+  }
+
+  // The exported glyph is the expanded (up) chevron; collapsed turns it down
+  [aria-expanded='false'] &__chevron {
+    transform: rotate(180deg);
+  }
+
+  // Nested sub nav (Figma: sub nav qty, 3 x 40 rows, label Gotham Book 14)
+  &__sublist {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__item[aria-expanded='false'] + &__sublist {
+    display: none;
+  }
+
+  &__sublink {
+    display: flex;
+    align-items: center;
+    min-height: $size-40;
+    padding: $space-11 $space-16 $space-11 $space-52;
+    color: $color-text-nav-side;
+    font-weight: $font-weight-book;
+    line-height: normal;
+    text-decoration: none;
+    border-radius: $radius-sm;
+  }
+
+  @include tablet-down {
+    width: 100%;
+    padding: 0;
+
+    &__list {
+      flex-direction: row;
+      flex-wrap: wrap;
+      padding: 0 $space-8 $space-6;
+    }
+
+    &__item {
+      width: auto;
+    }
+  }
+}

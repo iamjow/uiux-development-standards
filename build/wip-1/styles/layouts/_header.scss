@@ -1,0 +1,69 @@
+@use '../variables' as *;
+@use '../mixins' as *;
+
+// Top nav (Figma: top nav 4124:35381)
+.top-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: $size-56;
+  padding: $space-14 $space-24;
+  background: $color-bg-nav-top;
+  color: $color-white;
+
+  &__group {
+    display: flex;
+    align-items: center;
+    gap: $space-16;
+  }
+
+  &__apps {
+    @include button-reset;
+    display: grid;
+    grid-template-columns: repeat(3, $size-5);
+    gap: $space-2-5;
+    width: $size-20;
+    height: $size-20;
+  }
+
+  &__apps-dot {
+    width: $size-5;
+    height: $size-5;
+    background: $color-white;
+    border-radius: $radius-dot;
+  }
+
+  &__brand {
+    display: flex;
+    align-items: center;
+    gap: $space-6;
+    color: $color-white;
+    text-decoration: none;
+  }
+
+  &__wordmark {
+    font-size: $type-nav-wordmark-size;
+    font-weight: $font-weight-medium;
+    line-height: normal;
+    white-space: nowrap;
+  }
+
+  &__avatar {
+    @include button-reset;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: $size-24;
+    height: $size-24;
+    background: $color-white;
+    color: $color-brand-primary;
+    border-radius: $radius-full;
+    font-size: $type-avatar-size;
+    font-weight: $font-weight-bold;
+    line-height: normal;
+  }
+
+  :focus-visible {
+    outline-color: $color-white;
+  }
+}

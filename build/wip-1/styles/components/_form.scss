@@ -1,0 +1,130 @@
+@use '../variables' as *;
+@use '../mixins' as *;
+
+// Fieldset without native chrome
+.fieldset {
+  min-width: 0;
+  padding: 0;
+  margin: 0;
+  border: 0;
+  display: flex;
+  flex-direction: column;
+  gap: $space-16;
+
+  &__legend {
+    padding: 0;
+    margin-bottom: $space-16;
+    color: $color-black;
+    @include type-body-md;
+  }
+}
+
+// Choice row: radio or checkbox + label (Figma: Frame 30842, 24px control, gap 16)
+.choice {
+  display: flex;
+  align-items: flex-start;
+  gap: $space-16;
+  color: $color-black;
+  @include type-body-md;
+
+  &__label {
+    flex: 1;
+    min-width: 0;
+  }
+}
+
+// Radio (Figma: radio button 5074:56790 off, 5074:56791 on)
+.radio {
+  position: relative;
+  flex-shrink: 0;
+  width: $size-24;
+  height: $size-24;
+  margin: 0;
+  padding: $space-3;
+  appearance: none;
+  background: none;
+  border: 0;
+  border-radius: $radius-full;
+  cursor: pointer;
+
+  &::before {
+    content: '';
+    display: block;
+    width: $size-18;
+    height: $size-18;
+    border: $border-width-2 solid $color-icon-null-state;
+    border-radius: $radius-lg;
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: url('../assets/icons/radio-selected.svg') center / $size-24 no-repeat;
+    opacity: 0;
+
+    @include motion-ok {
+      transition: opacity $motion-radio-duration $motion-radio-easing;
+    }
+  }
+
+  &:checked::after {
+    opacity: 1;
+  }
+}
+
+// Checkbox (Figma: check box 5074:56809 off, 5074:56810 on)
+.checkbox {
+  flex-shrink: 0;
+  width: $size-24;
+  height: $size-24;
+  margin: 0;
+  appearance: none;
+  background: url('../assets/icons/checkbox-unchecked.svg') center / $size-24 no-repeat;
+  border: 0;
+  border-radius: $radius-xs;
+  cursor: pointer;
+
+  &:checked {
+    background-image: url('../assets/icons/checkbox-checked.svg');
+  }
+}
+
+// Textarea (Figma: text box 5073:56640)
+.textarea {
+  display: block;
+  width: 100%;
+  height: $size-72;
+  padding: $space-12 $space-16;
+  background: $color-bg-primary;
+  border: $border-default;
+  border-radius: $radius-sm;
+  color: $color-text-primary;
+  resize: vertical;
+  @include type-body-md;
+
+  &::placeholder {
+    color: $color-text-tertiary;
+    opacity: 1;
+  }
+}
+
+// Column list in WIP Settings: control, label, drag handle
+.column-list {
+  display: flex;
+  flex-direction: column;
+  gap: $space-16;
+
+  &__item {
+    display: flex;
+    align-items: center;
+    gap: $space-16;
+    color: $color-black;
+    @include type-body-md;
+  }
+
+  &__label {
+    flex: 1;
+    min-width: 0;
+  }
+}

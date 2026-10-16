@@ -1,0 +1,42 @@
+@use '../variables' as *;
+@use '../mixins' as *;
+
+// Priority dropdown overlay (Figma: priority dropdown 4207:29167), anchored
+// -16px / +25px from the priority badge that opened it.
+.priority-dropdown {
+  position: absolute;
+  top: $space-24 + $space-1; // 25px
+  left: -$space-16;
+  z-index: $z-dropdown;
+  display: flex;
+  flex-direction: column;
+  gap: $space-4;
+  width: $size-104;
+  padding: $space-8 0;
+  background: $color-bg-primary;
+  border-radius: $radius-modal;
+  box-shadow: $shadow-medium;
+  overflow: hidden;
+
+  &[hidden] {
+    display: none;
+  }
+
+  &__option {
+    @include button-reset;
+    display: flex;
+    width: 100%;
+    padding: $space-8 $space-16;
+    text-align: left;
+
+    // Hover=On variant 4209:29194, instant
+    &:hover,
+    &:focus-visible {
+      background: $color-bg-tertiary;
+    }
+
+    &:focus-visible {
+      outline-offset: -$space-2;
+    }
+  }
+}

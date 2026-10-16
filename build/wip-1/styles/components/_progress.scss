@@ -1,0 +1,33 @@
+@use '../variables' as *;
+@use '../mixins' as *;
+
+// Order progress (Figma: Order Progress 4121:50632). Fill width comes from
+// the --order-progress custom property set on the element from data.
+.order-progress {
+  display: flex;
+  align-items: center;
+  gap: $space-4;
+
+  &__value {
+    width: $size-36;
+    @include type-body-md($font-weight-medium);
+    color: $color-text-primary;
+  }
+
+  &__track {
+    display: block;
+    width: $size-140;
+    height: $size-12;
+    padding: $space-1;
+    background: $color-bg-primary;
+    border-radius: $radius-sm;
+  }
+
+  &__fill {
+    display: block;
+    width: var(--order-progress, 0%);
+    height: 100%;
+    background: $color-emerald-300;
+    border-radius: $radius-md;
+  }
+}

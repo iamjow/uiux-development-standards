@@ -1,0 +1,195 @@
+// Design tokens for the WIP 1 frame (Factory Module).
+// Every colour, font, spacing, radius and shadow used by a component or layout
+// resolves to one of these tokens. Change the theme here, not in components.
+
+// ---------------------------------------------------------------------------
+// Colour
+// ---------------------------------------------------------------------------
+$color-text-primary: #020617;        // Color/text/primary
+$color-text-secondary: #475569;      // Color/text/secondary
+$color-text-tertiary: #64748b;       // Color/text/tertiary (placeholder text)
+$color-brand-primary: #2563eb;       // Color/brand/primary, Color/text/interactive
+$color-bg-button-primary: #2563eb;   // Color/bg/button/primary
+$color-bg-primary: #ffffff;          // Color/bg/primary
+$color-bg-secondary: #f1f5f9;        // Color/bg/secondary
+$color-bg-tertiary: #f8fafc;         // Color/bg/tertiary
+$color-stroke-primary: #f1f5f9;      // Color/stroke/primary
+$color-stroke-secondary: #e2e8f0;    // Color/stroke/secondary
+$color-icon-primary: #475569;        // Color/icon/primary
+$color-icon-null-state: #94a3b8;     // Color/icon/selectors/null-state (radio outline)
+$color-bg-nav-top: #1e3a8a;          // Color/bg/nav/top nav
+$color-bg-nav-side: #eff6ff;         // Color/bg/nav/side nav
+$color-bg-nav-side-selected: #dbeafe; // Color/bg/nav/side nav selected
+$color-text-nav-side: #1e3a8a;       // Color/text/nav/side nav
+$color-white: #ffffff;               // Tailwind/White
+$color-black: #000000;               // Tailwind/Black
+$color-gray-800: #1f2937;            // Tailwind/Gray 800
+$color-amber-200: #fde68a;           // Priority Rush bg
+$color-amber-800: #92400e;           // Priority Rush text
+$color-slate-200: #e2e8f0;           // Priority Regular bg
+$color-slate-600: #475569;           // Priority Regular text
+$color-emerald-200: #a7f3d0;         // Priority N-Day bg
+$color-emerald-800: #065f46;         // Priority N-Day text
+$color-emerald-300: #6ee7b7;         // Progress fill
+$color-violet-200: #ddd6fe;          // Reorder chip bg
+$color-violet-800: #5b21b6;          // Reorder chip glyph
+$color-orange-200: #fed7aa;          // Split chip bg
+$color-orange-700: #c2410c;          // Split chip glyph
+$color-alert-high: #fb7185;          // Alert - High
+$color-factory-w: #d9d9d9;           // color/factory/w - white (fabric swatch)
+$color-swatch-text: #18181b;         // text/primary (swatch letter)
+$color-scrim: rgba(2, 6, 23, 0.24);  // Modal overlay: #020617 at 24%
+
+// ---------------------------------------------------------------------------
+// Typography
+// ---------------------------------------------------------------------------
+$font-family-base: 'Gotham', 'Helvetica Neue', Arial, sans-serif;
+$font-weight-book: 400;
+$font-weight-medium: 500;
+$font-weight-bold: 700;
+
+// Type scale: size / line-height / tracking (computed px from the Figma export)
+$type-heading-md-size: 1.25rem;        // 20px
+$type-heading-md-line: 1.5rem;         // 24px
+$type-heading-md-tracking: -0.0125rem; // -0.2px
+
+$type-body-lg-size: 1rem;              // 16px
+$type-body-lg-line: 1.5rem;            // 24px
+$type-body-lg-tracking: 0.01rem;       // 0.16px
+
+$type-body-md-size: 0.875rem;          // 14px
+$type-body-md-line: 1.25rem;           // 20px
+$type-body-md-tracking: 0.00875rem;    // 0.14px
+
+$type-caption-sm-size: 0.625rem;       // 10px
+$type-caption-sm-line: 0.75rem;        // 12px
+$type-caption-sm-tracking: 0.01875rem; // 0.3px
+
+$type-nav-wordmark-size: 0.75rem;      // 12px, line-height normal
+$type-avatar-size: 0.875rem;           // 14px, Bold, line-height normal
+
+// ---------------------------------------------------------------------------
+// Spacing scale (rem, 16px base)
+// ---------------------------------------------------------------------------
+$space-1: 0.0625rem;  // 1px
+$space-2: 0.125rem;   // 2px
+$space-2-5: 0.15625rem; // 2.5px (master nav dot gap)
+$space-3: 0.1875rem;  // 3px
+$space-4: 0.25rem;    // 4px
+$space-4-5: 0.28125rem; // 4.5px (grip glyph vertical inset)
+$space-5: 0.3125rem;  // 5px
+$space-6: 0.375rem;   // 6px
+$space-7: 0.4375rem;  // 7px
+$space-7-5: 0.46875rem; // 7.5px (grip glyph horizontal inset)
+$space-8: 0.5rem;     // 8px
+$space-9: 0.5625rem;  // 9px
+$space-10: 0.625rem;  // 10px
+$space-11: 0.6875rem; // 11px (side nav sub item padding-y)
+$space-12: 0.75rem;   // 12px
+$space-13: 0.8125rem; // 13px
+$space-14: 0.875rem;  // 14px
+$space-15: 0.9375rem; // 15px
+$space-16: 1rem;      // 16px
+$space-20: 1.25rem;   // 20px
+$space-24: 1.5rem;    // 24px
+$space-30: 1.875rem;  // 30px
+$space-32: 2rem;      // 32px
+$space-34: 2.125rem;  // 34px (35 minus the tile border)
+$space-35: 2.1875rem; // 35px
+$space-40: 2.5rem;    // 40px
+$space-46: 2.875rem;  // 46px
+$space-48: 3rem;      // 48px
+$space-52: 3.25rem;   // 52px
+
+// ---------------------------------------------------------------------------
+// Sizes
+// ---------------------------------------------------------------------------
+$size-5: 0.3125rem;   // master nav dot
+$size-9: 0.5625rem;   // grip dots glyph width
+$size-10: 0.625rem;   // filter-applied dot
+$size-12: 0.75rem;    // progress track height
+$size-15: 0.9375rem;  // grip dots glyph height
+$size-16: 1rem;       // Size/16
+$size-18: 1.125rem;   // radio outline
+$size-20: 1.25rem;    // Size/20
+$size-24: 1.5rem;     // Size/24
+$size-28: 1.75rem;    // colour swatch width
+$size-32: 2rem;       // page buttons, chips, footer row
+$size-36: 2.25rem;    // queue number box / rail cell
+$size-40: 2.5rem;     // queue number width, selected nav item
+$size-56: 3.5rem;     // top nav height
+$size-72: 4.5rem;     // modal header/footer height, priority badge width
+$size-79: 4.9375rem;  // order header height (80 minus the tile border)
+$size-80: 5rem;       // order header height
+$size-96: 6rem;       // parts table progress column
+$size-104: 6.5rem;    // priority dropdown width
+$size-108: 6.75rem;   // hover rail height
+$size-112: 7rem;      // page header height
+$size-120: 7.5rem;    // sort/filter width, queue row height, button min-width
+$size-125: 7.8125rem; // items per page select
+$size-132: 8.25rem;   // order dates column
+$size-136: 8.5rem;    // order meta value width
+$size-144: 9rem;      // parts table PID column
+$size-160: 10rem;     // parts table sport column
+$size-168: 10.5rem;   // parts table location column
+$size-200: 12.5rem;   // order meta column
+$size-224: 14rem;     // parts table item column
+$size-140: 8.75rem;   // progress track width
+$size-240: 15rem;     // side nav width, search width, parts table fabric column
+$size-280: 17.5rem;   // order dates block width
+$size-288: 18rem;     // order identity block width
+$size-416: 26rem;     // order meta block width
+$size-612: 38.25rem;  // modal width
+$size-1340: 83.75rem; // order tile width
+$size-1396: 87.25rem; // queue row width
+$size-1728: 108rem;   // frame width
+
+// ---------------------------------------------------------------------------
+// Radius
+// ---------------------------------------------------------------------------
+$radius-xs: 0.25rem;   // 4px
+$radius-sm: 0.375rem;  // 6px
+$radius-md: 0.5rem;    // 8px
+$radius-lg: 0.6875rem; // 11px (radio)
+$radius-modal: 1rem;   // 16px
+$radius-tool: 1rem;    // 16px (sort / filter buttons)
+$radius-chip: 1.25rem; // 20px
+$radius-search: 1.5625rem; // 25px
+$radius-button: 0.375rem;  // 6px
+$radius-full: 31.25rem;    // 500px
+$radius-dot: 0.125rem;     // 2px
+
+// ---------------------------------------------------------------------------
+// Shadows
+// ---------------------------------------------------------------------------
+$shadow-drop-1: 0 2px 6px 0 rgba(0, 0, 0, 0.1);
+$shadow-medium: 0 2px 12px 0 rgba(2, 6, 23, 0.06);
+$shadow-modal-footer: 0 2px 6px 0 rgba(2, 6, 23, 0.04);
+
+// ---------------------------------------------------------------------------
+// Motion (from Figma prototype transitions)
+// ---------------------------------------------------------------------------
+$motion-rail-duration: 0.3s;
+$motion-rail-easing: ease-out;
+$motion-radio-duration: 0.2s;
+$motion-radio-easing: ease-in-out;
+
+// ---------------------------------------------------------------------------
+// Borders
+// ---------------------------------------------------------------------------
+$border-width: 1px;
+$border-width-2: 2px;
+$border-default: $border-width solid $color-stroke-secondary;
+
+// ---------------------------------------------------------------------------
+// Z-index
+// ---------------------------------------------------------------------------
+$z-dropdown: 20;
+$z-skip-link: 100;
+
+// ---------------------------------------------------------------------------
+// Breakpoints (Figma supplies only the 1728 desktop frame; tablet and mobile
+// values are the project defaults)
+// ---------------------------------------------------------------------------
+$breakpoint-tablet: 64rem;   // 1024px
+$breakpoint-mobile: 48rem;   // 768px

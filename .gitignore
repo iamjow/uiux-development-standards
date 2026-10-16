@@ -1,1 +1,5 @@
+.DS_Store
 
+# Run-time intermediates written by /build-ui; the build/<frame>/ folder is the deliverable
+.claude/design-spec.md
+.claude/fidelity-report.md

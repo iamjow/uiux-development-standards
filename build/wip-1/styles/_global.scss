@@ -1,0 +1,81 @@
+@use 'variables' as *;
+@use 'mixins' as *;
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  height: 100%;
+  font-family: $font-family-base;
+  color: $color-text-primary;
+  background: $color-bg-primary;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  min-height: 100%;
+  margin: 0;
+  @include type-body-md;
+}
+
+h1,
+h2,
+h3,
+p,
+ul,
+ol,
+dl,
+dd,
+figure {
+  margin: 0;
+}
+
+ul,
+ol {
+  padding: 0;
+  list-style: none;
+}
+
+img {
+  display: block;
+}
+
+a {
+  color: $color-brand-primary;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+  letter-spacing: inherit;
+  color: inherit;
+}
+
+:focus-visible {
+  @include focus-ring;
+}
+
+.visually-hidden {
+  @include visually-hidden;
+}
+
+.skip-link {
+  position: absolute;
+  top: $space-8;
+  left: $space-8;
+  z-index: $z-skip-link;
+  padding: $space-8 $space-16;
+  background: $color-bg-primary;
+  color: $color-brand-primary;
+  border-radius: $radius-sm;
+  @include type-body-md($font-weight-medium);
+
+  &:not(:focus) {
+    @include visually-hidden;
+  }
+}

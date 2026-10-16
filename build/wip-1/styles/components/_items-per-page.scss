@@ -1,0 +1,27 @@
+@use '../variables' as *;
+@use '../mixins' as *;
+
+// Items per page (Figma: items per page 3067:78550)
+.items-per-page {
+  display: flex;
+  align-items: center;
+  gap: $space-12;
+  color: $color-text-primary;
+  white-space: nowrap;
+  @include type-body-md;
+
+  @include mobile-down {
+    flex-wrap: wrap;
+  }
+
+  &__select {
+    width: $size-125; // 10 + 80 + 8 + 20 + 7
+    padding: $space-6 $space-35 $space-6 $space-10; // right: 7 + 20 icon + 8 gap
+    border: $border-default;
+    border-radius: $radius-button;
+    background: $color-bg-primary url("../assets/icons/chevron-down-medium.svg") no-repeat right $space-7 center;
+    appearance: none;
+    color: $color-text-primary;
+    @include type-body-md;
+  }
+}

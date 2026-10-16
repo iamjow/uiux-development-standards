@@ -1,0 +1,79 @@
+@use '../variables' as *;
+@use '../mixins' as *;
+
+// Search field (Figma: search 5072:146437)
+.search-field {
+  display: flex;
+  align-items: flex-start;
+  gap: $space-8;
+  width: $size-240;
+  padding: $space-5 $space-8; // 5 + 20 + 5 + 2px border = 32
+  border: $border-default;
+  border-radius: $radius-search;
+  background: $color-bg-primary;
+
+  &__input {
+    flex: 1;
+    min-width: 0;
+    padding: 0;
+    border: 0;
+    background: none;
+    color: $color-text-primary;
+    @include type-body-md;
+
+    &::placeholder {
+      color: $color-text-primary;
+      opacity: 1;
+    }
+
+    &::-webkit-search-decoration,
+    &::-webkit-search-cancel-button {
+      appearance: none;
+    }
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  &:focus-within {
+    @include focus-ring(0);
+  }
+
+  @include mobile-down {
+    width: 100%;
+  }
+}
+
+// Sort and Filter buttons (Figma: sort 5072:146447, filter 5072:146466)
+.tool-button {
+  @include button-reset;
+  display: flex;
+  align-items: center;
+  gap: $space-8;
+  width: $size-120;
+  padding: $space-5 $space-8; // 5 + 20 + 5 + 2px border = 32
+  border: $border-default;
+  border-radius: $radius-tool;
+  background: $color-bg-primary;
+  color: $color-text-primary;
+  text-align: left;
+  @include type-body-md;
+
+  &__label {
+    flex: 1;
+    min-width: 0;
+  }
+
+  @include mobile-down {
+    width: calc(50% - #{$space-2});
+  }
+
+  // filtersApplied dot, rendered only when the markup includes it
+  &__dot {
+    width: $size-10;
+    height: $size-10;
+    background: $color-brand-primary;
+    border-radius: $radius-full;
+  }
+}

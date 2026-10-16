@@ -1,0 +1,133 @@
+@use '../variables' as *;
+@use '../mixins' as *;
+
+// Parts table inside an expanded order tile (Figma: part headers 4121:54326,
+// parts 4121:54699, order part 4124:34244). Column widths are the Figma widths
+// plus the 32px column gap, carried as right padding on each cell.
+.parts-table {
+  width: 100%;
+  table-layout: fixed;
+  border-collapse: collapse;
+  color: $color-black;
+  @include type-body-md;
+
+  th,
+  td {
+    padding: $space-20 $space-32 $space-20 0;
+    text-align: left;
+    vertical-align: middle;
+    font-weight: $font-weight-book;
+  }
+
+  thead th {
+    padding-top: $space-10;
+    padding-bottom: $space-10;
+    color: $color-text-secondary;
+    font-weight: $font-weight-medium;
+  }
+
+  th:first-child,
+  td:first-child {
+    padding-left: $space-40;
+  }
+
+  th:last-child,
+  td:last-child {
+    padding-right: $space-32;
+    text-align: right;
+  }
+
+  th:last-child {
+    padding-right: $space-48;
+  }
+
+  &__col-pid {
+    width: $size-144; // 104 + 32
+  }
+
+  &__col-category {
+    width: $size-112; // 80 + 32
+  }
+
+  &__col-item {
+    width: $size-224; // 192 + 32
+  }
+
+  &__col-qty {
+    width: $size-72; // 40 + 32
+  }
+
+  &__col-sport {
+    width: $size-160; // 128 + 32
+  }
+
+  &__col-fabric {
+    width: $size-240; // 208 + 32
+  }
+
+  &__col-location {
+    width: $size-168; // 136 + 32
+  }
+
+  &__col-progress {
+    width: $size-96; // 64 + 32
+  }
+
+  &__pid {
+    color: $color-brand-primary;
+    font-weight: $font-weight-medium;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  &__progress {
+    text-align: center;
+  }
+
+  &__fabric {
+    display: flex;
+    align-items: center;
+    gap: $space-8;
+    white-space: nowrap;
+  }
+
+  &__location {
+    display: flex;
+    align-items: center;
+    gap: $space-4;
+    white-space: nowrap;
+  }
+
+  // Column settings icon lives in the header's last cell
+  &__settings {
+    vertical-align: middle;
+  }
+
+  // Row kebab (Hover=On variant 4124:34244): shown on hover or keyboard focus
+  &__row-menu {
+    vertical-align: middle;
+    opacity: 0;
+  }
+
+  tbody tr:hover &__row-menu,
+  tbody tr:focus-within &__row-menu {
+    opacity: 1;
+  }
+}
+
+// Colour swatch tile (Figma: Color Picker Tile 5356:131263)
+.color-tile {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: $size-28;
+  height: $size-24;
+  padding: $space-5 $space-8;
+  background: $color-factory-w;
+  border-radius: $radius-xs;
+  color: $color-swatch-text;
+  @include type-caption-sm($font-weight-medium);
+}

@@ -1,0 +1,40 @@
+@use '../variables' as *;
+@use '../mixins' as *;
+
+// Pill tab group (Figma: tabs 5386:83370)
+.pill-tabs {
+  display: flex;
+  align-items: center;
+  gap: $space-8;
+  padding: $space-4;
+  background: $color-bg-secondary;
+  border-radius: $radius-full;
+
+  @include mobile-down {
+    flex-wrap: wrap;
+    border-radius: $radius-modal;
+  }
+
+  &__tab {
+    @include button-reset;
+    padding: $space-2 $space-16;
+    border-radius: $radius-md;
+    color: $color-black;
+    white-space: nowrap;
+    @include type-body-md;
+
+    &[aria-selected='true'] {
+      background: $color-bg-primary;
+      border-radius: $radius-full;
+    }
+
+    // Hover variants 5072:146322 / 5072:146316: track colour, instant
+    &:hover {
+      background: $color-bg-secondary;
+    }
+
+    &:focus-visible {
+      outline-offset: 0;
+    }
+  }
+}

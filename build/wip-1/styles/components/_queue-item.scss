@@ -1,0 +1,227 @@
+@use '../variables' as *;
+@use '../mixins' as *;
+
+// Main queue item (Figma: 4124:36919 default, 5353:126345 hover, 5353:126123 expanded)
+.queue-item {
+  display: flex;
+  align-items: flex-start;
+  width: 100%;
+  max-width: $size-1396;
+
+  &__rail {
+    display: flex;
+    flex-direction: column;
+    width: $size-40;
+    padding: $space-4 0 0;
+    margin-right: $space-8;
+  }
+
+  &__number {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: $size-40;
+    height: $size-36;
+    background: $color-bg-primary;
+    border: $border-width solid transparent;
+    border-radius: $radius-md;
+    padding: 0;
+    color: $color-text-primary;
+    @include type-body-md($font-weight-medium);
+
+    @include motion-ok {
+      transition:
+        border-color $motion-rail-duration $motion-rail-easing,
+        border-radius $motion-rail-duration $motion-rail-easing;
+    }
+  }
+
+  button#{&}__number {
+    cursor: pointer;
+  }
+
+  &__rail-action {
+    @include button-reset;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: $size-40;
+    height: $size-36;
+    padding: $space-4;
+    opacity: 0;
+
+    @include motion-ok {
+      transition: opacity $motion-rail-duration $motion-rail-easing;
+    }
+  }
+
+  // Hover=On variant: bordered number box, radius 6, move and move-to-top cells
+  &:hover,
+  &:focus-within {
+    .queue-item__number {
+      border-color: $color-stroke-secondary;
+      border-radius: $radius-sm;
+    }
+
+    .queue-item__rail-action {
+      opacity: 1;
+    }
+  }
+}
+
+// Order tile
+.order-tile {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: $size-1340;
+  min-width: 0;
+  background: $color-bg-primary;
+  border: $border-default;
+  border-radius: $radius-modal;
+
+  &__header {
+    position: relative;
+    display: flex;
+    align-items: flex-start;
+    height: $size-79; // 80 from the tile's outer edge (1px tile border)
+    padding: $space-12 $space-34; // 13 / 35 from the tile's outer edge
+    background: $color-bg-tertiary;
+    border-bottom: $border-default;
+    border-radius: $radius-modal $radius-modal 0 0;
+  }
+
+  &__identity {
+    display: flex;
+    flex-direction: column;
+    gap: $space-8;
+    width: $size-288; // dates block starts at x323
+  }
+
+  &__order-row {
+    display: flex;
+    align-items: center;
+    gap: $space-8;
+  }
+
+  &__number {
+    @include type-heading-md;
+    color: $color-text-primary;
+    white-space: nowrap;
+  }
+
+  &__badges {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: $space-4;
+  }
+
+  &__dates {
+    display: grid;
+    grid-template-columns: $size-132 1fr;
+    row-gap: $space-12;
+    width: $size-280; // meta block starts at x603
+    height: $space-52;
+  }
+
+  &__date {
+    display: flex;
+    align-items: center;
+    gap: $space-4;
+    height: $size-20;
+  }
+
+  &__date-label {
+    width: $size-40;
+    color: $color-text-secondary;
+  }
+
+  &__date-value {
+    display: flex;
+    align-items: center;
+    gap: $space-4;
+    font-weight: $font-weight-medium;
+    color: $color-text-primary;
+    white-space: nowrap;
+  }
+
+  &__meta {
+    display: grid;
+    grid-template-columns: minmax(0, $size-200) minmax(0, 1fr);
+    row-gap: $space-12;
+    flex: 0 1 $size-416; // 416 at 1728, shrinks before the tile would overflow
+    min-width: 0;
+    height: $space-52;
+  }
+
+  &__meta-item {
+    display: flex;
+    align-items: center;
+    gap: $space-8;
+    height: $size-20;
+  }
+
+  &__meta-label {
+    color: $color-text-secondary;
+    white-space: nowrap;
+  }
+
+  &__meta-value {
+    width: $size-136;
+    font-weight: $font-weight-medium;
+    color: $color-text-primary;
+  }
+
+  &__menu {
+    position: absolute;
+    top: 50%;
+    right: $space-14; // 15 from the tile's outer edge
+    transform: translateY(-50%);
+  }
+
+  // Collapsed strip: "Parts 1000  Items 1000"
+  &__counts {
+    display: flex;
+    align-items: center;
+    gap: $space-16;
+    // Figma draws the tile's inside stroke over the strip's last pixel, so the
+    // 1px tile border completes the 10px bottom padding and keeps the tile at 120.
+    padding: $space-10 $space-40 $space-9;
+  }
+
+  &__count {
+    display: flex;
+    align-items: center;
+    gap: $space-4;
+  }
+
+  &__count-label {
+    color: $color-text-secondary;
+  }
+
+  &__count-value {
+    width: $size-40;
+    font-weight: $font-weight-medium;
+    color: $color-text-primary;
+  }
+
+  // Expanded (Collapse=On): parts table replaces the counts strip
+  // Expanded table is fixed-layout (about 1217px) and owns its horizontal
+  // scroll, so .queue never needs a horizontal scrollbar.
+  &__parts {
+    position: relative; // contain visually-hidden (absolute) cells inside the scroll region
+    display: none;
+    overflow-x: auto;
+  }
+
+  &--expanded {
+    .order-tile__counts {
+      display: none;
+    }
+
+    .order-tile__parts {
+      display: block;
+    }
+  }
+}

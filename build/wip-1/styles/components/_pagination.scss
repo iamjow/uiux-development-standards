@@ -1,0 +1,56 @@
+@use '../variables' as *;
+@use '../mixins' as *;
+
+// Pagination (Figma: pagination 3067:78507)
+.pagination {
+  &__list {
+    display: flex;
+    align-items: center;
+    gap: $space-30;
+
+    @include mobile-down {
+      flex-wrap: wrap;
+      gap: $space-8;
+    }
+  }
+
+  &__pages {
+    display: flex;
+    align-items: center;
+    gap: $space-8;
+  }
+
+  &__nav {
+    display: flex;
+    align-items: center;
+    color: $color-brand-primary;
+    text-decoration: none;
+    @include type-body-md($font-weight-medium);
+
+    // No previous page: Figma draws Prev in brand blue and defines no disabled
+    // style, so only the semantics change (lead decision, review round 1 / C3)
+    &[aria-disabled='true'] {
+      color: $color-brand-primary;
+      pointer-events: none;
+    }
+  }
+
+  &__page {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: $size-32;
+    height: $size-32;
+    padding: $space-8 $space-2;
+    background: $color-bg-primary;
+    border-radius: $radius-button;
+    color: $color-text-primary;
+    text-decoration: none;
+    @include type-body-md;
+
+    &[aria-current='page'] {
+      background: $color-bg-secondary;
+      font-weight: $font-weight-medium;
+    }
+  }
+}

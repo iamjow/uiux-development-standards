@@ -1,0 +1,33 @@
+@use '../variables' as *;
+
+// Icon images keep the root width/height of the exported SVG.
+.icon {
+  display: block;
+  flex-shrink: 0;
+
+  &--16 {
+    width: $size-16;
+    height: $size-16;
+  }
+
+  &--20 {
+    width: $size-20;
+    height: $size-20;
+  }
+
+  &--24 {
+    width: $size-24;
+    height: $size-24;
+  }
+
+  // 9x15 glyph centred in a 24x24 frame (Figma GripDots 5353:126089)
+  &--grip {
+    width: $size-9;
+    height: $size-15;
+    margin: $space-4-5 $space-7-5;
+  }
+
+  &--rotate-90 {
+    transform: rotate(90deg);
+  }
+}

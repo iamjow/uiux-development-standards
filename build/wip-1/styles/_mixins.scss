@@ -1,0 +1,84 @@
+@use 'variables' as *;
+
+// Breakpoint mixins. Desktop-first: the Figma frame is desktop only.
+@mixin tablet-down {
+  @media (max-width: $breakpoint-tablet) {
+    @content;
+  }
+}
+
+@mixin mobile-down {
+  @media (max-width: $breakpoint-mobile) {
+    @content;
+  }
+}
+
+// Non-essential motion only when the user has not asked for reduced motion.
+@mixin motion-ok {
+  @media (prefers-reduced-motion: no-preference) {
+    @content;
+  }
+}
+
+// Type presets
+@mixin type-heading-md {
+  font-family: $font-family-base;
+  font-size: $type-heading-md-size;
+  font-weight: $font-weight-medium;
+  line-height: $type-heading-md-line;
+  letter-spacing: $type-heading-md-tracking;
+}
+
+@mixin type-body-lg($weight: $font-weight-book) {
+  font-family: $font-family-base;
+  font-size: $type-body-lg-size;
+  font-weight: $weight;
+  line-height: $type-body-lg-line;
+  letter-spacing: $type-body-lg-tracking;
+}
+
+@mixin type-body-md($weight: $font-weight-book) {
+  font-family: $font-family-base;
+  font-size: $type-body-md-size;
+  font-weight: $weight;
+  line-height: $type-body-md-line;
+  letter-spacing: $type-body-md-tracking;
+}
+
+@mixin type-caption-sm($weight: $font-weight-book) {
+  font-family: $font-family-base;
+  font-size: $type-caption-sm-size;
+  font-weight: $weight;
+  line-height: $type-caption-sm-line;
+  letter-spacing: $type-caption-sm-tracking;
+}
+
+// Visible focus ring (3:1 against white and the light surfaces used here)
+@mixin focus-ring($offset: $space-2) {
+  outline: $border-width-2 solid $color-brand-primary;
+  outline-offset: $offset;
+}
+
+// Strip native button chrome so the component owns its look
+@mixin button-reset {
+  padding: 0;
+  border: 0;
+  background: none;
+  color: inherit;
+  font: inherit;
+  letter-spacing: inherit;
+  cursor: pointer;
+}
+
+// Hide visually but keep for assistive tech
+@mixin visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
