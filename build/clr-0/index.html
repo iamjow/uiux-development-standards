@@ -1,0 +1,510 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Customize Colors - BLB, Set-In, Full Button Jersey | Customizer</title>
+  <link rel="stylesheet" href="styles/app.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <div class="shell">
+    <header class="shell__top-bar top-bar">
+      <a class="top-bar__back" href="#">
+        <img class="icon icon--20" src="assets/icons/chevron-left.svg" alt="" width="20" height="20">
+        <span class="top-bar__back-label">Back to Baseball</span>
+      </a>
+      <div class="top-bar__tools">
+        <button type="button" class="tool-action">
+          <img class="icon icon--20" src="assets/icons/arrow-uturn-left.svg" alt="" width="20" height="20">
+          Undo
+        </button>
+        <button type="button" class="tool-action">
+          <img class="icon icon--20" src="assets/icons/arrow-uturn-right.svg" alt="" width="20" height="20">
+          Redo
+        </button>
+        <button type="button" class="tool-action">
+          <img class="icon icon--20" src="assets/icons/zoom-in.svg" alt="" width="20" height="20">
+          Zoom
+        </button>
+      </div>
+      <div class="top-bar__actions">
+        <button type="button" class="button button--secondary">Save</button>
+        <button type="button" class="button button--primary">Add to Cart</button>
+      </div>
+    </header>
+
+    <nav class="rail-nav" aria-label="Customizer sections">
+      <ul class="rail-nav__list">
+        <li>
+          <a class="rail-nav__item" href="#">
+            <img class="icon icon--24" src="assets/icons/information-circle.svg" alt="" width="24" height="24">
+            Details
+          </a>
+        </li>
+        <li>
+          <a class="rail-nav__item" href="#">
+            <img class="icon icon--24" src="assets/icons/t-shirt.svg" alt="" width="24" height="24">
+            Options
+          </a>
+        </li>
+        <li>
+          <a class="rail-nav__item" href="#main" aria-current="page">
+            <img class="icon icon--24" src="assets/icons/swatch.svg" alt="" width="24" height="24">
+            Customize
+          </a>
+        </li>
+        <li>
+          <a class="rail-nav__item" href="#">
+            <img class="icon icon--24" src="assets/icons/square-3-stack-3d.svg" alt="" width="24" height="24">
+            Applications
+          </a>
+        </li>
+        <li>
+          <a class="rail-nav__item" href="#">
+            <img class="icon icon--24" src="assets/icons/users.svg" alt="" width="24" height="24">
+            Roster
+          </a>
+        </li>
+        <li>
+          <a class="rail-nav__item" href="#">
+            <img class="icon icon--24" src="assets/icons/list-bullet.svg" alt="" width="24" height="24">
+            Summary
+          </a>
+        </li>
+      </ul>
+    </nav>
+
+    <main id="main" class="workspace">
+      <section class="toolbox" aria-label="Customize colors">
+        <div class="toolbox__scroll">
+          <div class="toolbox__top">
+            <div class="field">
+              <label class="field__label" for="organization">Organization</label>
+              <select id="organization" class="field__control is-placeholder" name="organization">
+                <option value="">Choose Organization (optional)</option>
+              </select>
+              <img class="icon icon--20 field__icon" src="assets/icons/chevron-down.svg" alt="" width="20" height="20">
+            </div>
+
+            <section class="colors-in-use" aria-labelledby="colors-in-use-title">
+              <h2 id="colors-in-use-title" class="colors-in-use__title">Colors In Use</h2>
+              <ul class="colors-in-use__list">
+                <li class="color-tile-item">
+                  <button type="button" class="color-tile">
+                    <span class="swatch swatch--w">W<span class="visually-hidden">, White</span></span>
+                  </button>
+                </li>
+                <li class="color-tile-item">
+                  <button type="button" class="color-tile">
+                    <span class="swatch swatch--y">Y<span class="visually-hidden">, Yellow</span></span>
+                  </button>
+                </li>
+                <li class="color-tile-item">
+                  <button type="button" class="color-tile">
+                    <span class="swatch swatch--m">C<span class="visually-hidden">, Crimson</span></span>
+                  </button>
+                </li>
+                <li class="color-tile-item">
+                  <button type="button" class="color-tile">
+                    <span class="swatch swatch--g">G<span class="visually-hidden">, Gold</span></span>
+                  </button>
+                </li>
+                <li class="color-tile-item">
+                  <button type="button" class="color-tile" aria-expanded="false" aria-controls="color-picker">
+                    <span class="swatch swatch--o">O<span class="visually-hidden">, Orange. Choose a color</span></span>
+                  </button>
+
+                  <div id="color-picker" class="color-picker" role="dialog" aria-label="Color picker" hidden>
+                    <fieldset class="color-picker__group">
+                      <legend class="color-picker__legend">Core Colors</legend>
+                      <div class="color-picker__grid">
+                        <div class="color-picker__option">
+                          <input class="color-picker__input" type="radio" name="color" id="color-b" value="b">
+                          <label class="swatch swatch--b color-picker__tile" for="color-b">B</label>
+                        </div>
+                        <div class="color-picker__option">
+                          <input class="color-picker__input" type="radio" name="color" id="color-w" value="w">
+                          <label class="swatch swatch--w color-picker__tile" for="color-w">W</label>
+                        </div>
+                        <div class="color-picker__option">
+                          <input class="color-picker__input" type="radio" name="color" id="color-gr" value="gr">
+                          <label class="swatch swatch--gr color-picker__tile" for="color-gr">GR</label>
+                        </div>
+                        <div class="color-picker__option">
+                          <input class="color-picker__input" type="radio" name="color" id="color-sg" value="sg">
+                          <label class="swatch swatch--sg color-picker__tile" for="color-sg">SG</label>
+                        </div>
+                        <div class="color-picker__option">
+                          <input class="color-picker__input" type="radio" name="color" id="color-c" value="c">
+                          <label class="swatch swatch--c color-picker__tile" for="color-c">C</label>
+                        </div>
+                        <div class="color-picker__option">
+                          <input class="color-picker__input" type="radio" name="color" id="color-r" value="r">
+                          <label class="swatch swatch--r color-picker__tile" for="color-r">R</label>
+                        </div>
+                        <div class="color-picker__option">
+                          <input class="color-picker__input" type="radio" name="color" id="color-o" value="o" checked>
+                          <label class="swatch swatch--o color-picker__tile" for="color-o">O</label>
+                        </div>
+                        <div class="color-picker__option">
+                          <input class="color-picker__input" type="radio" name="color" id="color-y" value="y">
+                          <label class="swatch swatch--y color-picker__tile" for="color-y">Y</label>
+                        </div>
+                        <div class="color-picker__option">
+                          <input class="color-picker__input" type="radio" name="color" id="color-kg" value="kg">
+                          <label class="swatch swatch--kg color-picker__tile" for="color-kg">KG</label>
+                        </div>
+                        <div class="color-picker__option">
+                          <input class="color-picker__input" type="radio" name="color" id="color-ar" value="ar">
+                          <label class="swatch swatch--ar color-picker__tile" for="color-ar">AR</label>
+                        </div>
+                        <div class="color-picker__option">
+                          <input class="color-picker__input" type="radio" name="color" id="color-nb" value="nb">
+                          <label class="swatch swatch--nb color-picker__tile" for="color-nb">NB</label>
+                        </div>
+                        <div class="color-picker__option">
+                          <input class="color-picker__input" type="radio" name="color" id="color-rb" value="rb">
+                          <label class="swatch swatch--rb color-picker__tile" for="color-rb">RB</label>
+                        </div>
+                      </div>
+                    </fieldset>
+                    <fieldset class="color-picker__group">
+                      <legend class="color-picker__legend">Additional Colors</legend>
+                      <div class="color-picker__grid">
+                        <div class="color-picker__option">
+                          <input class="color-picker__input" type="radio" name="color" id="color-cg" value="cg">
+                          <label class="swatch swatch--cg color-picker__tile" for="color-cg">CG</label>
+                        </div>
+                        <div class="color-picker__option">
+                          <input class="color-picker__input" type="radio" name="color" id="color-cb-carbon" value="cb-carbon">
+                          <label class="swatch swatch--cb-carbon color-picker__tile" for="color-cb-carbon">CB</label>
+                        </div>
+                        <div class="color-picker__option">
+                          <input class="color-picker__input" type="radio" name="color" id="color-cc" value="cc">
+                          <label class="swatch swatch--cc color-picker__tile" for="color-cc">CC</label>
+                        </div>
+                        <div class="color-picker__option">
+                          <input class="color-picker__input" type="radio" name="color" id="color-ag" value="ag">
+                          <label class="swatch swatch--ag color-picker__tile" for="color-ag">AG</label>
+                        </div>
+                        <div class="color-picker__option">
+                          <input class="color-picker__input" type="radio" name="color" id="color-cr" value="cr">
+                          <label class="swatch swatch--cr color-picker__tile" for="color-cr">CR</label>
+                        </div>
+                        <div class="color-picker__option">
+                          <input class="color-picker__input" type="radio" name="color" id="color-m" value="m">
+                          <label class="swatch swatch--m color-picker__tile" for="color-m">M</label>
+                        </div>
+                        <div class="color-picker__option">
+                          <input class="color-picker__input" type="radio" name="color" id="color-se" value="se">
+                          <label class="swatch swatch--se color-picker__tile" for="color-se">SE</label>
+                        </div>
+                        <div class="color-picker__option">
+                          <input class="color-picker__input" type="radio" name="color" id="color-brr" value="brr">
+                          <label class="swatch swatch--brr color-picker__tile" for="color-brr">BRR</label>
+                        </div>
+                        <div class="color-picker__option">
+                          <input class="color-picker__input" type="radio" name="color" id="color-ur" value="ur">
+                          <label class="swatch swatch--ur color-picker__tile" for="color-ur">UR</label>
+                        </div>
+                        <div class="color-picker__option">
+                          <input class="color-picker__input" type="radio" name="color" id="color-np" value="np">
+                          <label class="swatch swatch--np color-picker__tile" for="color-np">NP</label>
+                        </div>
+                        <div class="color-picker__option">
+                          <input class="color-picker__input" type="radio" name="color" id="color-pk" value="pk">
+                          <label class="swatch swatch--pk color-picker__tile" for="color-pk">PK</label>
+                        </div>
+                        <div class="color-picker__option">
+                          <input class="color-picker__input" type="radio" name="color" id="color-tx" value="tx">
+                          <label class="swatch swatch--tx color-picker__tile" for="color-tx">TX</label>
+                        </div>
+                        <div class="color-picker__option">
+                          <input class="color-picker__input" type="radio" name="color" id="color-to" value="to">
+                          <label class="swatch swatch--to color-picker__tile" for="color-to">TO</label>
+                        </div>
+                        <div class="color-picker__option">
+                          <input class="color-picker__input" type="radio" name="color" id="color-og" value="og">
+                          <label class="swatch swatch--og color-picker__tile" for="color-og">OG</label>
+                        </div>
+                        <div class="color-picker__option">
+                          <input class="color-picker__input" type="radio" name="color" id="color-bg" value="bg">
+                          <label class="swatch swatch--bg color-picker__tile" for="color-bg">BG</label>
+                        </div>
+                        <div class="color-picker__option">
+                          <input class="color-picker__input" type="radio" name="color" id="color-vg" value="vg">
+                          <label class="swatch swatch--vg color-picker__tile" for="color-vg">VG</label>
+                        </div>
+                        <div class="color-picker__option">
+                          <input class="color-picker__input" type="radio" name="color" id="color-ds" value="ds">
+                          <label class="swatch swatch--ds color-picker__tile" for="color-ds">DS</label>
+                        </div>
+                        <div class="color-picker__option">
+                          <input class="color-picker__input" type="radio" name="color" id="color-g" value="g">
+                          <label class="swatch swatch--g color-picker__tile" for="color-g">G</label>
+                        </div>
+                        <div class="color-picker__option">
+                          <input class="color-picker__input" type="radio" name="color" id="color-op" value="op">
+                          <label class="swatch swatch--op color-picker__tile" for="color-op">OP</label>
+                        </div>
+                        <div class="color-picker__option">
+                          <input class="color-picker__input" type="radio" name="color" id="color-br" value="br">
+                          <label class="swatch swatch--br color-picker__tile" for="color-br">BR</label>
+                        </div>
+                        <div class="color-picker__option">
+                          <input class="color-picker__input" type="radio" name="color" id="color-yb" value="yb">
+                          <label class="swatch swatch--yb color-picker__tile" for="color-yb">YB</label>
+                        </div>
+                        <div class="color-picker__option">
+                          <input class="color-picker__input" type="radio" name="color" id="color-rg" value="rg">
+                          <label class="swatch swatch--rg color-picker__tile" for="color-rg">RG</label>
+                        </div>
+                        <div class="color-picker__option">
+                          <input class="color-picker__input" type="radio" name="color" id="color-mo" value="mo">
+                          <label class="swatch swatch--mo color-picker__tile" for="color-mo">MO</label>
+                        </div>
+                        <div class="color-picker__option">
+                          <input class="color-picker__input" type="radio" name="color" id="color-df" value="df">
+                          <label class="swatch swatch--df color-picker__tile" for="color-df">DF</label>
+                        </div>
+                        <div class="color-picker__option">
+                          <input class="color-picker__input" type="radio" name="color" id="color-fg" value="fg">
+                          <label class="swatch swatch--fg color-picker__tile" for="color-fg">FG</label>
+                        </div>
+                        <div class="color-picker__option">
+                          <input class="color-picker__input" type="radio" name="color" id="color-lg" value="lg">
+                          <label class="swatch swatch--lg color-picker__tile" for="color-lg">LG</label>
+                        </div>
+                        <div class="color-picker__option">
+                          <input class="color-picker__input" type="radio" name="color" id="color-s" value="s">
+                          <label class="swatch swatch--s color-picker__tile" for="color-s">S</label>
+                        </div>
+                        <div class="color-picker__option">
+                          <input class="color-picker__input" type="radio" name="color" id="color-mb" value="mb">
+                          <label class="swatch swatch--mb color-picker__tile" for="color-mb">MB</label>
+                        </div>
+                        <div class="color-picker__option">
+                          <input class="color-picker__input" type="radio" name="color" id="color-t" value="t">
+                          <label class="swatch swatch--t color-picker__tile" for="color-t">T</label>
+                        </div>
+                        <div class="color-picker__option">
+                          <input class="color-picker__input" type="radio" name="color" id="color-la" value="la">
+                          <label class="swatch swatch--la color-picker__tile" for="color-la">LA</label>
+                        </div>
+                        <div class="color-picker__option">
+                          <input class="color-picker__input" type="radio" name="color" id="color-p" value="p">
+                          <label class="swatch swatch--p color-picker__tile" for="color-p">P</label>
+                        </div>
+                        <div class="color-picker__option">
+                          <input class="color-picker__input" type="radio" name="color" id="color-dp" value="dp">
+                          <label class="swatch swatch--dp color-picker__tile" for="color-dp">DP</label>
+                        </div>
+                        <div class="color-picker__option">
+                          <input class="color-picker__input" type="radio" name="color" id="color-dn" value="dn">
+                          <label class="swatch swatch--dn color-picker__tile" for="color-dn">DN</label>
+                        </div>
+                        <div class="color-picker__option">
+                          <input class="color-picker__input" type="radio" name="color" id="color-ar-2" value="ar">
+                          <label class="swatch swatch--ar color-picker__tile" for="color-ar-2">AR</label>
+                        </div>
+                        <div class="color-picker__option">
+                          <input class="color-picker__input" type="radio" name="color" id="color-an" value="an">
+                          <label class="swatch swatch--an color-picker__tile" for="color-an">AN</label>
+                        </div>
+                        <div class="color-picker__option">
+                          <input class="color-picker__input" type="radio" name="color" id="color-dr" value="dr">
+                          <label class="swatch swatch--dr color-picker__tile" for="color-dr">DR</label>
+                        </div>
+                        <div class="color-picker__option">
+                          <input class="color-picker__input" type="radio" name="color" id="color-ib" value="ib">
+                          <label class="swatch swatch--ib color-picker__tile" for="color-ib">IB</label>
+                        </div>
+                        <div class="color-picker__option">
+                          <input class="color-picker__input" type="radio" name="color" id="color-cb-columbia" value="cb-columbia">
+                          <label class="swatch swatch--cb-columbia color-picker__tile" for="color-cb-columbia">CB</label>
+                        </div>
+                        <div class="color-picker__option">
+                          <input class="color-picker__input" type="radio" name="color" id="color-ab" value="ab">
+                          <label class="swatch swatch--ab color-picker__tile" for="color-ab">AB</label>
+                        </div>
+                        <div class="color-picker__option">
+                          <input class="color-picker__input" type="radio" name="color" id="color-ca" value="ca">
+                          <label class="swatch swatch--ca color-picker__tile" for="color-ca">CA</label>
+                        </div>
+                      </div>
+                    </fieldset>
+                    <p class="color-picker__note">Some colors are not available on Twill.</p>
+                  </div>
+                </li>
+                <li class="color-tile-item">
+                  <button type="button" class="color-tile">
+                    <span class="swatch swatch--b">B<span class="visually-hidden">, Black</span></span>
+                  </button>
+                </li>
+                <li class="color-tile-item">
+                  <button type="button" class="color-tile color-tile--add" aria-label="Add color">
+                    <img class="icon icon--20" src="assets/icons/plus.svg" alt="" width="20" height="20">
+                  </button>
+                </li>
+              </ul>
+            </section>
+          </div>
+
+          <hr class="toolbox__divider">
+
+          <div class="customize">
+          <ul class="color-lines">
+            <li>
+              <button type="button" class="color-line color-line--trigger" data-highlight="highlight-body">
+                <span class="color-line__label">Body</span>
+                <span class="color-line__value"><span class="color-line__name">White</span><span class="swatch swatch--row swatch--w">W</span></span>
+              </button>
+            </li>
+            <li>
+              <button type="button" class="color-line color-line--trigger" data-highlight="highlight-sleeves">
+                <span class="color-line__label">Sleeves</span>
+                <span class="color-line__value"><span class="color-line__name">White</span><span class="swatch swatch--row swatch--w">W</span></span>
+              </button>
+            </li>
+            <li class="color-line">
+              <span class="color-line__label">Body Stripe 1</span>
+              <span class="color-line__value"><span class="color-line__name">Yellow</span><span class="swatch swatch--row swatch--y">Y</span></span>
+            </li>
+            <li class="color-line">
+              <span class="color-line__label">Body Stripe 2</span>
+              <span class="color-line__value"><span class="color-line__name">Crimson</span><span class="swatch swatch--row swatch--m">C</span></span>
+            </li>
+            <li class="color-line">
+              <span class="color-line__label">Body Stripe 3</span>
+              <span class="color-line__value"><span class="color-line__name">Gold</span><span class="swatch swatch--row swatch--g">G</span></span>
+            </li>
+            <li class="color-line">
+              <span class="color-line__label">Body Stripe 4</span>
+              <span class="color-line__value"><span class="color-line__name">Orange</span><span class="swatch swatch--row swatch--o">O</span></span>
+            </li>
+            <li class="color-line">
+              <span class="color-line__label">Body Stripe 5</span>
+              <span class="color-line__value"><span class="color-line__name">Crimson</span><span class="swatch swatch--row swatch--m">C</span></span>
+            </li>
+            <li class="color-line">
+              <span class="color-line__label">Body Stripe 6</span>
+              <span class="color-line__value"><span class="color-line__name">Yellow</span><span class="swatch swatch--row swatch--y">Y</span></span>
+            </li>
+            <li class="color-line">
+              <span class="color-line__label">Body Stripe 7</span>
+              <span class="color-line__value"><span class="color-line__name">Gold</span><span class="swatch swatch--row swatch--g">G</span></span>
+            </li>
+            <li class="color-line">
+              <span class="color-line__label">Body Stripe 8</span>
+              <span class="color-line__value"><span class="color-line__name">Crimson</span><span class="swatch swatch--row swatch--m">C</span></span>
+            </li>
+            <li class="color-line">
+              <span class="color-line__label">Body Panel</span>
+              <span class="color-line__value"><span class="color-line__name">Orange</span><span class="swatch swatch--row swatch--o">O</span></span>
+            </li>
+            <li class="color-line">
+              <span class="color-line__label">Sleeve Stripe 1</span>
+              <span class="color-line__value"><span class="color-line__name">Yellow</span><span class="swatch swatch--row swatch--y">Y</span></span>
+            </li>
+            <li class="color-line">
+              <span class="color-line__label">Sleeve Stripe 2</span>
+              <span class="color-line__value"><span class="color-line__name">Crimson</span><span class="swatch swatch--row swatch--m">C</span></span>
+            </li>
+            <li class="color-line">
+              <span class="color-line__label">Sleeve Stripe 3</span>
+              <span class="color-line__value"><span class="color-line__name">Orange</span><span class="swatch swatch--row swatch--o">O</span></span>
+            </li>
+            <li class="color-line">
+              <span class="color-line__label">Sleeve Stripe 4</span>
+              <span class="color-line__value"><span class="color-line__name">Gold</span><span class="swatch swatch--row swatch--g">G</span></span>
+            </li>
+            <li class="color-line">
+              <span class="color-line__label">Sleeve Stripe 5</span>
+              <span class="color-line__value"><span class="color-line__name">Yellow</span><span class="swatch swatch--row swatch--y">Y</span></span>
+            </li>
+            <li class="color-line">
+              <span class="color-line__label">Sleeve Panel</span>
+              <span class="color-line__value"><span class="color-line__name">Orange</span><span class="swatch swatch--row swatch--o">O</span></span>
+            </li>
+          </ul>
+
+          <hr class="toolbox__divider">
+
+          <div class="brand-logo-block">
+            <div class="color-line">
+              <span class="color-line__label">Brand Logo</span>
+              <span class="color-line__value"><span class="color-line__name">Orange</span><span class="swatch swatch--row swatch--o">O</span></span>
+            </div>
+            <div class="field">
+              <span class="field__label" id="location-label">Location</span>
+              <button type="button" id="location" class="field__control" aria-haspopup="listbox" aria-expanded="false" aria-controls="location-list" aria-labelledby="location-label location-value">
+                <span id="location-value">Right Chest</span>
+              </button>
+              <img class="icon icon--20 field__icon" src="assets/icons/chevron-down.svg" alt="" width="20" height="20">
+              <ul id="location-list" class="popover-list" role="listbox" aria-labelledby="location-label" hidden>
+                <li class="popover-list__option" role="option" aria-selected="false" tabindex="-1"><span data-option-name>Left Chest</span></li>
+                <li class="popover-list__option" role="option" aria-selected="true" tabindex="-1"><span data-option-name>Right Chest</span></li>
+                <li class="popover-list__option" role="option" aria-selected="false" tabindex="-1"><span data-option-name>Left Sleeve</span></li>
+                <li class="popover-list__option" role="option" aria-selected="false" tabindex="-1"><span data-option-name>Right Sleeve</span></li>
+                <li class="popover-list__option" role="option" aria-selected="false" tabindex="-1"><span data-option-name>No Logo</span><span aria-hidden="true">&bull;</span><span>$20 per item</span></li>
+              </ul>
+            </div>
+          </div>
+          </div>
+        </div>
+
+        <div class="toolbox__footer">
+          <button type="button" class="button button--primary">Add Piping</button>
+          <button type="button" class="button button--primary">Add Pattern</button>
+        </div>
+      </section>
+
+      <section class="viewer" aria-label="Preview">
+        <div class="viewer__info">
+          <h1 class="viewer__title">BLB, Set-In, Full Button Jersey</h1>
+          <ul class="viewer__details">
+            <li>Astros</li>
+            <li>Full Sublimation</li>
+            <li>Estimated Ship Date: 4/6/25</li>
+            <li>Youth/Mens: $76.67 - $80.34</li>
+          </ul>
+        </div>
+
+        <div class="viewer__stage">
+          <img id="jersey-view" class="viewer__image" src="assets/images/jersey-front.png" alt="Astros set-in full button jersey, front view" width="613" height="672">
+          <img class="viewer__brand-logo" src="assets/images/brand-logo.svg" alt="" width="45" height="24">
+          <img id="highlight-body" class="jersey-highlight jersey-highlight--body" src="assets/images/body-hover.svg" alt="" width="564" height="644" hidden>
+          <img id="highlight-sleeves" class="jersey-highlight jersey-highlight--sleeves" src="assets/images/sleeve-hover.svg" alt="" width="564" height="626" hidden>
+        </div>
+
+        <ul class="view-thumbs">
+          <li>
+            <button type="button" class="view-thumbs__item" aria-pressed="true" data-view="front view">
+              <img src="assets/images/jersey-front.png" alt="Front view" width="83" height="91">
+            </button>
+          </li>
+          <li>
+            <button type="button" class="view-thumbs__item" aria-pressed="false" data-view="back view">
+              <img src="assets/images/jersey-back.png" alt="Back view" width="83" height="91">
+            </button>
+          </li>
+          <li>
+            <button type="button" class="view-thumbs__item" aria-pressed="false" data-view="left view">
+              <img src="assets/images/jersey-left.png" alt="Left view" width="83" height="91">
+            </button>
+          </li>
+          <li>
+            <button type="button" class="view-thumbs__item" aria-pressed="false" data-view="right view">
+              <img src="assets/images/jersey-right.png" alt="Right view" width="83" height="91">
+            </button>
+          </li>
+        </ul>
+      </section>
+    </main>
+  </div>
+
+  <script src="js/app.js"></script>
+</body>
+</html>

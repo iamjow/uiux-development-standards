@@ -95,7 +95,7 @@ All styling must be written using SCSS.
 Use a reusable SCSS architecture. Example for a plain HTML project:
 
 ```text
-style/
+styles/
   app.scss
   _variables.scss
   _mixins.scss
@@ -116,9 +116,12 @@ style/
     _dashboard.scss
     _settings.scss
     _profile.scss
+  responsive/
+    _tablet.scss
+    _mobile.scss
 ```
 
-Each component owns its styles, including its responsive rules. Use breakpoint mixins from `_mixins.scss` inside the component file rather than a separate per-breakpoint file.
+Component, layout, and page partials hold the desktop (base) rules only. All responsive styles live in `responsive/`, one partial per breakpoint (`_tablet.scss`, `_mobile.scss`, plus any extra breakpoint the project defines), each wrapping its overrides in the matching breakpoint mixin from `_mixins.scss` and grouped by component in the same order as the component partials. `app.scss` imports `responsive/` last so the overrides win by order, not by specificity. Do not write media queries inside component, layout, or page partials.
 
 Avoid placing all styles inside one file.
 
@@ -185,7 +188,7 @@ Each layout has its own SCSS file under `layouts/`.
 
 Support desktop, tablet, and mobile by default. When the project supplies breakpoints or responsive requirements, follow them exactly.
 
-Use responsive SCSS through shared breakpoint mixins.
+Use responsive SCSS through shared breakpoint mixins, written in the `responsive/` partials described in section 4, never inside component, layout, or page partials.
 
 Avoid duplicated layouts.
 

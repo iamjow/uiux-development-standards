@@ -26,7 +26,7 @@ The prompt gives you the target project path, the absolute paths of the two stan
 - A global partial exists (`_global.scss` or equivalent).
 - Partials are split into `components/`, `layouts/`, and `pages/`, or the framework equivalent: component-scoped SCSS per component, with tokens and mixins still imported from the shared partials (rubric §2).
 - Styles are not concentrated in one file. All component and layout styles in one file is High. One partial mixing several unrelated components is Medium.
-- Each component's responsive rules live in that component's file. Per-breakpoint files such as `_mobile.scss` or `_responsive.scss` are Medium.
+- All responsive styles live in `responsive/`, one partial per breakpoint (`_tablet.scss`, `_mobile.scss`), imported last in the entry file. A media query inside a component, layout, or page partial is Medium; group them into one finding. Media queries present but no `responsive/` folder is Medium.
 - Partial file names are kebab-case with a leading underscore (Dev §6). Do not flag framework component file names such as `ProductCard.vue`; those follow framework convention.
 
 ### Layout (Dev §7) → R6
@@ -61,6 +61,6 @@ Search every authored SCSS file and SCSS block except `_variables.scss`:
 
 ## Output
 
-Use the rubric §5 format with the `SCSS` prefix. Coverage rows for: `_variables.scss`, `_mixins.scss`, global partial, components/layouts/pages split, single-file concentration, per-component responsive rules, partial naming, layout files, media queries present, breakpoint mixins used, Flexbox/Grid layout, raw colors, raw fonts, raw spacing/type/radius/shadow, redefined brand tokens, reskin readiness, duplicate component styles, duplicate declaration blocks.
+Use the rubric §5 format with the `SCSS` prefix. Coverage rows for: `_variables.scss`, `_mixins.scss`, global partial, components/layouts/pages split, single-file concentration, responsive folder, partial naming, layout files, media queries present, breakpoint mixins used, Flexbox/Grid layout, raw colors, raw fonts, raw spacing/type/radius/shadow, redefined brand tokens, reskin readiness, duplicate component styles, duplicate declaration blocks.
 
 When you count literals, show the command you used in Context so the orchestrator can reproduce the number.

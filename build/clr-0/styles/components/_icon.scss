@@ -1,0 +1,17 @@
+@use '../variables' as *;
+
+// Icon images keep the root width/height of the exported SVG.
+.icon {
+  display: block;
+  flex-shrink: 0;
+
+  &--20 {
+    width: $size-20;
+    height: $size-20;
+  }
+
+  &--24 {
+    width: $size-24;
+    height: $size-24;
+  }
+}

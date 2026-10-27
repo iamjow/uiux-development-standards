@@ -1,0 +1,42 @@
+@use '../variables' as *;
+@use '../mixins' as *;
+
+// Side Nav (Figma: 4320:41914): 96 wide rail of 80x80 icon-over-label items
+.rail-nav {
+  padding: $space-8;
+  background: $color-bg-primary;
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: $space-8;
+  }
+
+  &__item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: $space-8;
+    width: $size-80;
+    height: $size-80;
+    color: $color-black;
+    text-align: center;
+    text-decoration: none;
+    border-radius: $radius-modal;
+    @include type-caption-sm($font-weight-medium);
+
+    // Selected (Figma: Customize I4320:41914;3027:12663)
+    &[aria-current='page'] {
+      background: $color-bg-selected;
+      border-radius: $radius-12;
+    }
+  }
+
+  @include tablet-down {
+    &__list {
+      flex-direction: row;
+      flex-wrap: wrap;
+    }
+  }
+}

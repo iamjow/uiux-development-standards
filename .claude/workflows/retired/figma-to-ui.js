@@ -15,9 +15,9 @@ export const meta = {
 
 // ---------------------------------------------------------------------------
 // Team
-//   Every agentType below is defined in .claude/agents/design-to-ui-implementation/.
-//   This workflow is the "design to UI implementation" process and uses no other
-//   agents. Add a teammate by adding a file there and an agent() wrapper here.
+//   The agentTypes below were defined in .claude/agents/design-to-ui-implementation/,
+//   which was removed on 2026-10-26. This script is kept for reference only and no
+//   longer runs. The live team is .claude/agents/ui-implementation/, run by /build-ui.
 // ---------------------------------------------------------------------------
 // Inputs
 //   figmaUrl        one of   Figma design URL with node-id

@@ -1,0 +1,18 @@
+// CLR 0 (Customizer, Customize tab, colors flow start) stylesheet entry.
+// Compile: npx sass styles/app.scss styles/app.css
+@use 'global';
+@use 'layouts/shell';
+@use 'layouts/top-bar';
+@use 'layouts/rail-nav';
+@use 'layouts/viewer';
+@use 'components/icon';
+@use 'components/button';
+@use 'components/tool-action';
+@use 'components/field';
+@use 'components/swatch';
+@use 'components/color-tile';
+@use 'components/color-line';
+@use 'components/toolbox';
+@use 'components/color-picker';
+@use 'components/popover-list';
+@use 'components/jersey-highlight';

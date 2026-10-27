@@ -1,0 +1,279 @@
+// Design tokens for the CLR 0 frame (Builder Page, Customizer).
+// Every colour, font, spacing, radius, shadow and motion value used by a
+// component or layout resolves to one of these tokens. Change the theme here,
+// not in components. Names follow build/wip-1; this design is zinc/black, so
+// most colour tokens are new to this build.
+
+// ---------------------------------------------------------------------------
+// Colour
+// ---------------------------------------------------------------------------
+$color-white: #ffffff;               // Tailwind/White, text/inverse
+$color-black: #000000;               // Tailwind/Black
+$color-zinc-100: #f4f4f5;            // Color/Rocky/100 (viewer background)
+$color-zinc-200: #e4e4e7;            // zinc/200, Color/Rocky/200 (hairlines)
+$color-zinc-400: #a1a1aa;            // Color/Text/tertiary
+$color-zinc-500: #71717a;            // Color/Text/secondary
+$color-zinc-800: #27272a;            // Color/bg/button/primary-hover
+$color-zinc-900: #18181b;            // Color/bg/button/primary-default, text/primary (swatch letter)
+$color-zinc-950: #09090b;            // Color/Text/primary
+
+$color-bg-primary: $color-white;     // Color/bg/surface/surface-primary
+$color-bg-selected: #ececee;         // surface-primary-selected (nav item, tooltip)
+$color-stroke-default: $color-zinc-200;
+$color-text-primary: $color-zinc-950;
+$color-text-secondary: $color-zinc-500;
+$color-text-tertiary: $color-zinc-400;
+$color-button-primary-bg: $color-zinc-900;
+$color-button-primary-hover-bg: $color-zinc-800;
+$color-button-primary-text: $color-white;
+$color-button-secondary-text: $color-zinc-900;
+$color-button-secondary-hover-bg: rgba(24, 24, 27, 0.02); // #18181b at 2%
+$color-swatch-text: $color-zinc-900;       // dark swatch letter
+$color-swatch-text-inverse: $color-white;  // light swatch letter
+$color-focus-ring: $color-zinc-900;        // 2px ring, 3:1+ on every surface here
+
+// Factory colours (Color/Factory/*). The map drives the swatch colour
+// modifiers; `ink` is the letter colour variant drawn in Figma.
+$color-factory-w: #d9d9d9;   // White
+$color-factory-y: #f7fb0f;   // Yellow
+$color-factory-m: #5c0000;   // Maroon (labelled "Crimson" in the rows)
+$color-factory-g: #ffba00;   // Gold
+$color-factory-o: #f54900;   // Orange
+$color-factory-b: #000000;   // Black
+$color-factory-gr: #888c8b;
+$color-factory-sg: #bdc4c7;
+$color-factory-c: #9c0000;
+$color-factory-r: #d10000;
+$color-factory-kg: #00782b;
+$color-factory-ar: #03428a;
+$color-factory-nb: #000c39;
+$color-factory-rb: #002792;
+$color-factory-cg: #424242;
+$color-factory-cb-carbon: #5a5e67;
+$color-factory-cc: #656766;
+$color-factory-ag: #949494;
+$color-factory-cr: #fbf9ef;
+$color-factory-se: #6b0c1e;
+$color-factory-brr: #ad0000;
+$color-factory-ur: #e01010;
+$color-factory-np: #ff4689;
+$color-factory-pk: #ffc8e2;
+$color-factory-tx: #b84d00;
+$color-factory-to: #ff8c00;
+$color-factory-og: #b18500;
+$color-factory-bg: #b09f63;
+$color-factory-vg: #b5a773;
+$color-factory-ds: #cec8a4;
+$color-factory-op: #ccde00;
+$color-factory-br: #2b1500;
+$color-factory-yb: #3a2513;
+$color-factory-rg: #303a1a;
+$color-factory-mo: #4a472e;
+$color-factory-df: #00240d;
+$color-factory-fg: #003614;
+$color-factory-lg: #52c000;
+$color-factory-s: #c9ff00;
+$color-factory-mb: #20a495;
+$color-factory-t: #177378;
+$color-factory-la: #a493cf;
+$color-factory-p: #230773;
+$color-factory-dp: #130047;
+$color-factory-dn: #000000;
+$color-factory-an: #010b31;
+$color-factory-dr: #001b64;
+$color-factory-ib: #6e8496;
+$color-factory-cb-columbia: #6896c2;
+$color-factory-ab: #56acde;
+$color-factory-ca: #81bffa;
+
+$factory-colors: (
+  w: (bg: $color-factory-w, ink: dark),
+  y: (bg: $color-factory-y, ink: dark),
+  m: (bg: $color-factory-m, ink: light),
+  g: (bg: $color-factory-g, ink: dark),
+  o: (bg: $color-factory-o, ink: light),
+  b: (bg: $color-factory-b, ink: light),
+  gr: (bg: $color-factory-gr, ink: light),
+  sg: (bg: $color-factory-sg, ink: dark),
+  c: (bg: $color-factory-c, ink: light),
+  r: (bg: $color-factory-r, ink: light),
+  kg: (bg: $color-factory-kg, ink: dark),
+  ar: (bg: $color-factory-ar, ink: light),
+  nb: (bg: $color-factory-nb, ink: light),
+  rb: (bg: $color-factory-rb, ink: light),
+  cg: (bg: $color-factory-cg, ink: light),
+  cb-carbon: (bg: $color-factory-cb-carbon, ink: light),
+  cc: (bg: $color-factory-cc, ink: light),
+  ag: (bg: $color-factory-ag, ink: light),
+  cr: (bg: $color-factory-cr, ink: dark),
+  se: (bg: $color-factory-se, ink: light),
+  brr: (bg: $color-factory-brr, ink: light),
+  ur: (bg: $color-factory-ur, ink: dark),
+  np: (bg: $color-factory-np, ink: dark),
+  pk: (bg: $color-factory-pk, ink: dark),
+  tx: (bg: $color-factory-tx, ink: dark),
+  to: (bg: $color-factory-to, ink: dark),
+  og: (bg: $color-factory-og, ink: dark),
+  bg: (bg: $color-factory-bg, ink: dark),
+  vg: (bg: $color-factory-vg, ink: dark),
+  ds: (bg: $color-factory-ds, ink: dark),
+  op: (bg: $color-factory-op, ink: dark),
+  br: (bg: $color-factory-br, ink: light),
+  yb: (bg: $color-factory-yb, ink: light),
+  rg: (bg: $color-factory-rg, ink: light),
+  mo: (bg: $color-factory-mo, ink: light),
+  df: (bg: $color-factory-df, ink: light),
+  fg: (bg: $color-factory-fg, ink: light),
+  lg: (bg: $color-factory-lg, ink: dark),
+  s: (bg: $color-factory-s, ink: dark),
+  mb: (bg: $color-factory-mb, ink: light),
+  t: (bg: $color-factory-t, ink: light),
+  la: (bg: $color-factory-la, ink: dark),
+  p: (bg: $color-factory-p, ink: light),
+  dp: (bg: $color-factory-dp, ink: light),
+  dn: (bg: $color-factory-dn, ink: light),
+  an: (bg: $color-factory-an, ink: light),
+  dr: (bg: $color-factory-dr, ink: light),
+  ib: (bg: $color-factory-ib, ink: dark),
+  cb-columbia: (bg: $color-factory-cb-columbia, ink: dark),
+  ab: (bg: $color-factory-ab, ink: dark),
+  ca: (bg: $color-factory-ca, ink: dark),
+);
+
+// ---------------------------------------------------------------------------
+// Typography
+// ---------------------------------------------------------------------------
+$font-family-base: 'Gotham', 'Helvetica Neue', Arial, sans-serif;
+$font-weight-book: 400;
+$font-weight-medium: 500;
+$font-weight-bold: 700;
+
+// Type scale: size / line-height / tracking (computed px from the Figma export)
+$type-body-lg-size: 1rem;              // 16px
+$type-body-lg-line: 1.5rem;            // 24px
+$type-body-lg-tracking: 0.01rem;       // 0.16px (1%)
+
+$type-body-md-size: 0.875rem;          // 14px
+$type-body-md-line: 1.25rem;           // 20px
+$type-body-md-tracking: 0.00875rem;    // 0.14px (1%)
+
+$type-body-sm-size: 0.75rem;           // 12px (floating label, footnote)
+$type-body-sm-line: 1rem;              // 16px
+$type-body-sm-tracking: 0.0075rem;     // 0.12px (1%)
+
+$type-caption-sm-size: 0.625rem;       // 10px (nav labels, tool labels)
+$type-caption-sm-line: 0.75rem;        // 12px
+$type-caption-sm-tracking: 0.01875rem; // 0.3px (3%)
+
+$type-caption-lg-size: 0.75rem;        // 12px (tile letter)
+$type-caption-lg-line: 1rem;           // 16px
+$type-caption-lg-tracking: 0.0225rem;  // 0.36px (3%)
+
+$type-swatch-letter-size: 0.875rem;        // 14px (row swatch letter)
+$type-swatch-letter-line: 1rem;            // 16px
+$type-swatch-letter-tracking: 0.02625rem;  // 0.42px (3%)
+
+$type-button-size: 1rem;               // 16px
+$type-button-line: 1.25rem;            // 20px
+$type-button-tracking: 0.01rem;        // 0.16px (1%)
+
+// ---------------------------------------------------------------------------
+// Spacing scale (rem, 16px base)
+// ---------------------------------------------------------------------------
+$space-1: 0.0625rem;  // 1px
+$space-2: 0.125rem;   // 2px
+$space-4: 0.25rem;    // 4px
+$space-5: 0.3125rem;  // 5px
+$space-6: 0.375rem;   // 6px
+$space-8: 0.5rem;     // 8px
+$space-10: 0.625rem;  // 10px
+$space-12: 0.75rem;   // 12px
+$space-14: 0.875rem;  // 14px
+$space-16: 1rem;      // 16px
+$space-24: 1.5rem;    // 24px
+$space-29: 1.8125rem; // 29px (jersey image to thumbnails row)
+$space-31: 1.9375rem; // 31px (32 minus the toolbox panel border)
+$space-32: 2rem;      // 32px
+$space-40: 2.5rem;    // 40px
+$space-52: 3.25rem;   // 52px (field padding-right: 16 + 20 icon + 16)
+$space-57: 3.5625rem; // 57px (viewer top to jersey image)
+
+// ---------------------------------------------------------------------------
+// Sizes
+// ---------------------------------------------------------------------------
+$size-14: 0.875rem;   // pip
+$size-20: 1.25rem;    // Size/20 icons
+$size-24: 1.5rem;     // Size/24 icons
+$size-30: 1.875rem;   // "Colors In Use" title box
+$size-32: 2rem;       // swatch, tile, tool item, row
+$size-40: 2.5rem;     // button height
+$size-56: 3.5rem;     // tool item width, input field height
+$size-64: 4rem;       // top nav height
+$size-80: 5rem;       // side nav item, toolbox footer
+$size-83: 5.1875rem;  // view thumbnail width
+$size-91: 5.6875rem;  // view thumbnail height
+$size-96: 6rem;       // side nav width
+$size-120: 7.5rem;    // button min-width
+$size-200: 12.5rem;   // back link text box
+$size-274: 17.125rem; // viewer info block width
+$size-328: 20.5rem;   // toolbox content column, popovers
+$size-392: 24.5rem;   // toolbox panel width
+$size-564: 35.25rem;  // hover highlight overlay width
+$size-613: 38.3125rem; // main jersey image width
+$size-672: 42rem;     // main jersey image height
+
+// Overlay anchors (Figma offsets recorded in the spec's Interactions table)
+$offset-picker-x: -9.5rem;   // -152px from the Orange tile
+$offset-picker-y: 2.25rem;   // 36px from the Orange tile
+$offset-location-list-y: $size-56; // 56px below the Location field top
+
+// Jersey stage overlays, as fractions of the 613 x 672 image so they scale
+// with it. Values are the Figma pixel offsets divided by the image size.
+$highlight-left: 4.0783%;        // 25px
+$highlight-body-top: 2.2411%;    // 15.06px: overlay frame 332 minus the 36.94px the export bleeds above it, minus image top 280
+$highlight-sleeves-top: 4.7396%; // 31.85px: overlay frame 334 minus the 22.15px the export bleeds above it, minus image top 280
+$highlight-width: 92.0065%;      // 564px
+$brand-logo-left: 30.0277%;      // 184.07px (frame 990 - 4.93 - image left 801)
+$brand-logo-top: 16.5238%;       // 111.04px (frame 392 - 0.96 - image top 280)
+$brand-logo-width: 7.3165%;      // 44.85px
+
+// ---------------------------------------------------------------------------
+// Radius
+// ---------------------------------------------------------------------------
+$radius-xs: 0.25rem;   // 4px (button hover)
+$radius-sm: 0.375rem;  // 6px (buttons, swatches, tiles, tooltip)
+$radius-12: 0.75rem;   // 12px (inputs, popovers, selected nav item)
+$radius-modal: 1rem;   // 16px (unselected nav item)
+
+// ---------------------------------------------------------------------------
+// Shadows
+// ---------------------------------------------------------------------------
+$shadow-popover: 0 4px 6px 0 rgba(0, 0, 0, 0.09); // #00000017
+
+// ---------------------------------------------------------------------------
+// Motion (from Figma prototype transitions)
+// ---------------------------------------------------------------------------
+$motion-button-duration: 0.3s;   // SMART_ANIMATE 300ms
+$motion-button-easing: ease-out; // EASE_OUT
+
+// ---------------------------------------------------------------------------
+// Borders
+// ---------------------------------------------------------------------------
+$border-width: 1px;
+$border-width-2: 2px;
+$border-default: $border-width solid $color-stroke-default;
+
+// ---------------------------------------------------------------------------
+// Z-index
+// ---------------------------------------------------------------------------
+$z-stage-overlay: 1;
+$z-field-label: 1;
+$z-popover: 20;
+$z-skip-link: 100;
+
+// ---------------------------------------------------------------------------
+// Breakpoints (Figma supplies only the 1728 desktop frame; tablet and mobile
+// values are the project defaults)
+// ---------------------------------------------------------------------------
+$breakpoint-tablet: 64rem;   // 1024px
+$breakpoint-mobile: 48rem;   // 768px

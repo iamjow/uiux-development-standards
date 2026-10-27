@@ -1,0 +1,53 @@
+@use '../variables' as *;
+@use '../mixins' as *;
+
+// Button, Size Large, Corners Rounded (Figma component set 3430:64463 / 3430:64694)
+// Hover is a SMART_ANIMATE 0.3s ease-out: fill changes and radius 6 -> 4.
+.button {
+  @include button-reset;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: $space-8;
+  min-width: $size-120;
+  height: $size-40;
+  padding: 0 $space-16;
+  border: $border-width solid transparent;
+  border-radius: $radius-sm;
+  text-decoration: none;
+  white-space: nowrap;
+  @include type-button;
+
+  @include motion-ok {
+    transition:
+      background-color $motion-button-duration $motion-button-easing,
+      border-color $motion-button-duration $motion-button-easing,
+      border-radius $motion-button-duration $motion-button-easing;
+  }
+
+  &:hover {
+    border-radius: $radius-xs;
+  }
+
+  // Style Primary (Add to Cart, Add Piping, Add Pattern)
+  &--primary {
+    background: $color-button-primary-bg;
+    border-color: $color-button-primary-bg;
+    color: $color-button-primary-text;
+
+    &:hover {
+      background: $color-button-primary-hover-bg;
+      border-color: $color-button-primary-hover-bg;
+    }
+  }
+
+  // Style Secondary (Save)
+  &--secondary {
+    border-color: $color-stroke-default;
+    color: $color-button-secondary-text;
+
+    &:hover {
+      background: $color-button-secondary-hover-bg;
+    }
+  }
+}

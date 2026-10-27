@@ -1,0 +1,49 @@
+@use '../variables' as *;
+@use '../mixins' as *;
+
+// Input field with floating label (Figma: input field 4035:46352 / 4010:27551):
+// 56 high, radius 12, 1px zinc-200 border, label "Supr Script" at left 8 / top -8.
+.field {
+  position: relative;
+
+  &__label {
+    position: absolute;
+    top: -$space-8;
+    left: $space-8;
+    z-index: $z-field-label;
+    padding: 0 $space-4;
+    background: $color-bg-primary;
+    color: $color-black;
+    @include type-body-sm;
+  }
+
+  &__control {
+    @include button-reset;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: $size-56;
+    padding: $space-10 $space-52 $space-10 $space-16;
+    background: $color-bg-primary;
+    border: $border-default;
+    border-radius: $radius-12;
+    color: $color-black;
+    text-align: left;
+    appearance: none;
+    -webkit-appearance: none;
+    @include type-body-lg;
+
+    // Placeholder text (no organization chosen)
+    &.is-placeholder {
+      color: $color-text-secondary;
+    }
+  }
+
+  &__icon {
+    position: absolute;
+    top: 50%;
+    right: $space-16;
+    transform: translateY(-50%);
+    pointer-events: none;
+  }
+}

@@ -1,0 +1,52 @@
+@use '../variables' as *;
+@use '../mixins' as *;
+
+// Customize Line Item (Figma component set 4023:21720): label at left,
+// colour name + 32px swatch at right, 32 tall. Body and Sleeves rows are
+// buttons that show a hover highlight on the jersey; the rest are static.
+.color-line {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: $space-4;
+  width: 100%;
+  min-height: $size-32;
+  color: $color-black;
+  text-align: left;
+  @include type-body-lg;
+
+  &__label {
+    display: flex;
+    align-items: center;
+    gap: $space-4;
+  }
+
+  &__value {
+    display: flex;
+    align-items: center;
+    gap: $space-8;
+    color: $color-text-tertiary;
+  }
+
+  // Interactive rows (ON_HOVER -> jersey highlight overlay, no visual change on the row)
+  &--trigger {
+    @include button-reset;
+    display: flex;
+    color: $color-black;
+    @include type-body-lg;
+  }
+}
+
+.color-lines {
+  display: flex;
+  flex-direction: column;
+  gap: $space-40;
+}
+
+// Customize list block (Figma: Frame 602): rows, Divider 2 and the Brand Logo
+// block stacked with the same 40px gap
+.customize {
+  display: flex;
+  flex-direction: column;
+  gap: $space-40;
+}

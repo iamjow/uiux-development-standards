@@ -1,0 +1,34 @@
+@use 'sass:map';
+@use '../variables' as *;
+@use '../mixins' as *;
+
+// Colour swatch (Figma: "Color 1" swatches, color tiles, Color Picker Tiles):
+// 32 x 32, radius 6, centred letter. The colour modifiers come from the
+// $factory-colors token map; `ink: light` switches the letter to white.
+.swatch {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: $size-32;
+  height: $size-32;
+  border-radius: $radius-sm;
+  color: $color-swatch-text;
+  text-align: center;
+  @include type-caption-lg;
+
+  // Row swatch letter is 14/16
+  &--row {
+    @include type-swatch-letter;
+  }
+
+  @each $name, $spec in $factory-colors {
+    &--#{$name} {
+      background: map.get($spec, bg);
+
+      @if map.get($spec, ink) == light {
+        color: $color-swatch-text-inverse;
+      }
+    }
+  }
+}

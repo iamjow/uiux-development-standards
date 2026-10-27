@@ -1,0 +1,92 @@
+@use '../variables' as *;
+@use '../mixins' as *;
+
+// color picker overlay (Figma: 4135:44556, 328 x 496), opened by the Orange
+// tile (ON_CLICK, offset -152 / 36 from the tile, no dim, close on click outside).
+.color-picker {
+  position: absolute;
+  top: $offset-picker-y;
+  left: $offset-picker-x;
+  z-index: $z-popover;
+  display: flex;
+  flex-direction: column;
+  gap: $space-24;
+  width: $size-328;
+  padding: $space-16 $space-16 $space-24;
+  background: $color-bg-primary;
+  border-radius: $radius-12;
+  box-shadow: $shadow-popover;
+
+  &[hidden] {
+    display: none;
+  }
+
+  &__legend {
+    display: block;
+    margin-bottom: $space-8;
+    color: $color-black;
+    @include type-body-lg;
+  }
+
+  &__grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: $space-12;
+  }
+
+  // One tile: the radio input doubles as the 14px "Checked" pip that
+  // overflows the top-right corner by 4px when the colour is selected.
+  &__option {
+    position: relative;
+  }
+
+  &__input {
+    position: absolute;
+    top: -$space-4;
+    right: -$space-4;
+    z-index: $z-field-label;
+    width: $size-14;
+    height: $size-14;
+    margin: 0;
+    opacity: 0;
+    appearance: none;
+    -webkit-appearance: none;
+    cursor: pointer;
+
+    &:checked {
+      opacity: 1;
+      background: url('../assets/icons/pip-checked.svg') center / contain no-repeat;
+    }
+
+    // Selected tile (Figma: 3939:29894) uses the Subtract cut-out shape
+    &:checked + .swatch {
+      -webkit-mask: url('../assets/icons/tile-mask.svg') center / 100% 100% no-repeat;
+      mask: url('../assets/icons/tile-mask.svg') center / 100% 100% no-repeat;
+    }
+
+    &:focus-visible {
+      outline: 0;
+    }
+
+    &:focus-visible + .swatch {
+      @include focus-ring;
+    }
+  }
+
+  &__tile {
+    cursor: pointer;
+  }
+
+  &__note {
+    color: $color-black;
+    @include type-body-sm;
+  }
+
+  // Below the mobile breakpoint the card fills the Colors In Use block (its
+  // positioned ancestor there) instead of anchoring to the 32px tile.
+  @include mobile-down {
+    top: 100%;
+    left: 0;
+    width: 100%;
+  }
+}

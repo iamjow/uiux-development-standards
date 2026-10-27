@@ -1,0 +1,35 @@
+@use '../variables' as *;
+@use '../mixins' as *;
+
+// Brand Location list (Figma: 3966:21280, 328 x 256): card radius 12 with the
+// popover shadow, 8px vertical padding, 48px option rows (padding 12 16).
+// Anchored 56px below the Location field (ON_CLICK, close on click outside).
+.popover-list {
+  position: absolute;
+  top: $offset-location-list-y;
+  left: 0;
+  z-index: $z-popover;
+  width: 100%;
+  padding: $space-8 0;
+  background: $color-bg-primary;
+  border-radius: $radius-12;
+  box-shadow: $shadow-popover;
+
+  &[hidden] {
+    display: none;
+  }
+
+  &__option {
+    display: flex;
+    align-items: center;
+    gap: $space-8;
+    padding: $space-12 $space-16;
+    color: $color-text-primary;
+    cursor: pointer;
+    @include type-body-lg;
+
+    &:focus-visible {
+      outline-offset: -$space-2;
+    }
+  }
+}

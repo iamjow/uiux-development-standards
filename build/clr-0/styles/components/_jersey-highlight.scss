@@ -1,0 +1,25 @@
+@use '../variables' as *;
+
+// body hover / sleeve hover overlays (Figma: 4190:44629 / 4190:44635):
+// exported SVG shapes (#d946ef at 64%) laid over the jersey image, shown only
+// while the Body or Sleeves row is hovered, focused, or tapped. Instant.
+.jersey-highlight {
+  position: absolute;
+  left: $highlight-left;
+  z-index: $z-stage-overlay;
+  width: $highlight-width;
+  height: auto;
+  pointer-events: none;
+
+  &--body {
+    top: $highlight-body-top;
+  }
+
+  &--sleeves {
+    top: $highlight-sleeves-top;
+  }
+
+  &[hidden] {
+    display: none;
+  }
+}

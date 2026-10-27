@@ -1,0 +1,103 @@
+@use '../variables' as *;
+@use '../mixins' as *;
+
+// Viewer (Figma: viewer 4320:41918): info block, main jersey image, view thumbnails
+.viewer {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 0;
+  min-height: 0;
+  padding-top: $space-57;
+  overflow: hidden;
+  background: $color-zinc-100;
+
+  &__info {
+    position: absolute;
+    top: $space-16;
+    left: $space-24;
+    display: flex;
+    flex-direction: column;
+    gap: $space-4;
+    width: $size-274;
+  }
+
+  &__title {
+    color: $color-text-primary;
+    @include type-body-lg($font-weight-medium);
+  }
+
+  &__details {
+    display: flex;
+    flex-direction: column;
+    gap: $space-4;
+    color: $color-text-secondary;
+    @include type-body-md;
+  }
+
+  // Jersey stage: the 613 x 672 image plus the overlays anchored to it
+  &__stage {
+    position: relative;
+    flex-shrink: 0;
+    width: $size-613;
+    max-width: 100%;
+  }
+
+  // Figma image fill: 613 x 672 frame, cover
+  &__image {
+    width: 100%;
+    height: $size-672;
+    object-fit: cover;
+  }
+
+  // Brand Logo artwork on the chest (Figma: 4320:42391)
+  &__brand-logo {
+    position: absolute;
+    top: $brand-logo-top;
+    left: $brand-logo-left;
+    width: $brand-logo-width;
+    height: auto;
+  }
+
+  @include tablet-down {
+    padding: $space-16 $space-16 $space-24;
+
+    &__info {
+      position: static;
+      width: 100%;
+      margin-bottom: $space-16;
+    }
+
+    &__image {
+      height: auto;
+    }
+  }
+}
+
+// View thumbnails Front / Back / Left / Right (Figma: FBLR 4005:21378)
+.view-thumbs {
+  display: flex;
+  gap: $space-32;
+  margin-top: $space-29;
+
+  &__item {
+    @include button-reset;
+    display: block;
+    width: $size-83;
+    height: $size-91;
+    overflow: hidden;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  @include mobile-down {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: $space-16;
+  }
+}

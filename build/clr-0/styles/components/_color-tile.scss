@@ -1,0 +1,60 @@
+@use '../variables' as *;
+@use '../mixins' as *;
+
+// Colors In Use tile (Figma component set "color tile hover" 3528:37221).
+// Hover=On: the tile becomes the "Subtract" cut-out shape and a 14px Remove
+// pip overflows the top-right corner by 4px. Instant (no transition).
+// The hover variant is also reached by keyboard focus and by a tap (is-active).
+.color-tile {
+  @include button-reset;
+  position: relative;
+  display: block;
+  width: $size-32;
+  height: $size-32;
+  border-radius: $radius-sm;
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: -$space-4;
+    right: -$space-4;
+    display: none;
+    width: $size-14;
+    height: $size-14;
+    background: url('../assets/icons/pip-remove.svg') center / contain no-repeat;
+  }
+
+  &:hover,
+  &:focus-visible,
+  &.is-active {
+    .swatch {
+      -webkit-mask: url('../assets/icons/tile-mask.svg') center / 100% 100% no-repeat;
+      mask: url('../assets/icons/tile-mask.svg') center / 100% 100% no-repeat;
+    }
+
+    &::after {
+      display: block;
+    }
+  }
+
+  // "+" add-colour tile (Color=Add): no fill, 20px plus centred, no hover variant
+  &--add {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &::after {
+      content: none;
+    }
+  }
+}
+
+// Each tile wrapper anchors the overlay that the tile opens (desktop anchor
+// -152 / 36); below the mobile breakpoint the Colors In Use block anchors it
+.color-tile-item {
+  position: relative;
+
+  @include mobile-down {
+    position: static;
+  }
+}

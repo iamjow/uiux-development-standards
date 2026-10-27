@@ -1,0 +1,98 @@
+@use '../variables' as *;
+@use '../mixins' as *;
+
+// color toolbox (Figma: 4320:41915): 392 wide panel with a 328 content column
+// (32 inset, 24 top) that scrolls above a fixed 80px footer. The 1px left
+// border runs the full height, so the scroll region and the footer each carry
+// it and both span the full 392.
+.toolbox {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  background: $color-bg-primary;
+
+  &__scroll {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    gap: $space-32;
+    min-height: 0;
+    padding: $space-24 $space-32 $space-24 $space-31; // 32 column inset minus the 1px border
+    overflow-x: hidden;
+    overflow-y: auto;
+    border-left: $border-default;
+  }
+
+  &__top {
+    display: flex;
+    flex-direction: column;
+    gap: $space-24;
+  }
+
+  &__divider {
+    height: 0;
+    margin: 0;
+    border: 0;
+    border-top: $border-default;
+  }
+
+  // Design Card Footer: two 160px buttons, gap 8, padding 16 32
+  &__footer {
+    display: flex;
+    gap: $space-8;
+    height: $size-80;
+    padding: $space-16 $space-32 $space-16 $space-31; // 32 inset minus the 1px border
+    background: $color-bg-primary;
+    border-left: $border-default;
+
+    .button {
+      flex: 1;
+      min-width: 0;
+    }
+  }
+
+  @include tablet-down {
+    border-bottom: $border-default;
+
+    &__scroll {
+      flex: none;
+      overflow: visible;
+      border-left: 0;
+    }
+
+    &__footer {
+      border-left: 0;
+    }
+  }
+}
+
+// Colors In Use block (Figma: I4320:41915;4015:22600)
+.colors-in-use {
+  display: flex;
+  flex-direction: column;
+  gap: $space-4;
+
+  &__title {
+    min-height: $size-30;
+    color: $color-black;
+    @include type-body-lg;
+  }
+
+  &__list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: $space-6;
+  }
+
+  // Positioned ancestor for the color picker below the mobile breakpoint
+  @include mobile-down {
+    position: relative;
+  }
+}
+
+// Brand Logo block (Figma: Frame 31856): row then Location field, gap 32
+.brand-logo-block {
+  display: flex;
+  flex-direction: column;
+  gap: $space-32;
+}

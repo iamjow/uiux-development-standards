@@ -1,0 +1,16 @@
+@use '../variables' as *;
+@use '../mixins' as *;
+
+// Top bar tool item (Figma: heroicons-mini/arrow-uturn-left frames, 56 x 32):
+// 20px icon above a 10/12 bold label, no gap.
+.tool-action {
+  @include button-reset;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: $size-56;
+  height: $size-32;
+  color: $color-black;
+  white-space: nowrap;
+  @include type-caption-sm($font-weight-bold);
+}

@@ -1,0 +1,43 @@
+@use '../variables' as *;
+@use '../mixins' as *;
+
+// Top Nav (Figma: 4320:41917): back link, undo/redo/zoom tools, save/add to cart.
+// Three groups with space-between; the tools group is not page-centred.
+.top-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: $space-8;
+  height: $size-64;
+  padding: 0 $space-40;
+  background: $color-bg-primary;
+  border-bottom: $border-default;
+
+  &__back {
+    display: flex;
+    align-items: center;
+    gap: $space-8;
+    color: $color-black;
+    text-decoration: none;
+    white-space: nowrap;
+    @include type-body-md($font-weight-medium);
+  }
+
+  // Figma text box is fixed at 200 (group 228 with the chevron and gap)
+  &__back-label {
+    width: $size-200;
+  }
+
+  &__tools,
+  &__actions {
+    display: flex;
+    align-items: center;
+    gap: $space-8;
+  }
+
+  @include tablet-down {
+    flex-wrap: wrap;
+    height: auto;
+    padding: $space-14 $space-16;
+  }
+}
